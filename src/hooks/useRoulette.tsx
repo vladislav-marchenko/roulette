@@ -4,7 +4,15 @@ const easeInOutQuart = (t: number) => {
   return t < 0.5 ? 8 * t * t * t : 1 - Math.pow(-2 * t + 2, 6) / 2
 }
 
-export const useRoulette = (itemWidth: number, itemCount: number) => {
+export const useRoulette = ({
+  itemWidth,
+  itemCount,
+  onSpinEnd
+}: {
+  itemWidth: number
+  itemCount: number
+  onSpinEnd?: () => void
+}) => {
   const [offset, setOffset] = useState(0)
   const [isSpinning, setIsSpinning] = useState(false)
   const animationFrameRef = useRef<number | null>(null)
@@ -52,6 +60,7 @@ export const useRoulette = (itemWidth: number, itemCount: number) => {
           animationFrameRef.current = requestAnimationFrame(animate)
         } else {
           setIsSpinning(false)
+          onSpinEnd && onSpinEnd()
           setOffset(targetOffset % cycleWidth)
         }
       }
