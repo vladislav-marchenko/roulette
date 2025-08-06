@@ -3,4 +3,5 @@ export interface Gift {
   name: string
   price: number
   image: string
+  lottie: any
 }

@@ -22,9 +22,9 @@ export const Star: FC<{ size?: number }> = ({ size = 16 }) => {
           y2='-6.03838'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stop-color='#FDEB32' />
-          <stop offset='0.439' stop-color='#FEBD04' />
-          <stop offset='1' stop-color='#D75902' />
+          <stop stopColor='#FDEB32' />
+          <stop offset='0.439' stopColor='#FEBD04' />
+          <stop offset='1' stopColor='#D75902' />
         </linearGradient>
       </defs>
     </svg>
