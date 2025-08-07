@@ -1,6 +1,6 @@
 import { Button } from '@/components/Button'
 import { Star } from '@/components/Icons'
-import { PrizeOverlay } from '@/components/PrizeOverlay'
+import { PrizeOverlay } from '@/components/PrizeOverlay/PrizeOverlay'
 import { Prizes } from '@/components/Prizes/Prizes'
 import { Roulette } from '@/components/Roulette/Roulette'
 import { ITEM_WIDTH } from '@/consts'

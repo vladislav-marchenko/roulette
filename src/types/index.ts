@@ -6,7 +6,7 @@ export interface Gift {
   name: string
   price: number
   image: string
-  lottie: any
+  lottie: unknown
 }
 
 export interface Task {
