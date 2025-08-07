@@ -12,14 +12,17 @@ interface PrizeOverlayProps {
 
 export const PrizeOverlay: FC<PrizeOverlayProps> = ({ prize, close }) => {
   return (
-    <div className='absolute top-0 left-0 z-20 flex h-full w-full items-center justify-center backdrop-blur-md'>
-      <button
-        onClick={close}
-        className='absolute top-4 right-4 z-30 flex cursor-pointer items-center justify-center rounded-full border border-neutral-500/50 bg-neutral-700 p-1 hover:bg-neutral-600'
-      >
+    <div
+      onClick={close}
+      className='absolute top-0 left-0 z-20 flex h-full w-full items-center justify-center backdrop-blur-md'
+    >
+      <button className='absolute top-4 right-4 z-30 flex cursor-pointer items-center justify-center rounded-full border border-neutral-500/50 bg-neutral-700 p-1 hover:bg-neutral-600'>
         <AiOutlineClose size={20} />
       </button>
-      <div className='flex flex-col items-center'>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className='flex flex-col items-center'
+      >
         <Lottie animationData={prize.lottie} className='max-w-48' />
         <h1 className='text-3xl font-bold'>{prize.name}</h1>
         <div className='flex flex-col items-center gap-2 pt-4'>
