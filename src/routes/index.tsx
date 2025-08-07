@@ -1,10 +1,7 @@
-import { Balance } from '@/components/Balance'
 import { Button } from '@/components/Button'
 import { Star } from '@/components/Icons'
-import { Image } from '@/components/Image'
 import { PrizeOverlay } from '@/components/PrizeOverlay'
 import { Prizes } from '@/components/Prizes/Prizes'
-import { ProfileSummary } from '@/components/ProfileSummary'
 import { Roulette } from '@/components/Roulette/Roulette'
 import { ITEM_WIDTH } from '@/consts'
 import { gifts } from '@/consts'
@@ -34,10 +31,6 @@ function App() {
 
   return (
     <div className='flex flex-col gap-4'>
-      <div className='flex items-center justify-between'>
-        <ProfileSummary />
-        <Balance />
-      </div>
       <h1 className='text-[28px] font-bold'>Good luck!</h1>
       <Roulette offset={offset} isSpinning={isSpinning} />
       <Button

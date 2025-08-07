@@ -10,7 +10,7 @@ export const Image: FC<ImageProps> = ({ src, className }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   return (
-    <div className={cn('aspect-square', className)}>
+    <div className={className}>
       <img
         src={src}
         onLoad={() => setIsImageLoaded(true)}
