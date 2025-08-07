@@ -27,7 +27,10 @@ export const PrizeOverlay: FC<PrizeOverlayProps> = ({ prize, close }) => {
         <h1 className='text-3xl font-bold'>{prize.name}</h1>
         <div className='flex flex-col items-center gap-2 pt-4'>
           <Button className='w-full'>Show in inventory</Button>
-          <Button className='flex w-full items-center gap-1'>
+          <Button
+            variant='secondary'
+            className='flex w-full items-center gap-1'
+          >
             Sell for {prize.price}
             <Star />
           </Button>

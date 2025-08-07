@@ -6,23 +6,26 @@ interface ButtonProps {
   onClick?: () => void
   className?: string
   disabled?: boolean
+  variant?: 'primary' | 'secondary'
 }
 
 export const Button: FC<ButtonProps> = ({
   children,
   onClick,
   className,
-  disabled
+  disabled,
+  variant = 'primary'
 }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        'flex min-w-48 cursor-pointer justify-center rounded-xl bg-sky-600 px-6 py-2.5 font-medium text-white transition-colors duration-200',
+        'flex cursor-pointer justify-center rounded-xl px-6 py-2.5 font-semibold transition-colors duration-200',
         {
           'cursor-not-allowed opacity-50': disabled,
-          'hover:bg-sky-500 active:bg-sky-500': !disabled
+          'bg-white text-black hover:bg-white/85': variant === 'primary',
+          'bg-white/15 text-white hover:bg-white/35': variant === 'secondary'
         },
         className
       )}

@@ -20,7 +20,7 @@ export const TasksCategoryItem: FC<Task> = ({
             {reward} <Star size={12} />
           </span>
         </div>
-        <button className='cursor-pointer rounded-full bg-neutral-700 px-4 py-1 text-sm font-medium'>
+        <button className='cursor-pointer rounded-full bg-neutral-700 px-4 py-1 text-sm font-semibold'>
           Check
         </button>
       </div>
