@@ -1,16 +1,15 @@
 import { RouletteBlackout } from './RouletteBlackout'
 import { RouletteItem } from './RouletteItem'
-import { ITEM_WIDTH, REPEAT_COUNT } from '@/consts'
+import { ITEM_WIDTH, items, REPEAT_COUNT } from '@/consts'
 import type { Gift } from '@/types'
 import type { FC } from 'react'
 
 interface RouletteProps {
-  items: Gift[]
   offset: number
   isSpinning: boolean
 }
 
-export const Roulette: FC<RouletteProps> = ({ items, offset, isSpinning }) => {
+export const Roulette: FC<RouletteProps> = ({ offset, isSpinning }) => {
   return (
     <div className='relative w-full overflow-hidden rounded-lg bg-neutral-950 p-2'>
       <RouletteBlackout />

@@ -14,7 +14,7 @@ export const PrizeOverlay: FC<PrizeOverlayProps> = ({ prize, close }) => {
   return (
     <div
       onClick={close}
-      className='absolute top-0 left-0 z-20 flex h-full w-full items-center justify-center backdrop-blur-md'
+      className='fixed top-0 left-0 z-20 flex h-full w-full items-center justify-center backdrop-blur-md'
     >
       <button className='absolute top-4 right-4 z-30 flex cursor-pointer items-center justify-center rounded-full border border-neutral-500/50 bg-neutral-700 p-1 hover:bg-neutral-600'>
         <AiOutlineClose size={20} />

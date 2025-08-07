@@ -21,7 +21,7 @@ const items = [
 
 export const Navigation = () => {
   return (
-    <nav className='sticky bottom-0 z-10 flex bg-neutral-600/60 backdrop-blur-2xl'>
+    <nav className='sticky bottom-0 z-10 flex bg-neutral-700/40 backdrop-blur-md'>
       {items.map(({ name, href, icon: Icon }) => (
         <Link
           key={href}
