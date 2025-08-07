@@ -7,7 +7,7 @@ import { HiPlus } from 'react-icons/hi'
 export const Balance: FC<{ className?: string }> = ({ className }) => {
   return (
     <Link
-      to='/deposit'
+      to='/balance'
       className={cn(
         'flex max-w-max items-center gap-2 rounded-full bg-neutral-700 p-[5px]',
         className

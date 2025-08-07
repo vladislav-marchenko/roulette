@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as DepositRouteImport } from './routes/deposit'
+import { Route as BalanceRouteImport } from './routes/balance'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ProfileRoute = ProfileRouteImport.update({
@@ -18,9 +18,9 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DepositRoute = DepositRouteImport.update({
-  id: '/deposit',
-  path: '/deposit',
+const BalanceRoute = BalanceRouteImport.update({
+  id: '/balance',
+  path: '/balance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,31 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/deposit': typeof DepositRoute
+  '/balance': typeof BalanceRoute
   '/profile': typeof ProfileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/deposit': typeof DepositRoute
+  '/balance': typeof BalanceRoute
   '/profile': typeof ProfileRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/deposit': typeof DepositRoute
+  '/balance': typeof BalanceRoute
   '/profile': typeof ProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/deposit' | '/profile'
+  fullPaths: '/' | '/balance' | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/deposit' | '/profile'
-  id: '__root__' | '/' | '/deposit' | '/profile'
+  to: '/' | '/balance' | '/profile'
+  id: '__root__' | '/' | '/balance' | '/profile'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DepositRoute: typeof DepositRoute
+  BalanceRoute: typeof BalanceRoute
   ProfileRoute: typeof ProfileRoute
 }
 
@@ -68,11 +68,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/deposit': {
-      id: '/deposit'
-      path: '/deposit'
-      fullPath: '/deposit'
-      preLoaderRoute: typeof DepositRouteImport
+    '/balance': {
+      id: '/balance'
+      path: '/balance'
+      fullPath: '/balance'
+      preLoaderRoute: typeof BalanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,7 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DepositRoute: DepositRoute,
+  BalanceRoute: BalanceRoute,
   ProfileRoute: ProfileRoute,
 }
 export const routeTree = rootRouteImport

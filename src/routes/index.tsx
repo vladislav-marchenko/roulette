@@ -4,6 +4,7 @@ import { Star } from '@/components/Icons'
 import { Image } from '@/components/Image'
 import { PrizeOverlay } from '@/components/PrizeOverlay'
 import { Prizes } from '@/components/Prizes/Prizes'
+import { ProfileSummary } from '@/components/ProfileSummary'
 import { Roulette } from '@/components/Roulette/Roulette'
 import { ITEM_WIDTH } from '@/consts'
 import { gifts } from '@/consts'
@@ -34,13 +35,7 @@ function App() {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-1'>
-          <Image
-            src='https://tailwindcss.com/_next/static/media/cover.de1997f7.png'
-            className='w-9 overflow-hidden rounded-full border-2 border-neutral-600/80'
-          />
-          <span className='text-xs font-bold'>42/250 XP</span>
-        </div>
+        <ProfileSummary />
         <Balance />
       </div>
       <h1 className='text-[28px] font-bold'>Good luck!</h1>
