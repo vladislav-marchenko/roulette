@@ -1,6 +1,6 @@
 import { RouletteBlackout } from './RouletteBlackout'
 import { RouletteItem } from './RouletteItem'
-import { ITEM_WIDTH, items, REPEAT_COUNT } from '@/consts'
+import { ITEM_WIDTH, gifts, REPEAT_COUNT } from '@/consts'
 import type { Gift } from '@/types'
 import type { FC } from 'react'
 
@@ -17,13 +17,13 @@ export const Roulette: FC<RouletteProps> = ({ offset, isSpinning }) => {
       <div
         className='flex gap-2'
         style={{
-          width: items.length * ITEM_WIDTH * REPEAT_COUNT + 'px',
+          width: gifts.length * ITEM_WIDTH * REPEAT_COUNT + 'px',
           transform: `translateX(-${offset}px)`,
           transition: isSpinning ? 'none' : 'transform 0.1s ease-out'
         }}
       >
         {Array(REPEAT_COUNT)
-          .fill(items)
+          .fill(gifts)
           .flat()
           .map((gift: Gift, index) => (
             <RouletteItem key={index} {...gift} />

@@ -6,7 +6,7 @@ import { PrizeOverlay } from '@/components/PrizeOverlay'
 import { Prizes } from '@/components/Prizes/Prizes'
 import { Roulette } from '@/components/Roulette/Roulette'
 import { ITEM_WIDTH } from '@/consts'
-import { items } from '@/consts'
+import { gifts } from '@/consts'
 import { useRoulette } from '@/hooks/useRoulette'
 import type { Gift as GiftType } from '@/types'
 import { createFileRoute } from '@tanstack/react-router'
@@ -21,18 +21,18 @@ function App() {
   const [prize, setPrize] = useState<GiftType>()
   const { offset, scroll, isSpinning } = useRoulette({
     itemWidth: ITEM_WIDTH,
-    itemCount: items.length,
+    itemCount: gifts.length,
     onSpinEnd: () => setIsOverlayVisible(true)
   })
 
   const spin = () => {
-    const randomItemIndex = Math.floor(Math.random() * items.length)
-    setPrize(items[randomItemIndex])
+    const randomItemIndex = Math.floor(Math.random() * gifts.length)
+    setPrize(gifts[randomItemIndex])
     scroll(randomItemIndex)
   }
 
   return (
-    <div className='flex flex-col gap-4 p-4'>
+    <div className='flex flex-col gap-4'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-1'>
           <Image
