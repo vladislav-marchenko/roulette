@@ -28,7 +28,7 @@ export const Navigation = () => {
           to={href}
           className='flex flex-auto flex-col items-center gap-1 p-3 text-neutral-400 transition-colors duration-300 [.active]:text-white'
         >
-          <Icon size={20} />
+          <Icon size={24} />
           <span className='text-xs font-semibold'>{name}</span>
         </Link>
       ))}
