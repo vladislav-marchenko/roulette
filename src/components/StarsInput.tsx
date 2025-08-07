@@ -19,9 +19,10 @@ export const StarsInput: FC<StarsInputProps> = ({ value, setValue }) => {
       <input
         id='deposit-value'
         type='number'
-        value={value}
+        value={String(value)}
         onChange={onChange}
-        className='num text-center outline-none focus:outline-none'
+        placeholder='0'
+        className='text-center outline-none focus:outline-none'
         style={{ width: value.toString().length + 0.5 + 'ch' }}
       />
       <label
