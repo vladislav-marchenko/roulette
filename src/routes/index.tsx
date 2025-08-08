@@ -38,7 +38,7 @@ function App() {
       <Button
         onClick={spin}
         disabled={isSpinning}
-        className='flex items-center gap-1 self-center'
+        className='flex w-full max-w-xs items-center gap-1 self-center'
       >
         Spin for 25 <Star />
       </Button>
