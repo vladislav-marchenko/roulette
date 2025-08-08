@@ -5,6 +5,7 @@ import { Prizes } from '@/components/Prizes/Prizes'
 import { Roulette } from '@/components/Roulette/Roulette'
 import { ITEM_WIDTH } from '@/consts'
 import { gifts } from '@/consts'
+import { useOverlay } from '@/hooks/useOverlay'
 import { useRoulette } from '@/hooks/useRoulette'
 import type { Gift as GiftType } from '@/types'
 import { createFileRoute } from '@tanstack/react-router'
@@ -15,12 +16,13 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false)
   const [prize, setPrize] = useState<GiftType>()
+  const { isVisible, open, close } = useOverlay()
+
   const { offset, scroll, isSpinning } = useRoulette({
     itemWidth: ITEM_WIDTH,
     itemCount: gifts.length,
-    onSpinEnd: () => setIsOverlayVisible(true)
+    onSpinEnd: open
   })
 
   const spin = () => {
@@ -41,9 +43,7 @@ function App() {
         Spin for 25 <Star />
       </Button>
       <Prizes />
-      {isOverlayVisible && prize && (
-        <PrizeOverlay prize={prize} close={() => setIsOverlayVisible(false)} />
-      )}
+      {isVisible && prize && <PrizeOverlay prize={prize} close={close} />}
     </div>
   )
 }
