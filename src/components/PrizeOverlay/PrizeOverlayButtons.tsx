@@ -1,5 +1,5 @@
+import { SellGift } from '../SellGift'
 import { Button } from '@/components/Button'
-import { Sell } from '@/components/Sell'
 import type { Gift } from '@/types'
 import type { FC } from 'react'
 
@@ -16,10 +16,15 @@ export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
       onClick={(e) => e.stopPropagation()}
       className='flex flex-col items-center gap-2'
     >
-      <Button to='/gifts' onClick={close} className='w-full'>
+      <SellGift {...props} />
+      <Button
+        to='/gifts'
+        variant='secondary'
+        onClick={close}
+        className='w-full'
+      >
         Show in inventory
       </Button>
-      <Sell {...props} />
     </div>
   )
 }

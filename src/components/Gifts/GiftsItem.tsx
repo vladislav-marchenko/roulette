@@ -1,9 +1,6 @@
-import { Button } from '@/components/Button'
-import { Drawer } from '@/components/Drawer'
-import { GiftPreview } from '@/components/GiftPreview'
+import { SellGift } from '../SellGift'
+import { WithdrawGift } from '../WithdrawGift'
 import { Image } from '@/components/Image'
-import { Price } from '@/components/Price'
-import { Sell } from '@/components/Sell'
 import type { Gift } from '@/types'
 import type { FC } from 'react'
 
@@ -14,22 +11,18 @@ export const GiftsItem: FC<Omit<Gift, 'id'>> = ({
   lottie
 }) => {
   return (
-    <Drawer
-      title={name}
-      trigger={
-        <button className='cursor-pointer rounded-xl bg-neutral-800 p-1.5'>
-          <Image src={image} className='w-full rounded-xl bg-neutral-700 p-2' />
-          <h4 className='text-start'>{name}</h4>
-          <Price value={price} />
-        </button>
-      }
-      className='flex flex-col gap-4'
-    >
-      <GiftPreview lottie={lottie} />
-      <div className='flex w-full flex-col gap-2'>
-        <Button>Withdraw</Button>
-        <Sell name={name} price={price} lottie={lottie} />
+    <div className='flex flex-col gap-1 rounded-xl bg-neutral-800 p-1.5'>
+      <Image src={image} className='w-full rounded-xl bg-neutral-700 p-2' />
+      <h4 className='text-start'>{name}</h4>
+      <div className='flex items-center gap-2'>
+        <SellGift
+          name={name}
+          price={price}
+          lottie={lottie}
+          className='rounded-full px-2 py-1.5 text-sm'
+        />
+        <WithdrawGift name={name} lottie={lottie} />
       </div>
-    </Drawer>
+    </div>
   )
 }

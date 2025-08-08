@@ -5,7 +5,7 @@ import { StarsInput } from './StarsInput'
 import { useState } from 'react'
 import { FaArrowUpLong } from 'react-icons/fa6'
 
-export const Withdraw = () => {
+export const WithdrawStars = () => {
   const [value, setValue] = useState(0)
 
   return (

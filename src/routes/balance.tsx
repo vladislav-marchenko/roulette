@@ -1,6 +1,6 @@
-import { Deposit } from '@/components/Deposit'
+import { DepositStars } from '@/components/DepositStars'
 import { Star } from '@/components/Icons'
-import { Withdraw } from '@/components/Withdraw'
+import { WithdrawStars } from '@/components/WithdrawStars'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/balance')({
@@ -16,8 +16,8 @@ function RouteComponent() {
           <Star size={20} /> 25 Stars
         </span>
         <div className='flex gap-2'>
-          <Deposit />
-          <Withdraw />
+          <DepositStars />
+          <WithdrawStars />
         </div>
       </div>
       <h2>Recent Actions</h2>

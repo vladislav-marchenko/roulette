@@ -5,7 +5,7 @@ import { StarsInput } from './StarsInput'
 import { useState } from 'react'
 import { HiPlus } from 'react-icons/hi'
 
-export const Deposit = () => {
+export const DepositStars = () => {
   const [value, setValue] = useState(0)
 
   return (
