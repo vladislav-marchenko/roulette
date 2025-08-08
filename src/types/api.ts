@@ -10,3 +10,10 @@ export interface User {
   photoUrl: string
   languageCode: string
 }
+
+export interface Prize {
+  name: string
+  price: number
+  image: string
+  lottie: string
+}

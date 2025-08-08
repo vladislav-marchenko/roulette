@@ -1,5 +1,3 @@
-import BouquetLottie from '@/assets/gifts/bouquet/bouquet.json'
-import BouquetImage from '@/assets/gifts/bouquet/bouquet.png'
 import CakeLottie from '@/assets/gifts/cake/cake.json'
 import CakeImage from '@/assets/gifts/cake/cake.png'
 import ChampagneLottie from '@/assets/gifts/champagne/champagne.json'
@@ -8,6 +6,8 @@ import CupLottie from '@/assets/gifts/cup/cup.json'
 import CupImage from '@/assets/gifts/cup/cup.png'
 import DiamondLottie from '@/assets/gifts/diamond/diamond.json'
 import DiamondImage from '@/assets/gifts/diamond/diamond.png'
+import FlowersLottie from '@/assets/gifts/flowers/flowers.json'
+import FlowersImage from '@/assets/gifts/flowers/flowers.png'
 import GiftLottie from '@/assets/gifts/gift/gift.json'
 import GiftImage from '@/assets/gifts/gift/gift.png'
 import HeartLottie from '@/assets/gifts/heart/heart.json'
@@ -41,8 +41,8 @@ export const gifts: GiftType[] = [
     id: 6,
     name: 'Bouquet',
     price: 50,
-    image: BouquetImage,
-    lottie: BouquetLottie
+    image: FlowersImage,
+    lottie: FlowersLottie
   },
   {
     id: 7,

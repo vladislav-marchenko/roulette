@@ -7,7 +7,7 @@ import { ITEM_WIDTH } from '@/consts'
 import { gifts } from '@/consts'
 import { useOverlay } from '@/hooks/useOverlay'
 import { useRoulette } from '@/hooks/useRoulette'
-import type { Gift as GiftType } from '@/types'
+import type { Prize } from '@/types/api'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 
@@ -16,7 +16,7 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
-  const [prize, setPrize] = useState<GiftType>()
+  const [prize, setPrize] = useState<Prize>()
   const { isVisible, open, close } = useOverlay()
 
   const { offset, scroll, isSpinning } = useRoulette({

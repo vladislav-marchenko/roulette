@@ -1,4 +1,4 @@
-import type { Methods, User } from '@/types/api'
+import type { Methods, Prize, User } from '@/types/api'
 
 const API_URL = 'http://localhost:8000'
 const INIT_DATA =
@@ -43,4 +43,8 @@ export const customFetch = async <Data extends object = {}>({
 
 export const getMe = () => {
   return customFetch<User>({ endpoint: '/user/me' })
+}
+
+export const getPrizes = () => {
+  return customFetch<Prize[]>({ endpoint: '/prizes' })
 }

@@ -1,4 +1,3 @@
-import { cn } from '@/utils'
 import { useState, type FC } from 'react'
 
 interface ImageProps {
