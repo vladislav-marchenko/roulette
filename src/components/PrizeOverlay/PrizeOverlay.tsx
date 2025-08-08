@@ -18,7 +18,7 @@ export const PrizeOverlay: FC<PrizeOverlayProps> = ({ prize, close }) => {
       <PrizeOverlayCloseButton />
       <div className='flex h-full w-full flex-col justify-between'>
         <PrizeOverlayInfo name={prize.name} lottie={prize.lottie} />
-        <PrizeOverlayButtons price={prize.price} />
+        <PrizeOverlayButtons {...prize} close={close} />
       </div>
     </div>
   )

@@ -1,20 +1,25 @@
-import { Button } from '../Button'
-import { Star } from '../Icons'
+import { Button } from '@/components/Button'
+import { Sell } from '@/components/Sell'
+import type { Gift } from '@/types'
 import type { FC } from 'react'
 
-export const PrizeOverlayButtons: FC<{ price: number }> = ({ price }) => {
+interface PrizeOverlayButtonsProps extends Gift {
+  close: () => void
+}
+
+export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
+  close,
+  ...props
+}) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
       className='flex flex-col items-center gap-2'
     >
-      <Button to='/gifts' className='w-full'>
+      <Button to='/gifts' onClick={close} className='w-full'>
         Show in inventory
       </Button>
-      <Button variant='secondary' className='flex w-full items-center gap-1'>
-        Sell for {price}
-        <Star />
-      </Button>
+      <Sell {...props} />
     </div>
   )
 }

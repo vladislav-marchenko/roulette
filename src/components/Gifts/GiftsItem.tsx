@@ -1,10 +1,10 @@
 import { Button } from '../Button'
+import { GiftPreview } from '../GiftPreview'
 import { Star } from '../Icons'
 import { Drawer } from '@/components/Drawer'
 import { Image } from '@/components/Image'
 import { Price } from '@/components/Price'
 import type { Gift } from '@/types'
-import Lottie from 'lottie-react'
 import type { FC } from 'react'
 
 export const GiftsItem: FC<Omit<Gift, 'id'>> = ({
@@ -25,13 +25,10 @@ export const GiftsItem: FC<Omit<Gift, 'id'>> = ({
       }
       className='flex flex-col gap-4'
     >
-      <Lottie
-        animationData={lottie}
-        className='mx-auto max-w-64 rounded-xl bg-neutral-700 p-2'
-      />
-      <div className='flex w-full flex-col items-center gap-2'>
-        <Button className='w-full'>Withdraw</Button>
-        <Button variant='secondary' className='flex w-full items-center gap-1'>
+      <GiftPreview lottie={lottie} />
+      <div className='flex w-full flex-col gap-2'>
+        <Button>Withdraw</Button>
+        <Button variant='secondary' className='flex items-center gap-1'>
           Sell for {price} <Star />
         </Button>
       </div>
