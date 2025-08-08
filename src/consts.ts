@@ -20,12 +20,7 @@ import RoseLottie from '@/assets/gifts/rose/rose.json'
 import RoseImage from '@/assets/gifts/rose/rose.png'
 import TeddyBearLottie from '@/assets/gifts/teddy-bear/teddy-bear.json'
 import TeddyBearImage from '@/assets/gifts/teddy-bear/teddy-bear.png'
-import { Star } from '@/components/Icons'
 import type { Gift as GiftType } from '@/types'
-import { FaDiceFive } from 'react-icons/fa'
-import { FaGift } from 'react-icons/fa6'
-import { IoPeopleCircle } from 'react-icons/io5'
-import { RiTelegram2Fill } from 'react-icons/ri'
 
 export const ITEM_WIDTH = 150
 export const REPEAT_COUNT = 3
@@ -71,47 +66,5 @@ export const gifts: GiftType[] = [
     price: 50,
     image: ChampagneImage,
     lottie: ChampagneLottie
-  }
-]
-
-export const tasks = [
-  {
-    category: 'One-time',
-    tasks: [
-      {
-        title: 'Subscribe to @username channel',
-        icon: RiTelegram2Fill,
-        color: '#1689ff',
-        reward: 5
-      },
-      {
-        title: 'Invite friend',
-        icon: IoPeopleCircle,
-        color: '#af51de',
-        reward: 10
-      }
-    ]
-  },
-  {
-    category: 'Daily',
-    tasks: [
-      {
-        title: 'Daily reward',
-        icon: FaGift,
-        color: '#49df64',
-        reward: 1
-      },
-      {
-        title: 'Play 3 games',
-        icon: FaDiceFive,
-        color: '#5ac5fa',
-        reward: 5
-      },
-      {
-        title: 'Spend 100 stars',
-        icon: Star,
-        reward: 10
-      }
-    ]
   }
 ]

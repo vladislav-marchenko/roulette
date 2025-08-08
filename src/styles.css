@@ -38,6 +38,10 @@ code {
   h4 {
     @apply font-bold;
   }
+
+  h5 {
+    @apply text-xs text-neutral-400 font-bold uppercase;
+  }
 }
 
 input[type="number"]::-webkit-inner-spin-button,

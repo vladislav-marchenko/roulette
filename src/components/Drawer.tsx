@@ -23,7 +23,7 @@ export const Drawer: FC<DrawerProps> = ({
       <VaulDrawer.Trigger asChild>{trigger}</VaulDrawer.Trigger>
       <VaulDrawer.Portal>
         <VaulDrawer.Overlay className='fixed inset-0 z-30 bg-black/30 backdrop-blur-md' />
-        <VaulDrawer.Content className='fixed right-0 bottom-0 left-0 z-40 flex max-h-11/12 min-h-1/2 flex-col rounded-t-2xl bg-neutral-800 shadow-2xl shadow-black outline-none'>
+        <VaulDrawer.Content className='fixed right-0 bottom-0 left-0 z-40 flex max-h-11/12 min-h-1/2 flex-col rounded-t-3xl bg-neutral-800 shadow-2xl shadow-black outline-none'>
           <div className='px-4 py-2'>
             <div className='mx-auto h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300' />
             {title && (
