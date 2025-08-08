@@ -8,7 +8,7 @@ export const Route = createFileRoute('/gifts')({
 
 function RouteComponent() {
   return (
-    <div className='grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-4'>
+    <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4'>
       {gifts.map(({ id, name, image, price, lottie }) => (
         <GiftsItem
           key={id}

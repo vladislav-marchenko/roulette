@@ -20,7 +20,7 @@ export const GiftsItem: FC<Omit<Gift, 'id'>> = ({
           price={price}
           lottie={lottie}
           image={image}
-          className='rounded-full px-2 py-1.5 text-sm'
+          className='rounded-full px-2 py-1.5 text-sm whitespace-nowrap'
         />
         <WithdrawGift name={name} lottie={lottie} image={image} />
       </div>

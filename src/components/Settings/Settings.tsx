@@ -30,7 +30,7 @@ export const Settings = () => {
       className='flex flex-col gap-4'
     >
       {settings.map(({ label, element: Element }) => (
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col gap-2'>
           <h5>{label}</h5>
           <Element />
         </div>
