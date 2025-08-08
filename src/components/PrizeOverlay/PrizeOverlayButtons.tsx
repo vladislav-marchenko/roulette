@@ -14,7 +14,7 @@ export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className='flex flex-col items-center gap-2'
+      className='mx-auto flex w-full max-w-md flex-col items-center gap-2'
     >
       <SellGift {...props} />
       <Button
