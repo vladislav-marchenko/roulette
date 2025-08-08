@@ -1,5 +1,5 @@
 import { Balance } from './Balance'
-import { ProfileSummary } from './ProfileSummary'
+import { ProfileSummary } from './ProfileSummary/ProfileSummary'
 import { Settings } from './Settings/Settings'
 import { useLocation } from '@tanstack/react-router'
 

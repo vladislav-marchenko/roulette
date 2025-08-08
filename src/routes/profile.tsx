@@ -1,4 +1,4 @@
-import { ProfileInfo } from '@/components/ProfileInfo'
+import { ProfileInfo } from '@/components/ProfileInfo/ProfileInfo'
 import { Tasks } from '@/components/Tasks/Tasks'
 import { createFileRoute } from '@tanstack/react-router'
 

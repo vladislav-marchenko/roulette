@@ -19,7 +19,7 @@ export const Image: FC<ImageProps> = ({ src, className }) => {
         alt=''
       />
       {!isImageLoaded && (
-        <div className='aspect-square w-full animate-pulse rounded-lg bg-neutral-600' />
+        <div className='skeleton aspect-square w-full rounded-lg' />
       )}
     </div>
   )
