@@ -1,5 +1,6 @@
 import { cn } from '@/utils'
 import type { FC, ReactNode } from 'react'
+import { AiOutlineClose } from 'react-icons/ai'
 import { Drawer as VaulDrawer } from 'vaul'
 
 interface DrawerProps {
@@ -23,7 +24,14 @@ export const Drawer: FC<DrawerProps> = ({
         <VaulDrawer.Content className='fixed right-0 bottom-0 left-0 z-40 flex max-h-11/12 min-h-1/2 flex-col rounded-t-2xl bg-neutral-800 shadow-2xl shadow-black outline-none'>
           <div className='py-2'>
             <div className='mx-auto h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300' />
-            {title && <h3 className='text-center'>{title}</h3>}
+            {title && (
+              <VaulDrawer.Title className='text-center text-lg font-bold'>
+                {title}
+              </VaulDrawer.Title>
+            )}
+            <VaulDrawer.Close className='absolute top-0 right-0 cursor-pointer p-4'>
+              <AiOutlineClose size={20} />
+            </VaulDrawer.Close>
           </div>
           <div className={cn('flex-auto overflow-y-auto p-4', className)}>
             {children}
