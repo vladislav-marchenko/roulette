@@ -19,5 +19,8 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, './src')
     }
+  },
+  server: {
+    allowedHosts: ['giftica.loca.lt']
   }
 })

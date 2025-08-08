@@ -3,6 +3,7 @@ import reportWebVitals from './reportWebVitals.ts'
 import { routeTree } from './routeTree.gen'
 import './styles.css'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
+import WebApp from '@twa-dev/sdk'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
@@ -22,6 +23,8 @@ declare module '@tanstack/react-router' {
     router: typeof router
   }
 }
+
+WebApp.ready()
 
 // Render the app
 const rootElement = document.getElementById('app')

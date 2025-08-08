@@ -22,6 +22,7 @@ export const StarsInput: FC<StarsInputProps> = ({ value, setValue }) => {
         value={String(value)}
         onChange={onChange}
         placeholder='0'
+        autoFocus
         className='text-center outline-none focus:outline-none'
         style={{ width: value.toString().length + 0.5 + 'ch' }}
       />
