@@ -6,9 +6,10 @@ import type { FC } from 'react'
 import { FaArrowUpLong } from 'react-icons/fa6'
 import { Drawer as DrawerVaul } from 'vaul'
 
-export const WithdrawGift: FC<Pick<Gift, 'name' | 'lottie'>> = ({
+export const WithdrawGift: FC<Omit<Gift, 'id' | 'price'>> = ({
   name,
-  lottie
+  lottie,
+  image
 }) => {
   return (
     <Drawer
@@ -21,7 +22,7 @@ export const WithdrawGift: FC<Pick<Gift, 'name' | 'lottie'>> = ({
       }
       className='flex flex-col gap-4'
     >
-      <GiftPreview lottie={lottie} />
+      <GiftPreview lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
         <Button className='flex items-center gap-1'>Withdraw</Button>
         <DrawerVaul.Close asChild>

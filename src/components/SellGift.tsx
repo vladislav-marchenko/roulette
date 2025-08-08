@@ -7,7 +7,7 @@ import { cn } from '@/utils'
 import type { FC } from 'react'
 import { Drawer as DrawerVaul } from 'vaul'
 
-interface SellGiftProps extends Omit<Gift, 'id' | 'image'> {
+interface SellGiftProps extends Omit<Gift, 'id'> {
   className?: string
 }
 
@@ -15,6 +15,7 @@ export const SellGift: FC<SellGiftProps> = ({
   name,
   price,
   lottie,
+  image,
   className
 }) => {
   return (
@@ -29,7 +30,7 @@ export const SellGift: FC<SellGiftProps> = ({
       }
       className='flex flex-col gap-4'
     >
-      <GiftPreview lottie={lottie} />
+      <GiftPreview lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
         <Button className='flex items-center gap-1'>
           Sell for {price} <Star />

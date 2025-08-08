@@ -23,7 +23,7 @@ export const PrizeOverlay: FC<PrizeOverlayProps> = ({ prize, close }) => {
         <AiOutlineClose size={20} />
       </Button>
       <div className='flex h-full w-full flex-col justify-between'>
-        <PrizeOverlayInfo name={prize.name} lottie={prize.lottie} />
+        <PrizeOverlayInfo {...prize} />
         <PrizeOverlayButtons {...prize} close={close} />
       </div>
     </div>
