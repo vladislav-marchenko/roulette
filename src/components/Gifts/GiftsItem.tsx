@@ -1,9 +1,9 @@
-import { Button } from '../Button'
-import { GiftPreview } from '../GiftPreview'
-import { Star } from '../Icons'
+import { Button } from '@/components/Button'
 import { Drawer } from '@/components/Drawer'
+import { GiftPreview } from '@/components/GiftPreview'
 import { Image } from '@/components/Image'
 import { Price } from '@/components/Price'
+import { Sell } from '@/components/Sell'
 import type { Gift } from '@/types'
 import type { FC } from 'react'
 
@@ -28,9 +28,7 @@ export const GiftsItem: FC<Omit<Gift, 'id'>> = ({
       <GiftPreview lottie={lottie} />
       <div className='flex w-full flex-col gap-2'>
         <Button>Withdraw</Button>
-        <Button variant='secondary' className='flex items-center gap-1'>
-          Sell for {price} <Star />
-        </Button>
+        <Sell name={name} price={price} lottie={lottie} />
       </div>
     </Drawer>
   )

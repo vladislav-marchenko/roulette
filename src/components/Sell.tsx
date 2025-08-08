@@ -6,7 +6,11 @@ import type { Gift } from '@/types'
 import type { FC } from 'react'
 import { Drawer as DrawerVaul } from 'vaul'
 
-export const Sell: FC<Gift> = ({ name, price, lottie }) => {
+export const Sell: FC<Omit<Gift, 'id' | 'image'>> = ({
+  name,
+  price,
+  lottie
+}) => {
   return (
     <Drawer
       title={name}
