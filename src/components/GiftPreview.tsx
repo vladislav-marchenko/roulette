@@ -1,21 +1,28 @@
 import { Image } from '@/components/Image'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
-import type { Gift } from '@/types'
+import { getLottie } from '@/services/api'
+import type { Prize } from '@/types/api'
+import { useQuery } from '@tanstack/react-query'
 import Lottie from 'lottie-react'
 import type { FC } from 'react'
 
 const className = 'mx-auto max-w-64 rounded-xl bg-neutral-700 p-2'
 
-export const GiftPreview: FC<Pick<Gift, 'lottie' | 'image'>> = ({
+export const GiftPreview: FC<Pick<Prize, 'name' | 'lottie' | 'image'>> = ({
+  name,
   lottie,
   image
 }) => {
   const [isAnimationEnabled] = useLocalStorage('giftsAnimation', true)
-  console.log(isAnimationEnabled)
+  const { data, isSuccess } = useQuery({
+    queryKey: ['lottie', name],
+    queryFn: () => getLottie(lottie),
+    enabled: isAnimationEnabled
+  })
 
-  if (!isAnimationEnabled) {
-    return <Image src={image} className={className} />
+  if (isSuccess) {
+    return <Lottie animationData={data} className={className} />
   }
 
-  return <Lottie animationData={lottie} className={className} />
+  return <Image src={image} className={className} />
 }

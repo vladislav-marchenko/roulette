@@ -35,7 +35,7 @@ export const SellGift: FC<SellGiftProps> = ({
       }
       className='flex flex-col gap-4'
     >
-      <GiftPreview lottie={lottie} image={image} />
+      <GiftPreview name={name} lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
         <Button className='flex items-center gap-1'>
           Sell for {price} <Star />

@@ -22,7 +22,7 @@ export const WithdrawGift: FC<Pick<Prize, 'name' | 'lottie' | 'image'>> = ({
       }
       className='flex flex-col gap-4'
     >
-      <GiftPreview lottie={lottie} image={image} />
+      <GiftPreview name={name} lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
         <Button className='flex items-center gap-1'>Withdraw</Button>
         <DrawerVaul.Close asChild>
