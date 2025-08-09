@@ -6,9 +6,9 @@ import { Roulette } from '@/components/Roulette/Roulette'
 import { ITEM_WIDTH } from '@/consts'
 import { useOverlay } from '@/hooks/useOverlay'
 import { useRoulette } from '@/hooks/useRoulette'
-import { getPrizes } from '@/services/api'
-import type { Prize } from '@/types/api'
-import { useQuery } from '@tanstack/react-query'
+import { getPrizes, spin } from '@/services/api'
+import type { Prize, Reward } from '@/types/api'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 
@@ -17,6 +17,7 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
+  const queryClient = useQueryClient()
   const {
     data: prizes,
     isLoading,
@@ -24,6 +25,13 @@ function App() {
   } = useQuery({
     queryKey: ['prizes'],
     queryFn: getPrizes
+  })
+  const { mutate, isPending } = useMutation({
+    mutationFn: spin,
+    onSuccess: (reward) => {
+      spinRoulette(reward)
+      queryClient.invalidateQueries({ queryKey: ['me'] })
+    }
   })
 
   const [prize, setPrize] = useState<Prize>()
@@ -35,12 +43,11 @@ function App() {
     onSpinEnd: open
   })
 
-  const spin = () => {
+  function spinRoulette(reward: Reward) {
     if (!prizes) return
 
-    const randomItemIndex = Math.floor(Math.random() * prizes.length)
-    setPrize(prizes[randomItemIndex])
-    scroll(randomItemIndex)
+    setPrize(reward.prize)
+    scroll(prizes.findIndex((prize) => prize.key === reward.prizeKey))
   }
 
   return (
@@ -49,8 +56,9 @@ function App() {
       <Roulette offset={offset} isSpinning={isSpinning} />
       {!isError && (
         <Button
-          onClick={spin}
+          onClick={mutate}
           disabled={isSpinning || isLoading}
+          isLoading={isPending}
           className='flex w-full max-w-xs items-center gap-1 self-center'
         >
           Spin for 25 <Star />

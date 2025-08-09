@@ -1,4 +1,4 @@
-import type { Methods, Prize, User } from '@/types/api'
+import type { Methods, Prize, Reward, User } from '@/types/api'
 
 const API_URL = 'http://localhost:8000'
 const INIT_DATA =
@@ -52,4 +52,8 @@ export const getPrizes = () => {
 export const getLottie = async (url: string) => {
   const response = await fetch(url)
   return response.json()
+}
+
+export const spin = () => {
+  return customFetch<Reward>({ endpoint: '/roulette/spin', method: 'POST' })
 }

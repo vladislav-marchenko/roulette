@@ -12,8 +12,16 @@ export interface User {
 }
 
 export interface Prize {
+  key: string
   name: string
   price: number
   image: string
   lottie: string
+}
+
+export interface Reward {
+  prizeKey: string
+  user: string
+  prize: Prize
+  createdAt: Date
 }
