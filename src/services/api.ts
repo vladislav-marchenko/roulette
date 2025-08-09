@@ -48,3 +48,8 @@ export const getMe = () => {
 export const getPrizes = () => {
   return customFetch<Prize[]>({ endpoint: '/prizes' })
 }
+
+export const getLottie = async (url: string) => {
+  const response = await fetch(url)
+  return response.json()
+}

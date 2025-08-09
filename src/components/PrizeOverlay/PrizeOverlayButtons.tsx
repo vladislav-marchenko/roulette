@@ -1,9 +1,9 @@
 import { SellGift } from '../SellGift'
 import { Button } from '@/components/Button'
-import type { Gift } from '@/types'
+import type { Prize } from '@/types/api'
 import type { FC } from 'react'
 
-interface PrizeOverlayButtonsProps extends Gift {
+interface PrizeOverlayButtonsProps extends Prize {
   close: () => void
 }
 

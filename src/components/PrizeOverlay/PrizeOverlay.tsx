@@ -1,12 +1,12 @@
 import { PrizeOverlayButtons } from './PrizeOverlayButtons'
 import { PrizeOverlayInfo } from './PrizeOverlayInfo'
 import { Button } from '@/components/Button'
-import type { Gift } from '@/types'
+import type { Prize } from '@/types/api'
 import type { FC } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
 interface PrizeOverlayProps {
-  prize: Gift
+  prize: Prize
   close: () => void
 }
 
