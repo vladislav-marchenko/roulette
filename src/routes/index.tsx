@@ -11,6 +11,7 @@ import type { Prize, Reward } from '@/types/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 export const Route = createFileRoute('/')({
   component: App
@@ -47,7 +48,16 @@ function App() {
     if (!prizes) return
 
     setPrize(reward.prize)
-    scroll(prizes.findIndex((prize) => prize.key === reward.prizeKey))
+    const index = prizes.findIndex((prize) => prize.key === reward.prizeKey)
+    if (index === -1) {
+      toast.info(
+        'Unable to find the scroll index for the roulette prize, but the gift has been successfully added to your profile.'
+      )
+      open()
+      return
+    }
+
+    scroll(index)
   }
 
   return (

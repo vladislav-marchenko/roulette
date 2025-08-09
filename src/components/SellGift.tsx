@@ -2,12 +2,12 @@ import { Button } from './Button'
 import { Drawer } from './Drawer'
 import { GiftPreview } from './GiftPreview'
 import { Star } from './Icons'
-import type { Gift } from '@/types'
+import type { Prize } from '@/types/api'
 import { cn } from '@/utils'
 import type { FC } from 'react'
 import { Drawer as DrawerVaul } from 'vaul'
 
-interface SellGiftProps extends Omit<Gift, 'id'> {
+interface SellGiftProps extends Omit<Prize, '_id' | 'key'> {
   className?: string
 }
 

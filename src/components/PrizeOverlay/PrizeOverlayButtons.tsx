@@ -3,20 +3,26 @@ import { Button } from '@/components/Button'
 import type { Prize } from '@/types/api'
 import type { FC } from 'react'
 
-interface PrizeOverlayButtonsProps extends Prize {
+interface PrizeOverlayButtonsProps {
+  prize: Prize
   close: () => void
 }
 
 export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
-  close,
-  ...props
+  prize,
+  close
 }) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
       className='mx-auto flex w-full max-w-md flex-col items-center gap-2'
     >
-      <SellGift {...props} />
+      <SellGift
+        name={prize.name}
+        price={prize.price}
+        image={prize.image}
+        lottie={prize.lottie}
+      />
       <Button
         to='/gifts'
         variant='secondary'

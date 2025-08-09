@@ -7,5 +7,7 @@ export const RouletteItems: FC<{ prizes: Prize[] }> = ({ prizes }) => {
   return Array(REPEAT_COUNT)
     .fill(prizes)
     .flat()
-    .map((prize: Prize, index) => <RouletteItem key={index} {...prize} />)
+    .map(({ _id, image, price }: Prize, index) => (
+      <RouletteItem key={_id + index} image={image} price={price} />
+    ))
 }

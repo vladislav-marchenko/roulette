@@ -3,6 +3,7 @@ import { Navigation } from '@/components/Navigation'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { Toaster } from 'sonner'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,6 +26,7 @@ export const Route = createRootRoute({
         <Navigation />
       </div>
       <ReactQueryDevtools />
+      <Toaster richColors position='top-center' />
     </QueryClientProvider>
   )
 })

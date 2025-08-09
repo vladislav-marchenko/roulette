@@ -6,7 +6,11 @@ import { useQuery } from '@tanstack/react-query'
 import Lottie from 'lottie-react'
 import type { FC } from 'react'
 
-export const PrizeOverlayInfo: FC<Prize> = ({ name, lottie, image }) => {
+export const PrizeOverlayInfo: FC<Pick<Prize, 'name' | 'lottie' | 'image'>> = ({
+  name,
+  lottie,
+  image
+}) => {
   const [isAnimationEnabled] = useLocalStorage('giftsAnimation', true)
   const { data, isSuccess } = useQuery({
     queryKey: ['lottie', name],

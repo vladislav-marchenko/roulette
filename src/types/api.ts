@@ -12,6 +12,7 @@ export interface User {
 }
 
 export interface Prize {
+  _id: string
   key: string
   name: string
   price: number
