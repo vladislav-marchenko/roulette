@@ -21,8 +21,14 @@ export interface Prize {
 }
 
 export interface Reward {
+  _id: string
   prizeKey: string
   user: string
   prize: Prize
-  createdAt: Date
+  createdAt: string
+}
+
+export interface RewardsResponse {
+  rewards: Reward[]
+  hasNext: boolean
 }

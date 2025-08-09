@@ -1,4 +1,4 @@
-import { Button } from './Button'
+import { Button, type ButtonProps } from './Button'
 import { Drawer } from './Drawer'
 import { GiftPreview } from './GiftPreview'
 import { Star } from './Icons'
@@ -9,6 +9,7 @@ import { Drawer as DrawerVaul } from 'vaul'
 
 interface SellGiftProps extends Omit<Prize, '_id' | 'key'> {
   className?: string
+  triggerSize?: ButtonProps['size']
 }
 
 export const SellGift: FC<SellGiftProps> = ({
@@ -16,14 +17,18 @@ export const SellGift: FC<SellGiftProps> = ({
   price,
   lottie,
   image,
-  className
+  className,
+  triggerSize
 }) => {
   return (
     <Drawer
       title={name}
       description='Are you sure you want to sell this gift?'
       trigger={
-        <Button className={cn('flex w-full items-center gap-1', className)}>
+        <Button
+          size={triggerSize}
+          className={cn('flex w-full items-center gap-1', className)}
+        >
           Sell for {price}
           <Star />
         </Button>

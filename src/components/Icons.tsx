@@ -111,7 +111,7 @@ export const Loader: FC<{ size?: number }> = ({ size = 20 }) => {
   return (
     <div role='status'>
       <svg
-        className='animate-spin fill-neutral-900 text-neutral-400 dark:text-gray-600'
+        className='animate-spin fill-neutral-300 text-neutral-600'
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'

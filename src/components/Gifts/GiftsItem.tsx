@@ -1,26 +1,42 @@
 import { SellGift } from '../SellGift'
 import { WithdrawGift } from '../WithdrawGift'
 import { Image } from '@/components/Image'
-import type { Gift } from '@/types'
+import type { Prize } from '@/types/api'
 import type { FC } from 'react'
 
-export const GiftsItem: FC<Omit<Gift, 'id'>> = ({
+interface GiftsItemProps extends Omit<Prize, 'key'> {
+  createdAt: string
+}
+
+export const GiftsItem: FC<GiftsItemProps> = ({
   name,
   image,
   price,
-  lottie
+  lottie,
+  createdAt
 }) => {
+  const date = new Date(createdAt).toLocaleString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric'
+  })
+
   return (
-    <div className='flex flex-col gap-1 rounded-xl bg-neutral-800 p-1.5'>
+    <div className='flex flex-col gap-2 rounded-xl bg-neutral-800 p-1.5'>
       <Image src={image} className='w-full rounded-xl bg-neutral-700 p-2' />
-      <h4 className='text-start'>{name}</h4>
+      <div className='flex flex-col'>
+        <h4 className='leading-none'>{name}</h4>
+        <span className='text-xs font-medium text-neutral-400'>{date}</span>
+      </div>
       <div className='flex items-center gap-2'>
         <SellGift
+          triggerSize='sm'
           name={name}
           price={price}
           lottie={lottie}
           image={image}
-          className='rounded-full px-2 py-1.5 text-sm whitespace-nowrap'
         />
         <WithdrawGift name={name} lottie={lottie} image={image} />
       </div>

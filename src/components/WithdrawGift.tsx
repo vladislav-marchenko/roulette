@@ -1,12 +1,12 @@
 import { Button } from './Button'
 import { Drawer } from './Drawer'
 import { GiftPreview } from './GiftPreview'
-import type { Gift } from '@/types'
+import type { Prize } from '@/types/api'
 import type { FC } from 'react'
 import { FaArrowUpLong } from 'react-icons/fa6'
 import { Drawer as DrawerVaul } from 'vaul'
 
-export const WithdrawGift: FC<Omit<Gift, 'id' | 'price'>> = ({
+export const WithdrawGift: FC<Pick<Prize, 'name' | 'lottie' | 'image'>> = ({
   name,
   lottie,
   image
@@ -16,7 +16,7 @@ export const WithdrawGift: FC<Omit<Gift, 'id' | 'price'>> = ({
       title={name}
       description='Are you sure you want to withdraw this gift?'
       trigger={
-        <Button variant='secondary' className='rounded-full p-2.5'>
+        <Button variant='secondary' size='sm' className='p-2.5'>
           <FaArrowUpLong size={13} />
         </Button>
       }
