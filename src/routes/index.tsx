@@ -17,7 +17,11 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
-  const { data: prizes, isLoading } = useQuery({
+  const {
+    data: prizes,
+    isLoading,
+    isError
+  } = useQuery({
     queryKey: ['prizes'],
     queryFn: getPrizes
   })
@@ -43,13 +47,15 @@ function App() {
     <div className='flex flex-col gap-4'>
       <h1 className='text-[28px] font-bold'>Good luck!</h1>
       <Roulette offset={offset} isSpinning={isSpinning} />
-      <Button
-        onClick={spin}
-        disabled={isSpinning || isLoading}
-        className='flex w-full max-w-xs items-center gap-1 self-center'
-      >
-        Spin for 25 <Star />
-      </Button>
+      {!isError && (
+        <Button
+          onClick={spin}
+          disabled={isSpinning || isLoading}
+          className='flex w-full max-w-xs items-center gap-1 self-center'
+        >
+          Spin for 25 <Star />
+        </Button>
+      )}
       <Prizes />
       {isVisible && prize && <PrizeOverlay prize={prize} close={close} />}
     </div>
