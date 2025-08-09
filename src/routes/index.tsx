@@ -32,6 +32,7 @@ function App() {
     onSuccess: (reward) => {
       spinRoulette(reward)
       queryClient.invalidateQueries({ queryKey: ['me'] })
+      queryClient.invalidateQueries({ queryKey: ['rewards'] })
     },
     onError: (error) => {
       toast.error(error.message || 'Something went wrong...')
