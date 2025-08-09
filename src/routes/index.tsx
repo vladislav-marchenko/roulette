@@ -4,7 +4,6 @@ import { PrizeOverlay } from '@/components/PrizeOverlay/PrizeOverlay'
 import { Prizes } from '@/components/Prizes/Prizes'
 import { Roulette } from '@/components/Roulette/Roulette'
 import { ITEM_WIDTH } from '@/consts'
-import { gifts } from '@/consts'
 import { useOverlay } from '@/hooks/useOverlay'
 import { useRoulette } from '@/hooks/useRoulette'
 import { getPrizes } from '@/services/api'
@@ -28,7 +27,7 @@ function App() {
 
   const { offset, scroll, isSpinning } = useRoulette({
     itemWidth: ITEM_WIDTH,
-    itemCount: gifts.length,
+    itemCount: prizes?.length ?? 0,
     onSpinEnd: open
   })
 

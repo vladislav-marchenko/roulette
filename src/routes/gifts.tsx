@@ -1,5 +1,4 @@
 import { GiftsItem } from '@/components/Gifts/GiftsItem'
-import { gifts } from '@/consts'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/gifts')({
@@ -9,6 +8,7 @@ export const Route = createFileRoute('/gifts')({
 function RouteComponent() {
   return (
     <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4'>
+      {/*
       {gifts.map(({ id, name, image, price, lottie }) => (
         <GiftsItem
           key={id}
@@ -18,6 +18,7 @@ function RouteComponent() {
           lottie={lottie}
         />
       ))}
+*/}
     </div>
   )
 }
