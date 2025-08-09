@@ -67,7 +67,7 @@ export const useRoulette = ({
 
       animationFrameRef.current = requestAnimationFrame(animate)
     },
-    [offset, isSpinning, itemWidth, cycleWidth]
+    [offset, isSpinning, itemWidth, cycleWidth, onSpinEnd]
   )
 
   useEffect(() => {
