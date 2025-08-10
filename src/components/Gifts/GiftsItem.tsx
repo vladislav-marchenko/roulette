@@ -2,9 +2,18 @@ import { Image } from '@/components/Image'
 import { SellGift } from '@/components/SellGift'
 import { WithdrawGift } from '@/components/WithdrawGift'
 import type { Reward } from '@/types/api'
-import type { FC } from 'react'
+import type { FC, Ref } from 'react'
 
-export const GiftsItem: FC<Reward> = ({ prize, createdAt, ...reward }) => {
+interface GiftsItemProps extends Reward {
+  ref: Ref<HTMLDivElement>
+}
+
+export const GiftsItem: FC<GiftsItemProps> = ({
+  ref,
+  prize,
+  createdAt,
+  ...reward
+}) => {
   const { name, image, lottie } = prize
 
   const date = new Date(createdAt).toLocaleString('en-US', {

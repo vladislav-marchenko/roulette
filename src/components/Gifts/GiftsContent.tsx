@@ -22,11 +22,10 @@ export const GiftsContent: FC<GiftsContentProps> = ({
   )
 
   return rewards.map((reward, index) => (
-    <div
+    <GiftsItem
       key={reward._id}
       ref={index === rewards.length - 1 ? lastItemRef : null}
-    >
-      <GiftsItem {...reward} />
-    </div>
+      {...reward}
+    />
   ))
 }

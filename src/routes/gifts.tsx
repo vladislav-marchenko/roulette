@@ -40,7 +40,7 @@ function RouteComponent() {
   }
 
   return (
-    <div className='grid w-full flex-auto grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4'>
+    <div className='grid w-full grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4'>
       {isSuccess && (
         <GiftsContent
           pages={data.pages}
