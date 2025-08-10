@@ -1,20 +1,12 @@
-import { SellGift } from '../SellGift'
-import { WithdrawGift } from '../WithdrawGift'
 import { Image } from '@/components/Image'
-import type { Prize } from '@/types/api'
+import { SellGift } from '@/components/SellGift'
+import { WithdrawGift } from '@/components/WithdrawGift'
+import type { Reward } from '@/types/api'
 import type { FC } from 'react'
 
-interface GiftsItemProps extends Omit<Prize, 'key'> {
-  createdAt: string
-}
+export const GiftsItem: FC<Reward> = ({ prize, createdAt, ...reward }) => {
+  const { name, image, lottie } = prize
 
-export const GiftsItem: FC<GiftsItemProps> = ({
-  name,
-  image,
-  price,
-  lottie,
-  createdAt
-}) => {
   const date = new Date(createdAt).toLocaleString('en-US', {
     day: 'numeric',
     month: 'short',
@@ -31,13 +23,7 @@ export const GiftsItem: FC<GiftsItemProps> = ({
         <span className='text-xs font-medium text-neutral-400'>{date}</span>
       </div>
       <div className='flex items-center gap-2'>
-        <SellGift
-          triggerSize='sm'
-          name={name}
-          price={price}
-          lottie={lottie}
-          image={image}
-        />
+        <SellGift triggerSize='sm' rewardId={reward._id} prize={prize} />
         <WithdrawGift name={name} lottie={lottie} image={image} />
       </div>
     </div>

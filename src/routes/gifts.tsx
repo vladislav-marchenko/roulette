@@ -1,3 +1,4 @@
+import { Empty } from '@/components/Empty'
 import { Error } from '@/components/Error'
 import { GiftsContent } from '@/components/Gifts/GiftsContent'
 import { GiftsSkeleton } from '@/components/Gifts/GiftsSkeleton'
@@ -16,6 +17,7 @@ function RouteComponent() {
     isFetchingNextPage,
     isLoading,
     isSuccess,
+    isFetched,
     isError,
     error,
     refetch
@@ -28,12 +30,18 @@ function RouteComponent() {
     }
   })
 
+  const isEmpty = !data?.pages[0].rewards.length
+
   if (isError) {
     return <Error error={error} refetch={refetch} />
   }
 
+  if (isFetched && isEmpty) {
+    return <Empty title='No rewards found' className='flex-auto' />
+  }
+
   return (
-    <div className='grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4'>
+    <div className='grid w-full flex-auto grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4'>
       {isSuccess && (
         <GiftsContent
           pages={data.pages}

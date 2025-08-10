@@ -1,15 +1,15 @@
 import { SellGift } from '../SellGift'
 import { Button } from '@/components/Button'
-import type { Prize } from '@/types/api'
+import type { Reward } from '@/types/api'
 import type { FC } from 'react'
 
 interface PrizeOverlayButtonsProps {
-  prize: Prize
+  reward: Reward
   close: () => void
 }
 
 export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
-  prize,
+  reward,
   close
 }) => {
   return (
@@ -17,12 +17,7 @@ export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
       onClick={(e) => e.stopPropagation()}
       className='mx-auto flex w-full max-w-md flex-col items-center gap-2'
     >
-      <SellGift
-        name={prize.name}
-        price={prize.price}
-        image={prize.image}
-        lottie={prize.lottie}
-      />
+      <SellGift rewardId={reward._id} prize={reward.prize} onSell={close} />
       <Button
         to='/gifts'
         variant='secondary'

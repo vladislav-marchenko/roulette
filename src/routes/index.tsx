@@ -7,7 +7,7 @@ import { ITEM_WIDTH } from '@/consts'
 import { useOverlay } from '@/hooks/useOverlay'
 import { useRoulette } from '@/hooks/useRoulette'
 import { getPrizes, spin } from '@/services/api'
-import type { Prize, Reward } from '@/types/api'
+import type { Reward } from '@/types/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
@@ -39,7 +39,7 @@ function App() {
     }
   })
 
-  const [prize, setPrize] = useState<Prize>()
+  const [reward, setReward] = useState<Reward>()
   const { isVisible, open, close } = useOverlay()
 
   const { offset, scroll, isSpinning } = useRoulette({
@@ -51,7 +51,7 @@ function App() {
   function spinRoulette(reward: Reward) {
     if (!prizes) return
 
-    setPrize(reward.prize)
+    setReward(reward)
     const index = prizes.findIndex((prize) => prize.key === reward.prizeKey)
     if (index === -1) {
       toast.info(
@@ -79,7 +79,7 @@ function App() {
         </Button>
       )}
       <Prizes />
-      {isVisible && prize && <PrizeOverlay prize={prize} close={close} />}
+      {isVisible && reward && <PrizeOverlay reward={reward} close={close} />}
     </div>
   )
 }

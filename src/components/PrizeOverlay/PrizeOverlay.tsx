@@ -1,16 +1,18 @@
 import { PrizeOverlayButtons } from './PrizeOverlayButtons'
 import { PrizeOverlayInfo } from './PrizeOverlayInfo'
 import { Button } from '@/components/Button'
-import type { Prize } from '@/types/api'
+import type { Reward } from '@/types/api'
 import type { FC } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
 interface PrizeOverlayProps {
-  prize: Prize
+  reward: Reward
   close: () => void
 }
 
-export const PrizeOverlay: FC<PrizeOverlayProps> = ({ prize, close }) => {
+export const PrizeOverlay: FC<PrizeOverlayProps> = ({ reward, close }) => {
+  const { name, image, lottie } = reward.prize
+
   return (
     <div
       onClick={close}
@@ -23,12 +25,8 @@ export const PrizeOverlay: FC<PrizeOverlayProps> = ({ prize, close }) => {
         <AiOutlineClose size={20} />
       </Button>
       <div className='flex h-full w-full flex-col justify-between'>
-        <PrizeOverlayInfo
-          name={prize.name}
-          lottie={prize.lottie}
-          image={prize.image}
-        />
-        <PrizeOverlayButtons prize={prize} close={close} />
+        <PrizeOverlayInfo name={name} lottie={lottie} image={image} />
+        <PrizeOverlayButtons reward={reward} close={close} />
       </div>
     </div>
   )

@@ -19,7 +19,7 @@ export const Route = createRootRoute({
       <div className='flex h-full min-h-dvh flex-col gap-4'>
         <div className='flex flex-auto flex-col gap-4 p-4'>
           <Header />
-          <main className='flex-auto'>
+          <main className='flex flex-auto flex-col'>
             <Outlet />
           </main>
         </div>

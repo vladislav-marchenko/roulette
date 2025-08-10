@@ -63,3 +63,10 @@ export const getRewards = (page: number = 1) => {
     endpoint: `/rewards/me?page=${page}`
   })
 }
+
+export const sellReward = (id: string) => {
+  return customFetch<User>({
+    endpoint: `/rewards/sell/${id}`,
+    method: 'POST'
+  })
+}

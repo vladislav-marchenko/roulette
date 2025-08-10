@@ -2,26 +2,55 @@ import { Button, type ButtonProps } from './Button'
 import { Drawer } from './Drawer'
 import { GiftPreview } from './GiftPreview'
 import { Star } from './Icons'
+import { sellReward } from '@/services/api'
 import type { Prize } from '@/types/api'
 import { cn } from '@/utils'
-import type { FC } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useState, type FC } from 'react'
+import { toast } from 'sonner'
 import { Drawer as DrawerVaul } from 'vaul'
 
-interface SellGiftProps extends Omit<Prize, '_id' | 'key'> {
+interface SellGiftProps {
+  rewardId: string
+  prize: Prize
   className?: string
   triggerSize?: ButtonProps['size']
+  onSell?: () => void
 }
 
 export const SellGift: FC<SellGiftProps> = ({
-  name,
-  price,
-  lottie,
-  image,
+  rewardId,
+  prize,
   className,
-  triggerSize
+  triggerSize,
+  onSell
 }) => {
+  const { name, image, lottie, price } = prize
+  const [isOpen, setIsOpen] = useState(false)
+
+  const queryClient = useQueryClient()
+  const { mutate } = useMutation({
+    mutationFn: () => sellReward(rewardId),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['me'] })
+      queryClient.invalidateQueries({ queryKey: ['rewards'] })
+
+      onSell && onSell()
+      setIsOpen(false)
+
+      toast.success(
+        `Gift sold successfully! Your balance is ${data.balance} stars`
+      )
+    },
+    onError: (error) => {
+      toast.error(error.message || 'Something went wrong...')
+    }
+  })
+
   return (
     <Drawer
+      open={isOpen}
+      onOpenChange={setIsOpen}
       title={name}
       description='Are you sure you want to sell this gift?'
       trigger={
@@ -37,7 +66,7 @@ export const SellGift: FC<SellGiftProps> = ({
     >
       <GiftPreview name={name} lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
-        <Button className='flex items-center gap-1'>
+        <Button onClick={mutate} className='flex items-center gap-1'>
           Sell for {price} <Star />
         </Button>
         <DrawerVaul.Close asChild>

@@ -6,6 +6,8 @@ import { Drawer as VaulDrawer } from 'vaul'
 interface DrawerProps {
   children: ReactNode
   trigger: ReactNode
+  open?: boolean
+  onOpenChange?: (isOpen: boolean) => void
   title?: string
   description?: string
   className?: string
@@ -14,12 +16,14 @@ interface DrawerProps {
 export const Drawer: FC<DrawerProps> = ({
   children,
   trigger,
+  open,
+  onOpenChange,
   title,
   description,
   className
 }) => {
   return (
-    <VaulDrawer.Root>
+    <VaulDrawer.Root open={open} onOpenChange={onOpenChange}>
       <VaulDrawer.Trigger asChild>{trigger}</VaulDrawer.Trigger>
       <VaulDrawer.Portal>
         <VaulDrawer.Overlay className='fixed inset-0 z-30 bg-black/30 backdrop-blur-md' />

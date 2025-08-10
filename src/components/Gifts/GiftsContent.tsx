@@ -21,9 +21,12 @@ export const GiftsContent: FC<GiftsContentProps> = ({
     !isFetchingNextPage
   )
 
-  return rewards.map(({ _id, createdAt, prize: { key, ...prize } }, index) => (
-    <div key={_id} ref={index === rewards.length - 1 ? lastItemRef : null}>
-      <GiftsItem createdAt={createdAt} {...prize} />
+  return rewards.map((reward, index) => (
+    <div
+      key={reward._id}
+      ref={index === rewards.length - 1 ? lastItemRef : null}
+    >
+      <GiftsItem {...reward} />
     </div>
   ))
 }
