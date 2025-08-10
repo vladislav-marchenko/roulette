@@ -15,9 +15,8 @@ function RouteComponent() {
     data,
     fetchNextPage,
     isFetchingNextPage,
-    isLoading,
+    isFetching,
     isSuccess,
-    isFetched,
     isError,
     error,
     refetch
@@ -36,7 +35,7 @@ function RouteComponent() {
     return <Error error={error} refetch={refetch} />
   }
 
-  if (isFetched && isEmpty) {
+  if (!isFetching && isEmpty) {
     return <Empty title='No rewards found' className='flex-auto' />
   }
 
@@ -49,7 +48,7 @@ function RouteComponent() {
           isFetchingNextPage={isFetchingNextPage}
         />
       )}
-      {(isLoading || isFetchingNextPage) && <GiftsSkeleton />}
+      {isFetching && <GiftsSkeleton />}
     </div>
   )
 }
