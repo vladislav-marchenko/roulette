@@ -38,9 +38,9 @@ export const SellGift: FC<SellGiftProps> = ({
       onSell && onSell()
       setIsOpen(false)
 
-      toast.success(
-        `Gift sold successfully! Your balance is ${data.balance} stars`
-      )
+      toast.success('Gift sold successfully!', {
+        description: `Your balance is ${data.balance} stars`
+      })
     },
     onError: (error) => {
       toast.error(error.message || 'Something went wrong...')
