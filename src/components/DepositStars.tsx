@@ -18,7 +18,11 @@ export const DepositStars = () => {
       }
       className='flex flex-col items-center justify-center'
     >
-      <StarsInput value={value} setValue={setValue} />
+      <StarsInput
+        value={value}
+        setValue={setValue}
+        className='flex-auto justify-center'
+      />
       <Button disabled={value === 0} className='flex w-full items-center gap-1'>
         Deposit <Star />
       </Button>

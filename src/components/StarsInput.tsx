@@ -4,10 +4,16 @@ import type { ChangeEvent, Dispatch, FC, SetStateAction } from 'react'
 interface StarsInputProps {
   value: number
   setValue: Dispatch<SetStateAction<number>>
+  className?: string
   error?: string
 }
 
-export const StarsInput: FC<StarsInputProps> = ({ value, setValue, error }) => {
+export const StarsInput: FC<StarsInputProps> = ({
+  value,
+  setValue,
+  error,
+  className
+}) => {
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value
     const decimal = newValue.split('.')[1] ?? ''
@@ -17,7 +23,7 @@ export const StarsInput: FC<StarsInputProps> = ({ value, setValue, error }) => {
   }
 
   return (
-    <div className='flex flex-col items-center py-4'>
+    <div className={cn('flex flex-col items-center py-4', className)}>
       <div className='flex flex-wrap items-center justify-center font-bold'>
         <input
           id='deposit-value'
