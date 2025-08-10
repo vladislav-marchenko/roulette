@@ -1,4 +1,11 @@
-import type { Methods, Prize, Reward, RewardsResponse, User } from '@/types/api'
+import type {
+  Methods,
+  Prize,
+  Reward,
+  RewardsResponse,
+  Task,
+  User
+} from '@/types/api'
 
 const API_URL = 'http://localhost:8000'
 const INIT_DATA =
@@ -69,4 +76,8 @@ export const sellReward = (id: string) => {
     endpoint: `/rewards/sell/${id}`,
     method: 'POST'
   })
+}
+
+export const getTasks = () => {
+  return customFetch<Task[]>({ endpoint: '/tasks' })
 }

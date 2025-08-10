@@ -52,7 +52,7 @@ function App() {
     if (!prizes) return
 
     setReward(reward)
-    const index = prizes.findIndex((prize) => prize.key === reward.prizeKey)
+    const index = prizes.findIndex((prize) => prize.code === reward.prizeCode)
     if (index === -1) {
       toast.info(
         'Unable to find the scroll index for the roulette prize, but the gift has been successfully added to your profile.'

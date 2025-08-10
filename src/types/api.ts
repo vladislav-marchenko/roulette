@@ -13,7 +13,7 @@ export interface User {
 
 export interface Prize {
   _id: string
-  key: string
+  code: string
   name: string
   price: number
   image: string
@@ -22,7 +22,7 @@ export interface Prize {
 
 export interface Reward {
   _id: string
-  prizeKey: string
+  prizeCode: string
   user: string
   prize: Prize
   createdAt: string
@@ -31,4 +31,13 @@ export interface Reward {
 export interface RewardsResponse {
   rewards: Reward[]
   hasNext: boolean
+}
+
+export interface Task {
+  _id: string
+  code: string
+  type: 'one_time' | 'daily'
+  title: string
+  reward: number
+  url?: string
 }

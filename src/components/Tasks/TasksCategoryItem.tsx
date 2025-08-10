@@ -1,13 +1,25 @@
-import { Star } from '../Icons'
-import type { Task } from '@/types'
+import { Button } from '../Button'
+import { Star } from '@/components/Icons'
+import { taskIcons } from '@/consts'
+import type { Task } from '@/types/api'
 import type { FC } from 'react'
 
-export const TasksCategoryItem: FC<Task> = ({
+const hasCode = (code: string): code is keyof typeof taskIcons => {
+  return code in taskIcons
+}
+
+const getTaskIcon = (code: string) => {
+  if (hasCode(code)) return taskIcons[code]
+  return taskIcons.default
+}
+
+export const TasksCategoryItem: FC<Omit<Task, '_id' | 'type'>> = ({
   title,
-  icon: Icon,
-  color,
-  reward
+  reward,
+  code
 }) => {
+  const { icon: Icon, color } = getTaskIcon(code)
+
   return (
     <div className='group flex items-start gap-1.5'>
       <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-700'>
@@ -20,9 +32,9 @@ export const TasksCategoryItem: FC<Task> = ({
             {reward} <Star size={12} />
           </span>
         </div>
-        <button className='cursor-pointer rounded-full bg-neutral-700 px-4 py-1 text-sm font-semibold'>
+        <Button size='sm' variant='secondary' className='px-4 py-1'>
           Check
-        </button>
+        </Button>
       </div>
     </div>
   )

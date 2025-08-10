@@ -1,5 +1,5 @@
 import { TasksCategoryItem } from './TasksCategoryItem'
-import type { Task } from '@/types'
+import type { Task } from '@/types/api'
 import type { FC } from 'react'
 
 interface TasksCategoryProps {
@@ -12,13 +12,12 @@ export const TasksCategory: FC<TasksCategoryProps> = ({ name, tasks }) => {
     <div>
       <h4 className='pb-4'>{name}</h4>
       <div className='flex flex-col gap-4'>
-        {tasks.map(({ title, icon, color, reward }) => (
+        {tasks.map(({ _id, title, reward, code }) => (
           <TasksCategoryItem
-            key={title}
+            key={_id}
             title={title}
-            icon={icon}
-            color={color}
             reward={reward}
+            code={code}
           />
         ))}
       </div>
