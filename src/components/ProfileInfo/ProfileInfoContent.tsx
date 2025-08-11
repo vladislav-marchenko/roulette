@@ -7,7 +7,6 @@ export const ProfileInfoContent: FC<User> = ({ username, photoUrl }) => {
     <>
       <Image src={photoUrl} className='w-26 overflow-hidden rounded-full' />
       <h3 className='leading-none'>{username}</h3>
-      <span className='text-xs leading-none font-bold'>42/250 XP</span>
     </>
   )
 }

@@ -32,7 +32,7 @@ export const WithdrawStars = () => {
         {isSuccess && (
           <button
             onClick={() => setValue(data.balance)}
-            className='cursor-pointer font-medium'
+            className='cursor-pointer p-1 font-medium hover:underline'
           >
             Max
           </button>

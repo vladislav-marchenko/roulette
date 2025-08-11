@@ -1,5 +1,5 @@
 import { Balance } from './Balance'
-import { ProfileSummary } from './ProfileSummary/ProfileSummary'
+import { ProfileAvatar } from './ProfileAvatar'
 import { Settings } from './Settings/Settings'
 import { useLocation } from '@tanstack/react-router'
 
@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <header className='flex items-center justify-between'>
       {pathname === '/profile' && <Settings />}
-      {pathname !== '/profile' && <ProfileSummary />}
+      {pathname !== '/profile' && <ProfileAvatar />}
       <Balance />
     </header>
   )
