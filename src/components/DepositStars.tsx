@@ -16,6 +16,7 @@ export const DepositStars = () => {
           Deposit <HiPlus size={22} />
         </Button>
       }
+      minHeightPercent={40}
       className='flex flex-col items-center justify-center'
     >
       <StarsInput

@@ -20,6 +20,7 @@ export const WithdrawStars = () => {
           Withdraw <FaArrowUpLong size={14} />
         </Button>
       }
+      minHeightPercent={40}
       className='flex flex-col items-center justify-center'
     >
       <div className='flex flex-auto flex-col items-center justify-center'>

@@ -10,6 +10,8 @@ import type {
 const API_URL = 'http://localhost:8000'
 const INIT_DATA =
   window.Telegram?.WebApp?.initData ?? import.meta.env.VITE_INIT_DATA
+const REFERRAL_CODE =
+  window.Telegram?.WebApp.initDataUnsafe.start_param ?? 'TEST_REF'
 
 export const customFetch = async <Data extends object = {}>({
   endpoint,
@@ -23,7 +25,7 @@ export const customFetch = async <Data extends object = {}>({
   headers?: Record<string, string>
 }): Promise<Data> => {
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const response = await fetch(`${API_URL}${endpoint}?ref=${REFERRAL_CODE}`, {
       method,
       headers: {
         Authorization: `tma ${INIT_DATA}`,

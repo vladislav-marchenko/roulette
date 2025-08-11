@@ -9,6 +9,7 @@ export interface User {
   isPremium: boolean
   photoUrl: string
   languageCode: string
+  referralCode: string
 }
 
 export interface Prize {

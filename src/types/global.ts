@@ -12,6 +12,7 @@ interface TelegramWebApp {
   initData: string
   initDataUnsafe: {
     user?: TelegramUser
+    start_param?: string
     [key: string]: any
   }
   close: () => void
