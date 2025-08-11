@@ -29,7 +29,7 @@ export const SellGift: FC<SellGiftProps> = ({
   const [isOpen, setIsOpen] = useState(false)
 
   const queryClient = useQueryClient()
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: () => sellReward(rewardId),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['me'] })
@@ -66,7 +66,11 @@ export const SellGift: FC<SellGiftProps> = ({
     >
       <GiftPreview name={name} lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
-        <Button onClick={mutate} className='flex items-center gap-1'>
+        <Button
+          onClick={mutate}
+          isLoading={isPending}
+          className='flex items-center gap-1'
+        >
           Sell for {price} <Star />
         </Button>
         <DrawerVaul.Close asChild>
