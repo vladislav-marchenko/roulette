@@ -18,10 +18,8 @@ export const Route = createRootRoute({
   component: () => (
     <QueryClientProvider client={queryClient}>
       <div
-        className='flex h-full min-h-dvh flex-col gap-4'
-        style={{
-          paddingTop: WebApp.safeAreaInset.top + 30 + 'px'
-        }}
+        className='flex h-full min-h-dvh flex-col gap-4 pl-[calc(100%_-_100vw)]'
+        style={{ paddingTop: WebApp.safeAreaInset.top + 30 + 'px' }}
       >
         <div className='flex flex-auto flex-col gap-4 p-4'>
           <Header />

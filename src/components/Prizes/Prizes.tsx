@@ -11,9 +11,8 @@ export const Prizes = () => {
   })
 
   return (
-    <div className='space-y-2'>
+    <div className='flex w-full max-w-2xl flex-col gap-2 self-center'>
       <h2>Prizes</h2>
-
       <ul className='flex flex-col gap-4 rounded-xl bg-neutral-800 p-3'>
         {isSuccess && <PrizesContent prizes={data} />}
         {isLoading && <PrizesSkeleton />}

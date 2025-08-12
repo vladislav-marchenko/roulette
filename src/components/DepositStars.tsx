@@ -11,7 +11,7 @@ import { HiPlus } from 'react-icons/hi'
 export const DepositStars = () => {
   const [value, setValue] = useState(0)
   const { mutate } = useMutation({
-    mutationFn: () => getInvoiceLink(value),
+    mutationFn: getInvoiceLink,
     onSuccess: (data) => {
       WebApp.openInvoice(data.invoiceLink, (status) => {
         if (status === 'paid') {
@@ -39,7 +39,7 @@ export const DepositStars = () => {
       />
       <Button
         disabled={value === 0}
-        onClick={mutate}
+        onClick={() => mutate(value)}
         className='flex w-full items-center gap-1'
       >
         Deposit <Star />

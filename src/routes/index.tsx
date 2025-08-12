@@ -66,11 +66,11 @@ function App() {
 
   return (
     <div className='flex flex-col gap-4'>
-      <h1 className='text-[28px] font-bold'>Good luck!</h1>
+      <h1 className='text-[28px] font-bold md:text-center'>Good luck!</h1>
       <Roulette offset={offset} isSpinning={isSpinning} />
       {!isError && (
         <Button
-          onClick={mutate}
+          onClick={() => mutate()}
           disabled={isSpinning || isLoading}
           isLoading={isPending}
           className='flex w-full max-w-xs items-center gap-1 self-center'

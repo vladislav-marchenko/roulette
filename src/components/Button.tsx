@@ -2,12 +2,12 @@ import { Loader } from './Icons'
 import { cn } from '@/utils'
 import { Link } from '@tanstack/react-router'
 import WebApp from '@twa-dev/sdk'
-import type { FC, ReactNode } from 'react'
+import type { FC, MouseEvent, ReactNode } from 'react'
 
 export interface ButtonProps {
   to?: string
   children: ReactNode
-  onClick?: () => void
+  onClick?: (event: MouseEvent) => void
   className?: string
   disabled?: boolean
   isLoading?: boolean
@@ -52,9 +52,9 @@ export const Button: FC<ButtonProps | LinkProps> = ({
     className
   )
 
-  const handleClick = () => {
+  const handleClick = (event: MouseEvent) => {
     WebApp.HapticFeedback.impactOccurred('soft')
-    onClick && onClick()
+    onClick && onClick(event)
   }
 
   if (props.to) {

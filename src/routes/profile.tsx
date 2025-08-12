@@ -9,7 +9,7 @@ export const Route = createFileRoute('/profile')({
 
 function RouteComponent() {
   return (
-    <div className='flex flex-col gap-6'>
+    <div className='flex w-full max-w-2xl flex-col gap-6 self-center'>
       <ProfileInfo />
       <InviteFriends />
       <Tasks />
