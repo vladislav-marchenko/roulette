@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react'
 
 interface ImageProps {
-  src: string
+  src?: string
   className?: string
 }
 

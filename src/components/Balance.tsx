@@ -1,8 +1,8 @@
+import { Button } from './Button'
 import { Star } from './Icons'
 import { getMe } from '@/services/api'
 import { cn } from '@/utils'
 import { useQuery } from '@tanstack/react-query'
-import { Link } from '@tanstack/react-router'
 import type { FC } from 'react'
 import { HiPlus } from 'react-icons/hi'
 
@@ -13,10 +13,11 @@ export const Balance: FC<{ className?: string }> = ({ className }) => {
   })
 
   return (
-    <Link
+    <Button
       to='/balance'
+      variant='secondary'
       className={cn(
-        'flex max-w-max items-center gap-2 rounded-full bg-neutral-700 p-[5px]',
+        'flex max-w-max cursor-pointer items-center gap-2 rounded-full bg-neutral-700 p-[5px]',
         { 'animate-pulse': isLoading },
         className
       )}
@@ -35,6 +36,6 @@ export const Balance: FC<{ className?: string }> = ({ className }) => {
       <div className='rounded-full bg-white p-0.5 text-black'>
         <HiPlus />
       </div>
-    </Link>
+    </Button>
   )
 }

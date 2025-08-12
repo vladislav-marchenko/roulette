@@ -1,6 +1,7 @@
 import { Loader } from './Icons'
 import { cn } from '@/utils'
 import { Link } from '@tanstack/react-router'
+import WebApp from '@twa-dev/sdk'
 import type { FC, ReactNode } from 'react'
 
 export interface ButtonProps {
@@ -51,11 +52,16 @@ export const Button: FC<ButtonProps | LinkProps> = ({
     className
   )
 
+  const handleClick = () => {
+    WebApp.HapticFeedback.impactOccurred('soft')
+    onClick && onClick()
+  }
+
   if (props.to) {
     return (
       <Link
         to={props.to}
-        onClick={onClick}
+        onClick={handleClick}
         disabled={disabled || isLoading}
         className={classNameStyles}
       >
@@ -67,7 +73,7 @@ export const Button: FC<ButtonProps | LinkProps> = ({
 
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled || isLoading}
       className={classNameStyles}
     >

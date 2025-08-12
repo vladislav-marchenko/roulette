@@ -7,7 +7,7 @@ import type {
   User
 } from '@/types/api'
 
-const API_URL = 'http://localhost:8000'
+const API_URL = 'https://giftica-backend.loca.lt'
 const INIT_DATA =
   window.Telegram?.WebApp?.initData ?? import.meta.env.VITE_INIT_DATA
 const REFERRAL_CODE =
@@ -82,4 +82,13 @@ export const sellReward = (id: string) => {
 
 export const getTasks = () => {
   return customFetch<Task[]>({ endpoint: '/tasks' })
+}
+
+export const getInvoiceLink = (amount: number) => {
+  return customFetch<{ invoiceLink: string }>({
+    endpoint: `/transactions/deposit`,
+    method: 'POST',
+    body: JSON.stringify({ amount }),
+    headers: { 'Content-Type': 'application/json' }
+  })
 }

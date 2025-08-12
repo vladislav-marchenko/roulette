@@ -3,6 +3,7 @@ import { Navigation } from '@/components/Navigation'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Outlet, createRootRoute } from '@tanstack/react-router'
+import WebApp from '@twa-dev/sdk'
 import { Toaster } from 'sonner'
 
 const queryClient = new QueryClient({
@@ -16,7 +17,12 @@ const queryClient = new QueryClient({
 export const Route = createRootRoute({
   component: () => (
     <QueryClientProvider client={queryClient}>
-      <div className='flex h-full min-h-dvh flex-col gap-4'>
+      <div
+        className='flex h-full min-h-dvh flex-col gap-4'
+        style={{
+          paddingTop: WebApp.safeAreaInset.top + 30 + 'px'
+        }}
+      >
         <div className='flex flex-auto flex-col gap-4 p-4'>
           <Header />
           <main className='flex flex-auto flex-col'>
@@ -26,7 +32,12 @@ export const Route = createRootRoute({
         <Navigation />
       </div>
       <ReactQueryDevtools />
-      <Toaster richColors position='top-center' />
+      <Toaster
+        richColors
+        position='top-center'
+        mobileOffset={{ top: WebApp.safeAreaInset.top + 46 }}
+        offset={{ top: WebApp.safeAreaInset.top + 46 }}
+      />
     </QueryClientProvider>
   )
 })

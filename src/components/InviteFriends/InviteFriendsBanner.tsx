@@ -1,3 +1,4 @@
+import WebApp from '@twa-dev/sdk'
 import type { ButtonHTMLAttributes, FC } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 
@@ -7,6 +8,7 @@ export const InviteFriendsBanner: FC<
   return (
     <button
       {...props}
+      onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
       className='cursor-pointer rounded-xl bg-gradient-to-tr from-neutral-700 from-40% to-sky-600 p-px'
     >
       <div className='bg-fit flex items-center justify-between gap-4 rounded-[11px] bg-neutral-900 bg-[url("./assets/invite-background.svg")] bg-cover p-3'>

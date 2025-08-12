@@ -25,6 +25,8 @@ declare module '@tanstack/react-router' {
 }
 
 WebApp.ready()
+WebApp.requestFullscreen()
+WebApp.disableVerticalSwipes()
 
 // Render the app
 const rootElement = document.getElementById('app')
