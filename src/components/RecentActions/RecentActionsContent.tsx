@@ -25,8 +25,12 @@ export const RecentActionsContent: FC<RecentActionsContentProps> = ({
   )
 
   return transactions.map((transaction, index) => (
-    <div ref={index === transactions.length - 1 ? lastItemRef : null}>
-      <RecentActionsItem key={index} {...transaction} />
+    <div
+      key={index}
+      ref={index === transactions.length - 1 ? lastItemRef : null}
+      className='group'
+    >
+      <RecentActionsItem {...transaction} />
     </div>
   ))
 }
