@@ -1,4 +1,5 @@
 import { Button } from '../Button'
+import WebApp from '@twa-dev/sdk'
 import type { FC } from 'react'
 import { toast } from 'sonner'
 
@@ -17,7 +18,9 @@ export const InviteFriendsButtons: FC<{ url: string }> = ({ url }) => {
       >
         Copy link
       </Button>
-      <Button className='flex-auto'>Share</Button>
+      <Button className='flex-auto' onClick={() => WebApp.shareMessage(url)}>
+        Share
+      </Button>
     </div>
   )
 }
