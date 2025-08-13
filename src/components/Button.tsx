@@ -2,9 +2,9 @@ import { Loader } from './Icons'
 import { cn } from '@/utils'
 import { Link } from '@tanstack/react-router'
 import WebApp from '@twa-dev/sdk'
-import type { FC, MouseEvent, ReactNode } from 'react'
+import type { ButtonHTMLAttributes, FC, MouseEvent, ReactNode } from 'react'
 
-export interface ButtonProps {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   to?: string
   children: ReactNode
   onClick?: (event: MouseEvent) => void

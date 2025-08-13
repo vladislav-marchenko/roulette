@@ -4,7 +4,7 @@ import type {
   Reward,
   RewardsResponse,
   Task,
-  Transaction,
+  TransactionsResponse,
   User
 } from '@/types/api'
 import WebApp from '@twa-dev/sdk'
@@ -92,8 +92,8 @@ export const getInvoiceLink = (amount: number) => {
   })
 }
 
-export const getTransactions = () => {
-  return customFetch<Transaction[]>({
-    endpoint: '/transactions'
+export const getTransactions = (page: number = 1) => {
+  return customFetch<TransactionsResponse>({
+    endpoint: `/transactions?page=${page}`
   })
 }

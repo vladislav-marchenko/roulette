@@ -1,11 +1,32 @@
 import { RecentActionsItem } from './RecentActionsItem'
-import type { Transaction } from '@/types/api'
-import type { FC } from 'react'
+import { useObserver } from '@/hooks/useObserver'
+import type { TransactionsResponse } from '@/types/api'
+import type { InfiniteData } from '@tanstack/react-query'
+import { useMemo, type FC } from 'react'
 
-export const RecentActionsContent: FC<{ transactions: Transaction[] }> = ({
-  transactions
+interface RecentActionsContentProps
+  extends Pick<InfiniteData<TransactionsResponse>, 'pages'> {
+  fetchNextPage: () => void
+  isFetchingNextPage: boolean
+}
+
+export const RecentActionsContent: FC<RecentActionsContentProps> = ({
+  pages,
+  fetchNextPage,
+  isFetchingNextPage
 }) => {
-  return transactions.map((transaction) => (
-    <RecentActionsItem key={transaction._id} {...transaction} />
+  const transactions = useMemo(
+    () => pages.flatMap((page) => page.transactions),
+    [pages]
+  )
+  const lastItemRef = useObserver<HTMLDivElement>(
+    fetchNextPage,
+    !isFetchingNextPage
+  )
+
+  return transactions.map((transaction, index) => (
+    <div ref={index === transactions.length - 1 ? lastItemRef : null}>
+      <RecentActionsItem key={index} {...transaction} />
+    </div>
   ))
 }

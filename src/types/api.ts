@@ -52,3 +52,8 @@ export interface Transaction {
   invoiceLink: string
   createdAt: string
 }
+
+export interface TransactionsResponse {
+  transactions: Transaction[]
+  hasNext: boolean
+}
