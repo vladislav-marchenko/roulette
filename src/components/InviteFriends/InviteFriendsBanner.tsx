@@ -4,11 +4,14 @@ import { IoIosArrowForward } from 'react-icons/io'
 
 export const InviteFriendsBanner: FC<
   ButtonHTMLAttributes<HTMLButtonElement>
-> = (props) => {
+> = ({ onClick, ...props }) => {
   return (
     <button
       {...props}
-      onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
+      onClick={(event) => {
+        WebApp.HapticFeedback.impactOccurred('soft')
+        onClick && onClick(event)
+      }}
       className='cursor-pointer rounded-xl bg-gradient-to-tr from-neutral-700 from-40% to-sky-600 p-px'
     >
       <div className='bg-fit flex items-center justify-between gap-4 rounded-[11px] bg-neutral-900 bg-[url("./assets/invite-background.svg")] bg-cover p-3'>
