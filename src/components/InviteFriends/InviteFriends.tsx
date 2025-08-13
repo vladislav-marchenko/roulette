@@ -10,7 +10,7 @@ export const InviteFriends = () => {
 
   if (!isSuccess) return
 
-  const url = `${window.location.origin}/?startapp=${data.referralCode}`
+  const url = `https://t.me/giftica_bot/?startapp=${data.referralCode}`
 
   return (
     <Drawer title='Invite' trigger={<InviteFriendsBanner />}>
