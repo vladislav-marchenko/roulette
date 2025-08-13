@@ -1,3 +1,5 @@
+import { RecentActionsContent } from './RecentActionsContent'
+import { RecentActionsSkeleton } from './RecentActionsSkeleton'
 import { Error } from '@/components/Error'
 import { getTransactions } from '@/services/api'
 import { useQuery } from '@tanstack/react-query'
@@ -9,11 +11,12 @@ export const RecentActions = () => {
   })
 
   return (
-    <div>
+    <div className='space-y-4'>
       <h2>Recent Actions</h2>
-      {data?.map(({ amount }) => (
-        <span>{amount}</span>
-      ))}
+      <div className='flex flex-col gap-4'>
+        {isLoading && <RecentActionsSkeleton />}
+        {isSuccess && <RecentActionsContent transactions={data} />}
+      </div>
       {isError && <Error error={error} refetch={refetch} />}
     </div>
   )

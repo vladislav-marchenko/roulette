@@ -49,4 +49,6 @@ export interface Transaction {
   amount: number
   user: string
   status: 'pending' | 'success' | 'failed'
+  invoiceLink: string
+  createdAt: string
 }
