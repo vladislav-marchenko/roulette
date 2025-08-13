@@ -12,9 +12,9 @@ export const InviteFriendsBanner: FC<
         WebApp.HapticFeedback.impactOccurred('soft')
         onClick && onClick(event)
       }}
-      className='cursor-pointer rounded-xl bg-gradient-to-r from-neutral-800 from-40% to-sky-600 p-px'
+      className='cursor-pointer rounded-xl bg-gradient-to-tr from-neutral-700 from-40% to-sky-600 p-px'
     >
-      <div className='flex items-center justify-between gap-4 rounded-[11px] bg-[url("./assets/invite-background.svg")] bg-cover p-3'>
+      <div className='bg-fit flex items-center justify-between gap-4 rounded-[11px] bg-neutral-900 bg-[url("./assets/invite-background.svg")] bg-cover p-3'>
         <div className='flex flex-col text-start'>
           <h3 className='leading-none'>Invite friends</h3>
           <span className='text-sm font-medium text-neutral-300'>
