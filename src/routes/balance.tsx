@@ -1,5 +1,6 @@
 import { DepositStars } from '@/components/DepositStars'
 import { Star } from '@/components/Icons'
+import { RecentActions } from '@/components/RecentActions/RecentActions'
 import { WithdrawStars } from '@/components/WithdrawStars'
 import { getMe } from '@/services/api'
 import { cn } from '@/utils'
@@ -36,7 +37,7 @@ function RouteComponent() {
           <WithdrawStars />
         </div>
       </div>
-      <h2>Recent Actions</h2>
+      <RecentActions />
     </div>
   )
 }

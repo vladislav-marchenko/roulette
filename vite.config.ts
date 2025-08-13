@@ -21,6 +21,6 @@ export default defineConfig({
     }
   },
   server: {
-    allowedHosts: ['giftica.loca.lt']
+    allowedHosts: ['giftica.loca.lt', 'giftica.serveo.net']
   }
 })

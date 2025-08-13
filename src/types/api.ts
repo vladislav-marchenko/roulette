@@ -42,3 +42,11 @@ export interface Task {
   reward: number
   url?: string
 }
+
+export interface Transaction {
+  _id: string
+  type: 'deposit' | 'withdraw'
+  amount: number
+  user: string
+  status: 'pending' | 'success' | 'failed'
+}

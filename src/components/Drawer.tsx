@@ -1,5 +1,6 @@
 import { cn } from '@/utils'
-import type { FC, ReactNode } from 'react'
+import WebApp from '@twa-dev/sdk'
+import { useState, type FC, type ReactNode } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { Drawer as VaulDrawer } from 'vaul'
 
@@ -24,6 +25,11 @@ export const Drawer: FC<DrawerProps> = ({
   className,
   minHeightPercent
 }) => {
+  // Store the initial safeAreaInset.bottom value on mount.
+  // This is used for consistent bottom padding in the Drawer,
+  // preventing layout shifts when the keyboard opens.
+  const [safeBottom] = useState(WebApp.safeAreaInset.bottom)
+
   return (
     <VaulDrawer.Root open={open} onOpenChange={onOpenChange}>
       <VaulDrawer.Trigger asChild>{trigger}</VaulDrawer.Trigger>
@@ -31,7 +37,10 @@ export const Drawer: FC<DrawerProps> = ({
         <VaulDrawer.Overlay className='fixed inset-0 z-20 bg-black/30 backdrop-blur-md' />
         <VaulDrawer.Content
           className='fixed right-0 bottom-0 left-0 z-50 flex max-h-11/12 flex-col rounded-t-3xl bg-neutral-800 shadow-2xl shadow-black outline-none'
-          style={{ minHeight: `${minHeightPercent}%` }}
+          style={{
+            minHeight: `${minHeightPercent}%`,
+            paddingBottom: safeBottom + 'px'
+          }}
         >
           <div className='px-4 py-2'>
             <div className='mx-auto h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300' />

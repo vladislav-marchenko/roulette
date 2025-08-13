@@ -4,14 +4,13 @@ import type {
   Reward,
   RewardsResponse,
   Task,
+  Transaction,
   User
 } from '@/types/api'
+import WebApp from '@twa-dev/sdk'
 
-const API_URL = 'https://giftica-backend.loca.lt'
-const INIT_DATA =
-  window.Telegram?.WebApp?.initData ?? import.meta.env.VITE_INIT_DATA
-const REFERRAL_CODE =
-  window.Telegram?.WebApp.initDataUnsafe.start_param ?? 'TEST_REF'
+const API_URL = 'https://giftica-backend.serveo.net'
+const REFERRAL_CODE = WebApp.initDataUnsafe.start_param
 
 export const customFetch = async <Data extends object = {}>({
   endpoint,
@@ -28,7 +27,7 @@ export const customFetch = async <Data extends object = {}>({
     const response = await fetch(`${API_URL}${endpoint}?ref=${REFERRAL_CODE}`, {
       method,
       headers: {
-        Authorization: `tma ${INIT_DATA}`,
+        Authorization: `tma ${WebApp.initData}`,
         ...headers
       },
       ...(body && { body })
@@ -90,5 +89,11 @@ export const getInvoiceLink = (amount: number) => {
     method: 'POST',
     body: JSON.stringify({ amount }),
     headers: { 'Content-Type': 'application/json' }
+  })
+}
+
+export const getTransactions = () => {
+  return customFetch<Transaction[]>({
+    endpoint: '/transactions'
   })
 }
