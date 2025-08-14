@@ -34,7 +34,7 @@ export const Drawer: FC<DrawerProps> = ({
     <VaulDrawer.Root open={open} onOpenChange={onOpenChange}>
       <VaulDrawer.Trigger asChild>{trigger}</VaulDrawer.Trigger>
       <VaulDrawer.Portal>
-        <VaulDrawer.Overlay className='fixed inset-0 z-20 bg-black/30 backdrop-blur-md' />
+        <VaulDrawer.Overlay className='fixed inset-0 z-30 bg-neutral-800/50 backdrop-blur-md' />
         <VaulDrawer.Content
           className='fixed right-0 bottom-0 left-0 z-50 flex max-h-11/12 flex-col rounded-t-3xl bg-neutral-800 shadow-2xl shadow-black outline-none'
           style={{
