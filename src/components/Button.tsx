@@ -39,6 +39,7 @@ export const Button: FC<ButtonProps | LinkProps> = ({
   isLoading = false,
   variant = 'primary',
   size = 'base',
+  style,
   ...props
 }) => {
   const classNameStyles = cn(
@@ -64,6 +65,7 @@ export const Button: FC<ButtonProps | LinkProps> = ({
         onClick={handleClick}
         disabled={disabled || isLoading}
         className={classNameStyles}
+        style={style}
       >
         {isLoading && <Loader />}
         {children}
@@ -73,9 +75,11 @@ export const Button: FC<ButtonProps | LinkProps> = ({
 
   return (
     <button
+      {...props}
       onClick={handleClick}
       disabled={disabled || isLoading}
       className={classNameStyles}
+      style={style}
     >
       {isLoading && <Loader />}
       {children}
