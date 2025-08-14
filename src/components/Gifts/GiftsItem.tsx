@@ -26,7 +26,7 @@ export const GiftsItem: FC<GiftsItemProps> = ({
 
   return (
     <div className='flex flex-col gap-2 rounded-xl bg-neutral-800 p-1.5'>
-      <Image src={image} className='w-full rounded-xl bg-neutral-700 p-2' />
+      <Image src={image} className='icon h-full w-full p-4' />
       <div className='flex flex-col'>
         <h4 className='leading-none'>{name}</h4>
         <span className='text-xs font-medium text-neutral-400'>{date}</span>

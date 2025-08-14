@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import Lottie from 'lottie-react'
 import type { FC } from 'react'
 
-const className = 'mx-auto max-w-64 rounded-xl bg-neutral-700 p-2'
+const className = 'icon mx-auto max-w-64 w-full h-full p-4'
 
 export const GiftPreview: FC<Pick<Prize, 'name' | 'lottie' | 'image'>> = ({
   name,
