@@ -2,7 +2,7 @@ import { RecentActionsItem } from './RecentActionsItem'
 import { useObserver } from '@/hooks/useObserver'
 import type { ActionsResponse } from '@/types/api'
 import type { InfiniteData } from '@tanstack/react-query'
-import { useMemo, type FC } from 'react'
+import { type FC } from 'react'
 
 interface RecentActionsContentProps
   extends Pick<InfiniteData<ActionsResponse>, 'pages'> {
@@ -15,7 +15,7 @@ export const RecentActionsContent: FC<RecentActionsContentProps> = ({
   fetchNextPage,
   isFetchingNextPage
 }) => {
-  const actions = useMemo(() => pages.flatMap((page) => page.actions), [pages])
+  const actions = pages.flatMap((page) => page.actions)
   const lastItemRef = useObserver<HTMLDivElement>(
     fetchNextPage,
     !isFetchingNextPage

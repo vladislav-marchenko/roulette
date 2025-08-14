@@ -1,4 +1,5 @@
 import { getInvoiceLink } from '@/services/api'
+import type { Action } from '@/types/api'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import WebApp from '@twa-dev/sdk'
 import { toast } from 'sonner'
@@ -12,7 +13,9 @@ export const useInvoice = (onSettled?: () => void) => {
     onSettled
   })
 
-  function handleInvoice({ invoiceLink }: { invoiceLink: string }) {
+  function handleInvoice({ invoiceLink }: Pick<Action, 'invoiceLink'>) {
+    if (!invoiceLink) return
+
     WebApp.openInvoice(invoiceLink, (status) => {
       switch (status) {
         case 'paid':

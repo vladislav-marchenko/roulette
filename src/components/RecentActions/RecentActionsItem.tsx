@@ -7,7 +7,7 @@ import type { FC } from 'react'
 export const RecentActionsItem: FC<Action> = (props) => {
   const { handleInvoice } = useInvoice()
 
-  if (props.status === 'pending') {
+  if (props.status === 'pending' && props.invoiceLink) {
     return (
       <RecentActionsItemButton
         {...props}

@@ -2,7 +2,7 @@ import { GiftsItem } from './GiftsItem'
 import { useObserver } from '@/hooks/useObserver'
 import type { RewardsResponse } from '@/types/api'
 import type { InfiniteData } from '@tanstack/react-query'
-import { useMemo, type FC } from 'react'
+import { type FC } from 'react'
 
 interface GiftsContentProps
   extends Pick<InfiniteData<RewardsResponse>, 'pages'> {
@@ -15,7 +15,7 @@ export const GiftsContent: FC<GiftsContentProps> = ({
   fetchNextPage,
   isFetchingNextPage
 }) => {
-  const rewards = useMemo(() => pages.flatMap((page) => page.rewards), [pages])
+  const rewards = pages.flatMap((page) => page.rewards)
   const lastItemRef = useObserver<HTMLDivElement>(
     fetchNextPage,
     !isFetchingNextPage

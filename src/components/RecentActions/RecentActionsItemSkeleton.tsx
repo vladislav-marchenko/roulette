@@ -4,7 +4,7 @@ import { IoIosArrowForward } from 'react-icons/io'
 export const RecentActionsItemSkeleton = () => {
   return (
     <div className='flex gap-4'>
-      <div className='skeleton h-10 w-10 rounded-xl' />
+      <div className='icon skeleton' />
       <div className='divider flex flex-auto items-center justify-between'>
         <div className='flex flex-col gap-1'>
           <div className='skeleton h-4 w-28 rounded-md' />

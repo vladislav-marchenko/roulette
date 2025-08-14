@@ -14,11 +14,12 @@ export const RecentActionsItemButton: FC<RecentActionsItemButtonProps> = ({
   amount,
   createdAt,
   status,
+  prize,
   onClick
 }) => {
   return (
     <button onClick={onClick} className='flex w-full cursor-pointer gap-4'>
-      <RecentActionsItemIcon type={type} status={status} />
+      <RecentActionsItemIcon type={type} status={status} prize={prize} />
       <div className='divider flex flex-auto items-center justify-between'>
         <RecentActionsItemInfo type={type} createdAt={createdAt} />
         <div className='flex items-center gap-2'>

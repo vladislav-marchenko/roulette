@@ -51,6 +51,10 @@ code {
   .divider {
     @apply border-b border-neutral-700/70 pb-3 group-last:border-none group-last:pb-0;
   }
+
+  .icon {
+    @apply flex aspect-square h-10 w-10 items-center justify-center rounded-xl bg-neutral-800 p-2;
+  }
 }
 
 input[type='number']::-webkit-inner-spin-button,

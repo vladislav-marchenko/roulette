@@ -35,7 +35,7 @@ export const RecentActionsItemDetails: FC<Action> = (props) => {
       <div className='flex flex-col gap-4'>
         {items.map(({ icon: Icon, label, value }) => (
           <div className='group flex gap-2'>
-            <div className='flex aspect-square h-10 w-10 items-center justify-center rounded-lg bg-neutral-700'>
+            <div className='icon'>
               <Icon />
             </div>
             <div className='divider flex w-full flex-col'>

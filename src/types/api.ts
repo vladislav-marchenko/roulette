@@ -45,11 +45,12 @@ export interface Task {
 
 export interface Action {
   _id: string
-  type: 'deposit' | 'withdraw'
+  type: 'deposit' | 'withdraw' | 'sell' | 'spin'
+  status: 'pending' | 'success' | 'failed'
   amount: number
   user: string
-  status: 'pending' | 'success' | 'failed'
-  invoiceLink: string
+  invoiceLink?: string
+  prize?: Prize
   createdAt: string
 }
 
