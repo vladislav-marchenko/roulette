@@ -53,7 +53,7 @@ code {
   }
 
   .icon {
-    @apply flex aspect-square h-10 w-10 items-center justify-center rounded-xl bg-neutral-800 p-2;
+    @apply flex aspect-square h-10 w-10 items-center justify-center rounded-xl bg-neutral-700 p-2;
   }
 }
 

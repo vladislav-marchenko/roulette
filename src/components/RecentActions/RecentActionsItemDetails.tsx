@@ -47,7 +47,7 @@ export const RecentActionsItemDetails: FC<Action> = (props) => {
       <div className='flex flex-col gap-4'>
         {items.map(({ icon, label, value }) => (
           <div className='group flex gap-2'>
-            <div className='icon bg-neutral-700'>{icon}</div>
+            <div className='icon'>{icon}</div>
             <div className='divider flex w-full flex-col'>
               <h5>{label}</h5>
               <span className='text-sm font-medium capitalize'>{value}</span>

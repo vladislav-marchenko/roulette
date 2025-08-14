@@ -22,7 +22,7 @@ export const TasksCategoryItem: FC<Omit<Task, '_id' | 'type'>> = ({
 
   return (
     <div className='group flex items-start gap-1.5'>
-      <div className='icon bg-neutral-700'>
+      <div className='icon'>
         <Icon size={22} color={color} />
       </div>
       <div className='divider flex flex-auto items-center'>
