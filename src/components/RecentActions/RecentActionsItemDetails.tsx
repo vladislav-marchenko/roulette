@@ -7,20 +7,32 @@ import type { FC } from 'react'
 import { FaArrowDown, FaArrowUp, FaCalendar } from 'react-icons/fa'
 import { Drawer as VaulDrawer } from 'vaul'
 
+const getTypeIcon = (action: Action) => {
+  if (action.prize) {
+    return <img src={action.prize.image} />
+  }
+
+  if (action.type === 'deposit') {
+    return <FaArrowDown />
+  }
+
+  return <FaArrowUp />
+}
+
 export const RecentActionsItemDetails: FC<Action> = (props) => {
   const items = [
     {
-      icon: props.type === 'deposit' ? FaArrowDown : FaArrowUp,
+      icon: getTypeIcon(props),
       label: 'Type',
       value: props.type
     },
     {
-      icon: FaCalendar,
+      icon: <FaCalendar />,
       label: 'Date & Time',
       value: new Date(props.createdAt).toLocaleString('en-US')
     },
     {
-      icon: Star,
+      icon: <Star />,
       label: 'Amount',
       value: props.amount
     }
@@ -33,11 +45,9 @@ export const RecentActionsItemDetails: FC<Action> = (props) => {
       className='flex flex-col gap-4'
     >
       <div className='flex flex-col gap-4'>
-        {items.map(({ icon: Icon, label, value }) => (
+        {items.map(({ icon, label, value }) => (
           <div className='group flex gap-2'>
-            <div className='icon'>
-              <Icon />
-            </div>
+            <div className='icon bg-neutral-700'>{icon}</div>
             <div className='divider flex w-full flex-col'>
               <h5>{label}</h5>
               <span className='text-sm font-medium capitalize'>{value}</span>
