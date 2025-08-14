@@ -25,6 +25,7 @@ export const WithdrawStars = () => {
         </Button>
       }
       minHeightPercent={40}
+      className='flex flex-col'
     >
       <form
         onSubmit={onSubmit}
