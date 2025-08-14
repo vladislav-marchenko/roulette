@@ -22,9 +22,7 @@ export const useInvoice = (onSettled?: () => void) => {
           toast.success('Deposit pending...')
           break
         case 'cancelled':
-          toast.info(
-            'You can complete your deposit from the transaction history'
-          )
+          toast.info('You can complete your deposit from the actions history')
           break
         case 'failed':
           toast.error('Deposit failed!')
@@ -33,7 +31,7 @@ export const useInvoice = (onSettled?: () => void) => {
 
       setTimeout(() => {
         queryClient.invalidateQueries({ queryKey: ['me'] })
-        queryClient.invalidateQueries({ queryKey: ['transactions'] })
+        queryClient.invalidateQueries({ queryKey: ['actions'] })
       }, 1000)
     })
   }

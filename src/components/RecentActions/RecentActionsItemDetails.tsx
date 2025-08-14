@@ -2,12 +2,12 @@ import { RecentActionsItemButton } from './RecentActionsItemButton'
 import { Button } from '@/components/Button'
 import { Drawer } from '@/components/Drawer'
 import { Star } from '@/components/Icons'
-import type { Transaction } from '@/types/api'
+import type { Action } from '@/types/api'
 import type { FC } from 'react'
 import { FaArrowDown, FaArrowUp, FaCalendar } from 'react-icons/fa'
 import { Drawer as VaulDrawer } from 'vaul'
 
-export const RecentActionsItemDetails: FC<Transaction> = (props) => {
+export const RecentActionsItemDetails: FC<Action> = (props) => {
   const items = [
     {
       icon: props.type === 'deposit' ? FaArrowDown : FaArrowUp,

@@ -43,7 +43,7 @@ export interface Task {
   url?: string
 }
 
-export interface Transaction {
+export interface Action {
   _id: string
   type: 'deposit' | 'withdraw'
   amount: number
@@ -53,7 +53,7 @@ export interface Transaction {
   createdAt: string
 }
 
-export interface TransactionsResponse {
-  transactions: Transaction[]
+export interface ActionsResponse {
+  actions: Action[]
   hasNext: boolean
 }

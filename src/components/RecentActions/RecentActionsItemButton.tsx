@@ -1,11 +1,11 @@
 import { RecentActionsItemAmount } from './RecentActionsItemAmount'
 import { RecentActionsItemIcon } from './RecentActionsItemIcon'
 import { RecentActionsItemInfo } from './RecentActionsItemInfo'
-import type { Transaction } from '@/types/api'
+import type { Action } from '@/types/api'
 import type { FC } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 
-interface RecentActionsItemButtonProps extends Transaction {
+interface RecentActionsItemButtonProps extends Action {
   onClick?: () => void
 }
 

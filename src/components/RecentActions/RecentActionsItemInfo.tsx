@@ -1,9 +1,10 @@
-import type { Transaction } from '@/types/api'
+import type { Action } from '@/types/api'
 import type { FC } from 'react'
 
-export const RecentActionsItemInfo: FC<
-  Pick<Transaction, 'type' | 'createdAt'>
-> = ({ type, createdAt }) => {
+export const RecentActionsItemInfo: FC<Pick<Action, 'type' | 'createdAt'>> = ({
+  type,
+  createdAt
+}) => {
   const date = new Date(createdAt).toLocaleString('en-US')
 
   return (

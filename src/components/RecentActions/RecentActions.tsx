@@ -2,7 +2,7 @@ import { RecentActionsContent } from './RecentActionsContent'
 import { RecentActionsSkeleton } from './RecentActionsSkeleton'
 import { Empty } from '@/components/Empty'
 import { Error } from '@/components/Error'
-import { getTransactions } from '@/services/api'
+import { getActions } from '@/services/api'
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 export const RecentActions = () => {
@@ -16,15 +16,15 @@ export const RecentActions = () => {
     error,
     refetch
   } = useInfiniteQuery({
-    queryKey: ['transactions'],
-    queryFn: ({ pageParam }) => getTransactions(pageParam),
+    queryKey: ['actions'],
+    queryFn: ({ pageParam }) => getActions(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.hasNext) return pages.length + 1
     }
   })
 
-  const isEmpty = !data?.pages[0].transactions.length
+  const isEmpty = !data?.pages[0].actions.length
 
   return (
     <div className='space-y-4'>
