@@ -7,7 +7,7 @@ export const InviteFriendsInfo = () => {
         <h2>Earn stars</h2> <Star size={20} />
       </div>
       <p className='text-sm text-neutral-400'>
-        Earn 4% of the stars from every spin your referrals make
+        Earn 4% of the stars from every deposit your referrals make
       </p>
     </div>
   )

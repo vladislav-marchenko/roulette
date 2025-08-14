@@ -1,5 +1,6 @@
 import { RecentActionsContent } from './RecentActionsContent'
 import { RecentActionsSkeleton } from './RecentActionsSkeleton'
+import { Empty } from '@/components/Empty'
 import { Error } from '@/components/Error'
 import { getTransactions } from '@/services/api'
 import { useInfiniteQuery } from '@tanstack/react-query'
@@ -9,7 +10,7 @@ export const RecentActions = () => {
     data,
     fetchNextPage,
     isFetchingNextPage,
-    isLoading,
+    isFetching,
     isSuccess,
     isError,
     error,
@@ -23,18 +24,21 @@ export const RecentActions = () => {
     }
   })
 
+  const isEmpty = !data?.pages[0].transactions.length
+
   return (
     <div className='space-y-4'>
       <h2>Recent Actions</h2>
       <div className='flex flex-col gap-4'>
-        {isLoading && <RecentActionsSkeleton />}
-        {isSuccess && (
+        {isSuccess && !isEmpty && (
           <RecentActionsContent
             pages={data.pages}
             fetchNextPage={fetchNextPage}
             isFetchingNextPage={isFetchingNextPage}
           />
         )}
+        {!isFetching && isEmpty && <Empty title='No actions found' />}
+        {isFetching && <RecentActionsSkeleton />}
       </div>
       {isError && <Error error={error} refetch={refetch} />}
     </div>
