@@ -18,7 +18,7 @@ function RouteComponent() {
   })
 
   return (
-    <div className='mx-auto flex w-full max-w-2xl flex-col gap-4'>
+    <div className='mx-auto flex w-full max-w-2xl flex-auto flex-col gap-4'>
       <div className='flex w-full flex-col items-center gap-3 rounded-3xl bg-neutral-800 p-4'>
         <h5 className='text-sm font-bold text-neutral-400'>Balance</h5>
         <span

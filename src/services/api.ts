@@ -10,21 +10,27 @@ import type {
 import WebApp from '@twa-dev/sdk'
 
 const API_URL = 'https://giftica-backend.serveo.net'
-const REFERRAL_CODE = WebApp.initDataUnsafe.start_param
+const REFERRAL_CODE = WebApp.initDataUnsafe.start_param ?? ''
 
 export const customFetch = async <Data extends object = {}>({
   endpoint,
+  params,
   method = 'GET',
   body,
   headers = {}
 }: {
   endpoint: string
+  params?: Record<string, string>
   method?: Methods
   body?: string | FormData
   headers?: Record<string, string>
 }): Promise<Data> => {
   try {
-    const response = await fetch(`${API_URL}${endpoint}?ref=${REFERRAL_CODE}`, {
+    const queryParams = new URLSearchParams({
+      ...params,
+      ref: REFERRAL_CODE
+    }).toString()
+    const response = await fetch(`${API_URL}${endpoint}?${queryParams}`, {
       method,
       headers: {
         Authorization: `tma ${WebApp.initData}`,
@@ -68,7 +74,8 @@ export const spin = () => {
 
 export const getRewards = (page: number = 1) => {
   return customFetch<RewardsResponse>({
-    endpoint: `/rewards/me?page=${page}`
+    endpoint: '/rewards/me',
+    params: { page: page.toString() }
   })
 }
 
@@ -94,6 +101,7 @@ export const getInvoiceLink = (amount: number) => {
 
 export const getActions = (page: number = 1) => {
   return customFetch<ActionsResponse>({
-    endpoint: `/actions?page=${page}`
+    endpoint: '/actions',
+    params: { page: page.toString() }
   })
 }

@@ -27,9 +27,9 @@ export const RecentActions = () => {
   const isEmpty = !data?.pages[0].actions.length
 
   return (
-    <div className='space-y-4'>
+    <div className='flex flex-auto flex-col'>
       <h2>Recent Actions</h2>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-auto flex-col gap-4'>
         {isSuccess && !isEmpty && (
           <RecentActionsContent
             pages={data.pages}
@@ -37,7 +37,12 @@ export const RecentActions = () => {
             isFetchingNextPage={isFetchingNextPage}
           />
         )}
-        {!isFetching && isEmpty && <Empty title='No actions found' />}
+        {!isFetching && isEmpty && (
+          <Empty
+            title='No actions found'
+            className='flex-auto justify-center'
+          />
+        )}
         {isFetching && <RecentActionsSkeleton />}
       </div>
       {isError && <Error error={error} refetch={refetch} />}

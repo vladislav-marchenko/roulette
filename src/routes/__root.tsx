@@ -14,33 +14,36 @@ const queryClient = new QueryClient({
   }
 })
 
-export const Route = createRootRoute({
-  component: () => {
-    const paddingTop =
-      WebApp.safeAreaInset.top > 0 ? WebApp.safeAreaInset.top + 30 : 0
-
-    return (
-      <QueryClientProvider client={queryClient}>
-        <div
-          className='flex h-full min-h-dvh flex-col gap-4'
-          style={{ paddingTop: paddingTop + 'px' }}
-        >
-          <div className='flex flex-auto flex-col gap-4 p-4'>
-            <Header />
-            <main className='flex flex-auto flex-col'>
-              <Outlet />
-            </main>
-          </div>
-          <Navigation />
-        </div>
-        <ReactQueryDevtools />
-        <Toaster
-          richColors
-          position='top-center'
-          mobileOffset={{ top: WebApp.safeAreaInset.top + 46 }}
-          offset={{ top: WebApp.safeAreaInset.top + 46 }}
-        />
-      </QueryClientProvider>
-    )
+const getPaddingTop = () => {
+  if (WebApp.isFullscreen) {
+    return WebApp.safeAreaInset.top + 30
   }
+
+  return WebApp.safeAreaInset.top
+}
+
+export const Route = createRootRoute({
+  component: () => (
+    <QueryClientProvider client={queryClient}>
+      <div
+        className='flex h-full min-h-dvh flex-col gap-4'
+        style={{ paddingTop: getPaddingTop() + 'px' }}
+      >
+        <div className='flex flex-auto flex-col gap-4 p-4'>
+          <Header />
+          <main className='flex flex-auto flex-col'>
+            <Outlet />
+          </main>
+        </div>
+        <Navigation />
+      </div>
+      <ReactQueryDevtools />
+      <Toaster
+        richColors
+        position='top-center'
+        mobileOffset={{ top: WebApp.safeAreaInset.top + 46 }}
+        offset={{ top: WebApp.safeAreaInset.top + 46 }}
+      />
+    </QueryClientProvider>
+  )
 })

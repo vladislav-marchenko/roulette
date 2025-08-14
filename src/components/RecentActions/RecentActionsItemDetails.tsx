@@ -3,6 +3,7 @@ import { Button } from '@/components/Button'
 import { Drawer } from '@/components/Drawer'
 import { Star } from '@/components/Icons'
 import type { Action } from '@/types/api'
+import { getDateString } from '@/utils'
 import type { FC } from 'react'
 import { FaArrowDown, FaArrowUp, FaCalendar } from 'react-icons/fa'
 import { Drawer as VaulDrawer } from 'vaul'
@@ -29,7 +30,7 @@ export const RecentActionsItemDetails: FC<Action> = (props) => {
     {
       icon: <FaCalendar />,
       label: 'Date & Time',
-      value: new Date(props.createdAt).toLocaleString('en-US')
+      value: getDateString(props.createdAt)
     },
     {
       icon: <Star />,
