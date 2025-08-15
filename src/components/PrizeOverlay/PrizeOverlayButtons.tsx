@@ -17,7 +17,7 @@ export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
       onClick={(e) => e.stopPropagation()}
       className='mx-auto flex w-full max-w-md flex-col items-center gap-2'
     >
-      <SellGift rewardId={reward._id} prize={reward.prize} onSell={close} />
+      <SellGift reward={reward} onSell={close} />
       <Button
         to='/gifts'
         variant='secondary'

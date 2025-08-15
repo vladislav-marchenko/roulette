@@ -3,7 +3,7 @@ import { Drawer } from './Drawer'
 import { GiftPreview } from './GiftPreview'
 import { Star } from './Icons'
 import { sellReward } from '@/services/api'
-import type { Prize } from '@/types/api'
+import type { Reward } from '@/types/api'
 import { cn } from '@/utils'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState, type FC } from 'react'
@@ -11,21 +11,19 @@ import { toast } from 'sonner'
 import { Drawer as DrawerVaul } from 'vaul'
 
 interface SellGiftProps {
-  rewardId: string
-  prize: Prize
+  reward: Reward
   className?: string
   triggerSize?: ButtonProps['size']
   onSell?: () => void
 }
 
 export const SellGift: FC<SellGiftProps> = ({
-  rewardId,
-  prize,
+  reward,
   className,
   triggerSize,
   onSell
 }) => {
-  const { name, image, lottie, price } = prize
+  const { name, image, lottie, price } = reward.prize
   const [isOpen, setIsOpen] = useState(false)
 
   const queryClient = useQueryClient()
@@ -67,7 +65,7 @@ export const SellGift: FC<SellGiftProps> = ({
       <GiftPreview name={name} lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
         <Button
-          onClick={() => mutate(rewardId)}
+          onClick={() => mutate(reward._id)}
           isLoading={isPending}
           className='flex items-center gap-1'
         >

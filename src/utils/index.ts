@@ -14,3 +14,15 @@ export const getDateString = (date: string) => {
     minute: 'numeric'
   })
 }
+
+export const getStartParamByKey = ({
+  startParam,
+  key
+}: {
+  startParam?: string
+  key: string
+}) => {
+  if (startParam && startParam.includes(key)) {
+    return startParam.split(key)[1]
+  }
+}

@@ -9,7 +9,7 @@ export const useInvoice = (onSettled?: () => void) => {
   const { mutate, isPending } = useMutation({
     mutationFn: getInvoiceLink,
     onSuccess: handleInvoice,
-    onError: (error) => toast.error(error.message ?? 'Something went wrong...'),
+    onError: (error) => toast.error(error.message || 'Something went wrong...'),
     onSettled
   })
 

@@ -9,13 +9,8 @@ interface GiftsItemProps extends Reward {
   ref: Ref<HTMLDivElement>
 }
 
-export const GiftsItem: FC<GiftsItemProps> = ({
-  ref,
-  prize,
-  createdAt,
-  ...reward
-}) => {
-  const { name, image, lottie } = prize
+export const GiftsItem: FC<GiftsItemProps> = ({ ref, ...reward }) => {
+  const { name, image } = reward.prize
 
   return (
     <div className='flex flex-col gap-2 rounded-xl bg-neutral-800 p-1.5'>
@@ -23,12 +18,12 @@ export const GiftsItem: FC<GiftsItemProps> = ({
       <div className='flex flex-col'>
         <h4 className='leading-none'>{name}</h4>
         <span className='text-xs font-medium text-neutral-400'>
-          {getDateString(createdAt)}
+          {getDateString(reward.createdAt)}
         </span>
       </div>
       <div className='flex items-center gap-2'>
-        <SellGift triggerSize='sm' rewardId={reward._id} prize={prize} />
-        <WithdrawGift name={name} lottie={lottie} image={image} />
+        <SellGift triggerSize='sm' reward={reward} />
+        <WithdrawGift reward={reward} />
       </div>
     </div>
   )

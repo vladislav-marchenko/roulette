@@ -7,10 +7,14 @@ import type {
   Task,
   User
 } from '@/types/api'
+import { getStartParamByKey } from '@/utils'
 import WebApp from '@twa-dev/sdk'
 
 const API_URL = 'https://giftica-backend.serveo.net'
-const REFERRAL_CODE = WebApp.initDataUnsafe.start_param ?? ''
+const REFERRAL_CODE = getStartParamByKey({
+  startParam: WebApp.initDataUnsafe.start_param,
+  key: 'ref_'
+})
 
 export const customFetch = async <Data extends object = {}>({
   endpoint,
@@ -28,7 +32,7 @@ export const customFetch = async <Data extends object = {}>({
   try {
     const queryParams = new URLSearchParams({
       ...params,
-      ref: REFERRAL_CODE
+      ref: REFERRAL_CODE ?? ''
     }).toString()
     const response = await fetch(`${API_URL}${endpoint}?${queryParams}`, {
       method,
@@ -38,6 +42,11 @@ export const customFetch = async <Data extends object = {}>({
       },
       ...(body && { body })
     })
+
+    // 204 - No content
+    if (response.status === 204 && method !== 'GET') {
+      return {} as Data
+    }
 
     const response_data: Data | Error = await response.json()
     if (!response.ok) {
@@ -81,7 +90,14 @@ export const getRewards = (page: number = 1) => {
 
 export const sellReward = (id: string) => {
   return customFetch<User>({
-    endpoint: `/rewards/sell/${id}`,
+    endpoint: `/rewards/${id}/sell`,
+    method: 'POST'
+  })
+}
+
+export const withdrawReward = (id: string) => {
+  return customFetch<User>({
+    endpoint: `/rewards/${id}/withdraw`,
     method: 'POST'
   })
 }
