@@ -25,7 +25,10 @@ declare module '@tanstack/react-router' {
 }
 
 WebApp.ready()
-WebApp.requestFullscreen()
+
+const isMobile = ['android', 'android_x', 'ios'].includes(WebApp.platform)
+if (isMobile) WebApp.requestFullscreen()
+
 WebApp.disableVerticalSwipes()
 WebApp.setBackgroundColor('#171717')
 

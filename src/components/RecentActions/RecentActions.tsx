@@ -27,7 +27,7 @@ export const RecentActions = () => {
   const isEmpty = !data?.pages[0].actions.length
 
   return (
-    <div className='flex flex-auto flex-col'>
+    <div className='flex flex-auto flex-col gap-4'>
       <h2>Recent Actions</h2>
       <div className='flex flex-auto flex-col gap-4'>
         {isSuccess && !isEmpty && (
