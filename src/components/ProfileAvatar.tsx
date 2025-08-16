@@ -14,7 +14,7 @@ export const ProfileAvatar = () => {
     <Link
       to='/profile'
       onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
-      className='h-7 w-7 overflow-hidden rounded-full'
+      className='h-[34px] w-[34px] overflow-hidden rounded-full'
     >
       <Image src={data?.photoUrl} />
     </Link>

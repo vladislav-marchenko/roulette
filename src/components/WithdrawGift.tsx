@@ -23,7 +23,9 @@ export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
       toast.success('Gift withdrawn successfully!')
     },
     onError: (error) => {
-      toast.error(error.message || 'Something went wrong...')
+      toast.error(`Unable to send gift: ${error.message}`, {
+        description: 'Please contact support.'
+      })
     }
   })
 

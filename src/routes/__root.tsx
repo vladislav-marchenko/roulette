@@ -41,8 +41,8 @@ export const Route = createRootRoute({
       <Toaster
         richColors
         position='top-center'
-        mobileOffset={{ top: WebApp.safeAreaInset.top + 46 }}
-        offset={{ top: WebApp.safeAreaInset.top + 46 }}
+        mobileOffset={{ top: getPaddingTop() + 16 }}
+        offset={{ top: getPaddingTop() + 16 }}
       />
     </QueryClientProvider>
   )

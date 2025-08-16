@@ -1,7 +1,8 @@
-import { Button } from '../Button'
-import { Drawer } from '../Drawer'
 import { GiftsAnimation } from './GiftsAnimation'
 import { Language } from './Language'
+import { SettingsButtons } from './SettingsButtons'
+import { Button } from '@/components/Button'
+import { Drawer } from '@/components/Drawer'
 import { FaGear } from 'react-icons/fa6'
 
 export const settings = [
@@ -22,7 +23,7 @@ export const Settings = () => {
       trigger={
         <Button
           variant='secondary'
-          className='rounded-full p-2 text-neutral-400 hover:text-white'
+          className='rounded-full p-2.5 text-neutral-400 hover:text-white'
         >
           <FaGear size={14} />
         </Button>
@@ -35,6 +36,7 @@ export const Settings = () => {
           <Element />
         </div>
       ))}
+      <SettingsButtons />
     </Drawer>
   )
 }

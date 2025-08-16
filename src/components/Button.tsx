@@ -1,23 +1,14 @@
 import { Loader } from './Icons'
 import { cn } from '@/utils'
-import { Link } from '@tanstack/react-router'
+import { Link, type LinkOptions } from '@tanstack/react-router'
 import WebApp from '@twa-dev/sdk'
-import type { ButtonHTMLAttributes, FC, MouseEvent, ReactNode } from 'react'
-
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  to?: string
-  children: ReactNode
-  onClick?: (event: MouseEvent) => void
-  className?: string
-  disabled?: boolean
-  isLoading?: boolean
-  variant?: 'primary' | 'secondary'
-  size?: 'sm' | 'base'
-}
-
-interface LinkProps extends ButtonProps {
-  to: string
-}
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  FC,
+  MouseEvent,
+  ReactNode
+} from 'react'
 
 const variants = {
   common:
@@ -31,7 +22,21 @@ const sizes = {
   base: 'rounded-xl px-6 py-2.5'
 }
 
-export const Button: FC<ButtonProps | LinkProps> = ({
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+type LinkProps = LinkOptions
+
+type Props = {
+  children: ReactNode
+  onClick?: (event: MouseEvent) => void
+  className?: string
+  disabled?: boolean
+  isLoading?: boolean
+  variant?: 'primary' | 'secondary'
+  size?: 'sm' | 'base'
+  style?: React.CSSProperties
+} & (ButtonProps | LinkProps)
+
+export const Button: FC<Props> = ({
   children,
   onClick,
   className,
@@ -39,7 +44,6 @@ export const Button: FC<ButtonProps | LinkProps> = ({
   isLoading = false,
   variant = 'primary',
   size = 'base',
-  style,
   ...props
 }) => {
   const classNameStyles = cn(
@@ -58,14 +62,29 @@ export const Button: FC<ButtonProps | LinkProps> = ({
     onClick && onClick(event)
   }
 
-  if (props.to) {
+  if ('href' in props) {
+    return (
+      <a
+        {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+        href={props.href}
+        onClick={handleClick}
+        //disabled={disabled || isLoading}
+        className={classNameStyles}
+      >
+        {isLoading && <Loader />}
+        {children}
+      </a>
+    )
+  }
+
+  if ('to' in props) {
     return (
       <Link
+        {...(props as LinkProps)}
         to={props.to}
         onClick={handleClick}
         disabled={disabled || isLoading}
         className={classNameStyles}
-        style={style}
       >
         {isLoading && <Loader />}
         {children}
@@ -75,11 +94,10 @@ export const Button: FC<ButtonProps | LinkProps> = ({
 
   return (
     <button
-      {...props}
+      {...(props as ButtonProps)}
       onClick={handleClick}
       disabled={disabled || isLoading}
       className={classNameStyles}
-      style={style}
     >
       {isLoading && <Loader />}
       {children}
