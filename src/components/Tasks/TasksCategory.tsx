@@ -12,13 +12,8 @@ export const TasksCategory: FC<TasksCategoryProps> = ({ name, tasks }) => {
     <div>
       <h4 className='pb-4'>{name}</h4>
       <div className='flex flex-col gap-4'>
-        {tasks.map(({ _id, title, reward, code }) => (
-          <TasksCategoryItem
-            key={_id}
-            title={title}
-            reward={reward}
-            code={code}
-          />
+        {tasks.map((task) => (
+          <TasksCategoryItem key={task._id} {...task} />
         ))}
       </div>
     </div>

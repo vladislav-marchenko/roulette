@@ -17,7 +17,7 @@ export const taskIcons = {
     icon: IoPeopleCircle,
     color: '#af51de'
   },
-  daily_reward: {
+  daily_login: {
     icon: FaGift,
     color: '#49df64'
   },

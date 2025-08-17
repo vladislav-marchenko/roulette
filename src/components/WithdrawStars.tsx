@@ -55,7 +55,7 @@ export const WithdrawStars = () => {
         onSubmit={onSubmit}
         className='flex h-full flex-auto flex-col items-center justify-center'
       >
-        <div className='flex flex-auto flex-col items-center justify-center'>
+        <div className='flex flex-auto flex-col items-center justify-center py-4'>
           <StarsInput
             value={value}
             setValue={setValue}

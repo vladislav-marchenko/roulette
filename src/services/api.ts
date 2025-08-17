@@ -5,6 +5,7 @@ import type {
   Reward,
   RewardsResponse,
   Task,
+  TaskAction,
   User
 } from '@/types/api'
 import { getStartParamByKey } from '@/utils'
@@ -129,4 +130,22 @@ export const getActions = (page: number = 1) => {
     endpoint: '/actions',
     params: { page: page.toString() }
   })
+}
+
+export const checkTask = (code: string) => {
+  return customFetch<Pick<Task, 'isCompleted' | 'isClaimed'>>({
+    endpoint: `/tasks/${code}/check`,
+    method: 'POST'
+  })
+}
+
+export const claimTask = (code: string) => {
+  return customFetch<TaskAction>({
+    endpoint: `/tasks/${code}/claim`,
+    method: 'POST'
+  })
+}
+
+export const auth = () => {
+  return customFetch<User>({ endpoint: '/user/auth' })
 }

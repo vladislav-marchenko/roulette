@@ -40,7 +40,7 @@ export const DepositStars = () => {
         <StarsInput
           value={value}
           setValue={setValue}
-          className='flex-auto justify-center'
+          className='flex-auto justify-center py-4'
         />
         <Button
           type='submit'

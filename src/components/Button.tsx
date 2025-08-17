@@ -12,9 +12,9 @@ import type {
 
 const variants = {
   common:
-    'flex cursor-pointer justify-center items-center gap-2 font-semibold transition-colors duration-200',
-  primary: 'bg-white text-black hover:bg-white/85 active:bg-white/85',
-  secondary: 'bg-white/15 text-white hover:bg-white/35 active:bg-white/35'
+    'flex cursor-pointer justify-center items-center gap-2 font-semibold transition-all duration-200 hover:opacity-85 active:opacity-85',
+  primary: 'bg-white text-black',
+  secondary: 'bg-white/15 text-white'
 }
 
 const sizes = {

@@ -41,6 +41,14 @@ export interface Task {
   title: string
   reward: number
   url?: string
+  isCompleted: boolean
+  isClaimed: boolean
+}
+
+export interface TaskAction {
+  taskCode: string
+  type: 'completed' | 'claimed'
+  user: string
 }
 
 export interface Action {

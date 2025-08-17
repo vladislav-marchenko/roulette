@@ -1,4 +1,4 @@
-import { Button } from '../Button'
+import { TasksCategoryItemButton } from './TasksCategoryItemButton'
 import { Star } from '@/components/Icons'
 import { taskIcons } from '@/consts'
 import type { Task } from '@/types/api'
@@ -13,10 +13,12 @@ const getTaskIcon = (code: string) => {
   return taskIcons.default
 }
 
-export const TasksCategoryItem: FC<Omit<Task, '_id' | 'type'>> = ({
+export const TasksCategoryItem: FC<Task> = ({
   title,
   reward,
-  code
+  code,
+  isClaimed,
+  isCompleted
 }) => {
   const { icon: Icon, color } = getTaskIcon(code)
 
@@ -32,9 +34,11 @@ export const TasksCategoryItem: FC<Omit<Task, '_id' | 'type'>> = ({
             {reward} <Star size={12} />
           </span>
         </div>
-        <Button size='sm' variant='secondary' className='px-4 py-1'>
-          Check
-        </Button>
+        <TasksCategoryItemButton
+          isClaimed={isClaimed}
+          isCompleted={isCompleted}
+          code={code}
+        />
       </div>
     </div>
   )

@@ -18,7 +18,7 @@ export const InviteFriendsBanner: FC<
         <div className='flex flex-col text-start'>
           <h3 className='leading-none'>Invite friends</h3>
           <span className='text-sm font-medium text-neutral-300'>
-            Earn 4% from every spin your referrals make
+            Earn 4% from every deposit your referrals make
           </span>
         </div>
         <IoIosArrowForward size={22} className='text-neutral-300' />
