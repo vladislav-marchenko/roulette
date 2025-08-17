@@ -16,8 +16,8 @@ export const Tasks = () => {
       <div className='flex flex-col gap-4 rounded-xl bg-neutral-800 p-3'>
         {isLoading && <TasksSkeleton />}
         {isSuccess && <TasksContent tasks={data} />}
+        {isError && <Error error={error} refetch={refetch} />}
       </div>
-      {isError && <Error error={error} refetch={refetch} />}
     </div>
   )
 }
