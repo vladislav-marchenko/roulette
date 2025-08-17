@@ -1,7 +1,7 @@
 import { DepositStars } from '@/components/DepositStars'
 import { Star } from '@/components/Icons'
 import { RecentActions } from '@/components/RecentActions/RecentActions'
-import { WithdrawStars } from '@/components/WithdrawStars'
+import { WithdrawStars } from '@/components/WithdrawStars/WithdrawStars'
 import { getMe } from '@/services/api'
 import { cn } from '@/utils'
 import { useQuery } from '@tanstack/react-query'

@@ -1,7 +1,8 @@
-import { Button } from './Button'
-import { Drawer } from './Drawer'
-import { Star } from './Icons'
-import { StarsInput } from './StarsInput'
+import { WithdrawStarsButton } from './WithdrawStarsButton'
+import { WithdrawStarsMaxButton } from './WithdrawStarsMaxButton'
+import { Button } from '@/components/Button'
+import { Drawer } from '@/components/Drawer'
+import { StarsInput } from '@/components/StarsInput'
 import { getMe, withdrawStars } from '@/services/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState, type FormEvent } from 'react'
@@ -62,27 +63,15 @@ export const WithdrawStars = () => {
             error={!isSufficient ? 'Insufficient balance' : undefined}
           />
           {isSuccess && (
-            <button
-              type='button'
-              onClick={() => setValue(data.balance)}
-              className='cursor-pointer p-1 font-medium hover:underline'
-            >
-              Max
-            </button>
+            <WithdrawStarsMaxButton onClick={() => setValue(data.balance)} />
           )}
           <span className='text-sm text-neutral-400'>Fee 10%</span>
         </div>
-        <Button
-          type='submit'
+        <WithdrawStarsButton
           disabled={value === 0 || !isSufficient}
-          isLoading={isPending}
-          className='flex w-full flex-col items-center gap-0.5'
-        >
-          <span className='leading-none'>Withdraw</span>
-          <div className='flex items-center gap-0.5 text-xs leading-none text-neutral-400'>
-            You recieve {Math.floor(value * 0.9)} <Star size={12} />
-          </div>
-        </Button>
+          isPending={isPending}
+          value={value}
+        />
       </form>
     </Drawer>
   )
