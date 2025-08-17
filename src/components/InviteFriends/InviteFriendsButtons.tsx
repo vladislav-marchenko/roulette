@@ -17,7 +17,9 @@ export const InviteFriendsButtons: FC<{ url: string }> = ({ url }) => {
       >
         Copy link
       </Button>
-      <Button className='flex-auto'>Share</Button>
+      <Button href={`https://t.me/share/url?url=${url}`} className='flex-auto'>
+        Share
+      </Button>
     </div>
   )
 }
