@@ -7,10 +7,9 @@ import { useQuery } from '@tanstack/react-query'
 
 export const InviteFriends = () => {
   const { data, isSuccess } = useQuery({ queryKey: ['me'], queryFn: getMe })
-
   if (!isSuccess) return
 
-  const url = `https://t.me/giftica_bot/?startapp=${data.referralCode}`
+  const url = `https://t.me/giftica_bot/?startapp=ref_${data.referralCode}`
 
   return (
     <Drawer title='Invite' trigger={<InviteFriendsBanner />}>
