@@ -10,7 +10,7 @@ export const TasksItemSkeleton = () => {
           <div className='skeleton h-3 w-16 rounded-md' />
         </div>
       </div>
-      <Button size='sm' variant='secondary' disabled className='px-4 py-1'>
+      <Button size='sm' variant='secondary' disabled className='px-4'>
         Check
       </Button>
     </div>

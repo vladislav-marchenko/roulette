@@ -17,18 +17,18 @@ export const TasksCategoryItemButton: FC<
   Pick<Task, 'isClaimed' | 'isCompleted' | 'code'>
 > = ({ isCompleted, isClaimed, code }) => {
   const queryClient = useQueryClient()
+
   const { mutate: check, isPending: isChecking } = useMutation({
     mutationFn: () => checkTask(code),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['tasks'] })
-
-      if (data.isCompleted && !data.isClaimed) {
-        toast.success('Task completed!', {
-          description: 'You can claim your reward now.'
-        })
+      if (data.isCompleted) {
+        queryClient.invalidateQueries({ queryKey: ['tasks'] })
+      } else {
+        toast.info('Task not completed yet.')
       }
     }
   })
+
   const { mutate: claim, isPending: isClaiming } = useMutation({
     mutationFn: () => claimTask(code),
     onSuccess: () => {
@@ -36,19 +36,14 @@ export const TasksCategoryItemButton: FC<
       queryClient.invalidateQueries({ queryKey: ['tasks'] })
       toast.success('Task reward claimed successfully!')
     },
-    onError: () => {
-      toast.error('Failed to claim task reward!')
-    }
+    onError: () => toast.error('Failed to claim task reward!')
   })
 
   const handleClick = () => {
     if (isCompleted && isClaimed) return
 
-    if (isCompleted) {
-      claim()
-    } else {
-      check()
-    }
+    if (isCompleted) claim()
+    else check()
   }
 
   return (
@@ -57,8 +52,8 @@ export const TasksCategoryItemButton: FC<
       variant={isCompleted && !isClaimed ? 'primary' : 'secondary'}
       disabled={isChecking || isClaiming}
       onClick={handleClick}
-      className={cn('px-4 py-1', {
-        'bg-green-700/50 text-green-400': isClaimed
+      className={cn('px-4', {
+        'bg-green-700/30 text-green-400': isClaimed
       })}
     >
       {getButtonText(isClaimed, isCompleted)}
