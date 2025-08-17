@@ -5,7 +5,14 @@ import { Star } from '@/components/Icons'
 import type { Action } from '@/types/api'
 import { getDateString } from '@/utils'
 import type { FC } from 'react'
-import { FaArrowDown, FaArrowUp, FaCalendar } from 'react-icons/fa'
+import {
+  FaArrowDown,
+  FaArrowUp,
+  FaCalendar,
+  FaClock,
+  FaCheck,
+  FaExclamation
+} from 'react-icons/fa'
 import { Drawer as VaulDrawer } from 'vaul'
 
 const getTypeIcon = (action: Action) => {
@@ -20,12 +27,28 @@ const getTypeIcon = (action: Action) => {
   return <FaArrowUp />
 }
 
+const getStatusIcon = (status: Action['status']) => {
+  switch (status) {
+    case 'pending':
+      return <FaClock />
+    case 'success':
+      return <FaCheck />
+    case 'failed':
+      return <FaExclamation />
+  }
+}
+
 export const RecentActionsItemDetails: FC<Action> = (props) => {
   const items = [
     {
       icon: getTypeIcon(props),
       label: 'Type',
       value: props.type
+    },
+    {
+      icon: getStatusIcon(props.status),
+      label: 'Status',
+      value: props.status
     },
     {
       icon: <FaCalendar />,

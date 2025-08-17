@@ -108,9 +108,18 @@ export const getTasks = () => {
 
 export const getInvoiceLink = (amount: number) => {
   return customFetch<{ invoiceLink: string }>({
-    endpoint: `/actions/deposit`,
+    endpoint: `/transactions/deposit`,
     method: 'POST',
     body: JSON.stringify({ amount }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+}
+
+export const withdrawStars = (quantity: number) => {
+  return customFetch({
+    endpoint: `/transactions/withdraw`,
+    method: 'POST',
+    body: JSON.stringify({ quantity: quantity }),
     headers: { 'Content-Type': 'application/json' }
   })
 }

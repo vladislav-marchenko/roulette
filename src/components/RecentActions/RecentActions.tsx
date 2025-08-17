@@ -21,7 +21,8 @@ export const RecentActions = () => {
     initialPageParam: 1,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.hasNext) return pages.length + 1
-    }
+    },
+    staleTime: 1000 * 20
   })
 
   const isEmpty = !data?.pages[0].actions.length
