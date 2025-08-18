@@ -24,5 +24,9 @@ export const GiftPreview: FC<Pick<Prize, 'name' | 'lottie' | 'image'>> = ({
     return <Lottie animationData={data} className={className} />
   }
 
-  return <Image src={image} className={className} />
+  return (
+    <div className={className}>
+      <Image src={image} />
+    </div>
+  )
 }
