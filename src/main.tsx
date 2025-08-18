@@ -31,6 +31,7 @@ if (isMobile) WebApp.requestFullscreen()
 
 WebApp.disableVerticalSwipes()
 WebApp.setBackgroundColor('#171717')
+WebApp.setHeaderColor('#171717')
 
 // Render the app
 const rootElement = document.getElementById('app')
