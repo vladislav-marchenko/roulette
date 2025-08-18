@@ -1,29 +1,28 @@
-import { Button, type ButtonProps } from './Button'
+import { Button, type Props as ButtonProps } from './Button'
 import { Drawer } from './Drawer'
 import { GiftPreview } from './GiftPreview'
 import { Star } from './Icons'
+import { RouletteContext } from '@/contexts/RouletteContext'
 import { sellReward } from '@/services/api'
-import type { Reward } from '@/types/api'
+import type { RouletteValues } from '@/types/contexts'
 import { cn } from '@/utils'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useState, type FC } from 'react'
+import { useContext, useState, type FC } from 'react'
 import { toast } from 'sonner'
 import { Drawer as DrawerVaul } from 'vaul'
 
 interface SellGiftProps {
-  reward: Reward
   className?: string
   triggerSize?: ButtonProps['size']
   onSell?: () => void
 }
 
 export const SellGift: FC<SellGiftProps> = ({
-  reward,
   className,
   triggerSize,
   onSell
 }) => {
-  const { name, image, lottie, price } = reward.prize
+  const { reward } = useContext(RouletteContext) as RouletteValues
   const [isOpen, setIsOpen] = useState(false)
 
   const queryClient = useQueryClient()
@@ -44,6 +43,9 @@ export const SellGift: FC<SellGiftProps> = ({
       toast.error(error.message || 'Something went wrong...')
     }
   })
+
+  if (!reward) return
+  const { name, image, lottie, price } = reward.prize
 
   return (
     <Drawer

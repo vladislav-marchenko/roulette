@@ -2,27 +2,15 @@ import { RouletteBlackout } from './RouletteBlackout'
 import { RouletteItems } from './RouletteItems'
 import { RouletteItemsSkeleton } from './RouletteItemsSkeleton'
 import { ITEM_WIDTH, REPEAT_COUNT } from '@/consts'
-import { getPrizes } from '@/services/api'
-import { useQuery } from '@tanstack/react-query'
-import type { FC } from 'react'
+import { RouletteContext } from '@/contexts/RouletteContext'
+import type { RouletteValues } from '@/types/contexts'
+import { useContext } from 'react'
 
-interface RouletteContentProps {
-  isSpinning: boolean
-  offset: number
-}
-
-export const RouletteContent: FC<RouletteContentProps> = ({
-  offset,
-  isSpinning
-}) => {
+export const RouletteContent = () => {
   const {
-    data = Array.from({ length: 10 }),
-    isLoading,
-    isSuccess
-  } = useQuery({
-    queryKey: ['prizes'],
-    queryFn: getPrizes
-  })
+    prizes: { items = Array.from({ length: 10 }), isSuccess, isLoading },
+    roulette: { offset, isSpinning }
+  } = useContext(RouletteContext) as RouletteValues
 
   return (
     <div className='relative w-full overflow-hidden rounded-lg'>
@@ -31,12 +19,12 @@ export const RouletteContent: FC<RouletteContentProps> = ({
       <div
         className='flex gap-2'
         style={{
-          width: data.length * ITEM_WIDTH * REPEAT_COUNT + 'px',
+          width: items.length * ITEM_WIDTH * REPEAT_COUNT + 'px',
           transform: `translateX(-${offset}px)`,
           transition: isSpinning ? 'none' : 'transform 0.1s ease-out'
         }}
       >
-        {isSuccess && <RouletteItems prizes={data} />}
+        {isSuccess && <RouletteItems prizes={items} />}
         {isLoading && <RouletteItemsSkeleton />}
       </div>
     </div>

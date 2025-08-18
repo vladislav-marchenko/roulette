@@ -22,10 +22,10 @@ const sizes = {
   base: 'rounded-xl px-6 py-2.5'
 }
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 type LinkProps = LinkOptions
 
-type Props = {
+export type Props = {
   children: ReactNode
   onClick?: (event: MouseEvent) => void
   className?: string

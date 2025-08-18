@@ -1,31 +1,36 @@
 import { SellGift } from '../SellGift'
 import { Button } from '@/components/Button'
-import type { Reward } from '@/types/api'
-import type { FC } from 'react'
+import { RouletteContext } from '@/contexts/RouletteContext'
+import type { RouletteValues } from '@/types/contexts'
+import { useContext } from 'react'
 
-interface PrizeOverlayButtonsProps {
-  reward: Reward
-  close: () => void
-}
+export const PrizeOverlayButtons = () => {
+  const {
+    overlay: { close },
+    demo: { isDemo }
+  } = useContext(RouletteContext) as RouletteValues
 
-export const PrizeOverlayButtons: FC<PrizeOverlayButtonsProps> = ({
-  reward,
-  close
-}) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
       className='mx-auto flex w-full max-w-md flex-col items-center gap-2'
     >
-      <SellGift reward={reward} onSell={close} />
-      <Button
-        to='/gifts'
-        variant='secondary'
-        onClick={close}
-        className='w-full'
-      >
-        Show in inventory
-      </Button>
+      {!isDemo && <SellGift onSell={close} />}
+      {!isDemo && (
+        <Button
+          to='/gifts'
+          variant='secondary'
+          onClick={close}
+          className='w-full'
+        >
+          Show in inventory
+        </Button>
+      )}
+      {isDemo && (
+        <Button variant='secondary' onClick={close} className='w-full'>
+          Close
+        </Button>
+      )}
     </div>
   )
 }

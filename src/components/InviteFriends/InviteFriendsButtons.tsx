@@ -1,4 +1,4 @@
-import { Button } from '../Button'
+import { Button } from '@/components/Button'
 import type { FC } from 'react'
 import { toast } from 'sonner'
 

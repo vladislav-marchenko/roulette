@@ -1,18 +1,19 @@
 import { PrizeOverlayButtons } from './PrizeOverlayButtons'
 import { PrizeOverlayInfo } from './PrizeOverlayInfo'
 import { Button } from '@/components/Button'
-import type { Reward } from '@/types/api'
+import { RouletteContext } from '@/contexts/RouletteContext'
+import type { RouletteValues } from '@/types/contexts'
 import WebApp from '@twa-dev/sdk'
-import type { FC } from 'react'
+import { useContext } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 
-interface PrizeOverlayProps {
-  reward: Reward
-  close: () => void
-}
+export const PrizeOverlay = () => {
+  const {
+    overlay: { isVisible, close },
+    reward
+  } = useContext(RouletteContext) as RouletteValues
 
-export const PrizeOverlay: FC<PrizeOverlayProps> = ({ reward, close }) => {
-  const { name, image, lottie } = reward.prize
+  if (!reward || !isVisible) return
 
   const paddingTop =
     WebApp.safeAreaInset.top > 0 ? WebApp.safeAreaInset.top + 46 : 16
@@ -32,8 +33,8 @@ export const PrizeOverlay: FC<PrizeOverlayProps> = ({ reward, close }) => {
         <AiOutlineClose size={20} />
       </Button>
       <div className='flex h-full w-full flex-col justify-between'>
-        <PrizeOverlayInfo name={name} lottie={lottie} image={image} />
-        <PrizeOverlayButtons reward={reward} close={close} />
+        <PrizeOverlayInfo {...reward.prize} />
+        <PrizeOverlayButtons />
       </div>
     </div>
   )
