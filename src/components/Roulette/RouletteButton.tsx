@@ -26,7 +26,12 @@ export const RouletteButton = () => {
       isLoading={isPending}
       className='flex w-full max-w-xs items-center gap-1 self-center'
     >
-      Spin for 25 <Star />
+      {isDemo && 'Demo'}
+      {!isDemo && (
+        <>
+          Spin for 25 <Star />
+        </>
+      )}
     </Button>
   )
 }
