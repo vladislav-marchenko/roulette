@@ -1,3 +1,4 @@
+import { DemoModeSwitch } from './DemoModeSwitch'
 import { GiftsAnimation } from './GiftsAnimation'
 import { Language } from './Language'
 import { SettingsButtons } from './SettingsButtons'
@@ -13,6 +14,10 @@ export const settings = [
   {
     label: 'Gifts animation',
     element: GiftsAnimation
+  },
+  {
+    label: 'Demo mode switch',
+    element: DemoModeSwitch
   }
 ]
 

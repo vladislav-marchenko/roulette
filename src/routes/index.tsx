@@ -4,6 +4,7 @@ import { Roulette } from '@/components/Roulette/Roulette'
 import { RouletteButton } from '@/components/Roulette/RouletteButton'
 import { RouletteDemoSwitch } from '@/components/Roulette/RouletteDemoSwitch'
 import { RouletteContextProvider } from '@/contexts/RouletteContext'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
@@ -11,6 +12,8 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
+  const [isSwitchDisplayed] = useLocalStorage('demoModeSwitch', true)
+
   return (
     <RouletteContextProvider>
       <div className='flex flex-col gap-4'>
@@ -18,7 +21,7 @@ function App() {
           <h1 className='text-[28px] leading-none font-bold md:text-center'>
             Good luck!
           </h1>
-          <RouletteDemoSwitch />
+          {isSwitchDisplayed && <RouletteDemoSwitch />}
         </div>
         <Roulette />
         <RouletteButton />
