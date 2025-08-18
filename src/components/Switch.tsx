@@ -1,4 +1,5 @@
 import { cn } from '@/utils'
+import WebApp from '@twa-dev/sdk'
 import type { ChangeEvent, FC } from 'react'
 
 interface SwitchProps {
@@ -8,20 +9,25 @@ interface SwitchProps {
 }
 
 export const Switch: FC<SwitchProps> = ({ name, checked, toggle }) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    WebApp.HapticFeedback.impactOccurred('soft')
+    toggle(event)
+  }
+
   return (
     <>
       <input
         type='checkbox'
         id={name}
         checked={checked}
-        onChange={toggle}
+        onChange={handleChange}
         hidden
         className='peer'
       />
       <label
         htmlFor={name}
         className={cn(
-          'flex w-14 cursor-pointer rounded-full bg-neutral-600 p-1 transition-all duration-200',
+          'flex w-12 cursor-pointer rounded-full bg-neutral-600 p-1 transition-all duration-200',
           {
             'bg-green-600': checked
           }
@@ -31,7 +37,7 @@ export const Switch: FC<SwitchProps> = ({ name, checked, toggle }) => {
           className={cn(
             'aspect-square h-5 w-5 rounded-full bg-white shadow-2xl transition-transform duration-300',
             {
-              'translate-x-7': checked
+              'translate-x-5': checked
             }
           )}
         />

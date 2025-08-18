@@ -7,7 +7,8 @@ import { useContext } from 'react'
 export const PrizeOverlayButtons = () => {
   const {
     overlay: { close },
-    demo: { isDemo }
+    demo: { isDemo },
+    reward
   } = useContext(RouletteContext) as RouletteValues
 
   return (
@@ -15,16 +16,18 @@ export const PrizeOverlayButtons = () => {
       onClick={(e) => e.stopPropagation()}
       className='mx-auto flex w-full max-w-md flex-col items-center gap-2'
     >
-      {!isDemo && <SellGift onSell={close} />}
-      {!isDemo && (
-        <Button
-          to='/gifts'
-          variant='secondary'
-          onClick={close}
-          className='w-full'
-        >
-          Show in inventory
-        </Button>
+      {!isDemo && reward && (
+        <>
+          <SellGift onSell={close} reward={reward} />{' '}
+          <Button
+            to='/gifts'
+            variant='secondary'
+            onClick={close}
+            className='w-full'
+          >
+            Show in inventory
+          </Button>
+        </>
       )}
       {isDemo && (
         <Button variant='secondary' onClick={close} className='w-full'>
