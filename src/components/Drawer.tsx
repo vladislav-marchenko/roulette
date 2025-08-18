@@ -31,7 +31,11 @@ export const Drawer: FC<DrawerProps> = ({
   const [safeBottom] = useState(WebApp.safeAreaInset.bottom)
 
   return (
-    <VaulDrawer.Root open={open} onOpenChange={onOpenChange}>
+    <VaulDrawer.Root
+      open={open}
+      onOpenChange={onOpenChange}
+      disablePreventScroll={false}
+    >
       <VaulDrawer.Trigger asChild>{trigger}</VaulDrawer.Trigger>
       <VaulDrawer.Portal>
         <VaulDrawer.Overlay className='fixed inset-0 z-30 bg-neutral-800/50 backdrop-blur-md' />
