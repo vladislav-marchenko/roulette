@@ -53,7 +53,7 @@ export interface TaskAction {
 
 export interface Action {
   _id: string
-  type: 'deposit' | 'withdraw' | 'sell' | 'spin'
+  type: 'deposit' | 'withdraw' | 'sell' | 'spin' | 'referral'
   status: 'pending' | 'success' | 'failed'
   amount: number
   user: string

@@ -1,31 +1,13 @@
 import { RecentActionsItemButton } from './RecentActionsItemButton'
+import { getTypeIcon } from './RecentActionsItemIcon'
 import { Button } from '@/components/Button'
 import { Drawer } from '@/components/Drawer'
 import { Star } from '@/components/Icons'
 import type { Action } from '@/types/api'
 import { getDateString } from '@/utils'
 import type { FC } from 'react'
-import {
-  FaArrowDown,
-  FaArrowUp,
-  FaCalendar,
-  FaClock,
-  FaCheck,
-  FaExclamation
-} from 'react-icons/fa'
+import { FaCalendar, FaClock, FaCheck, FaExclamation } from 'react-icons/fa'
 import { Drawer as VaulDrawer } from 'vaul'
-
-const getTypeIcon = (action: Action) => {
-  if (action.prize) {
-    return <img src={action.prize.image} />
-  }
-
-  if (action.type === 'deposit') {
-    return <FaArrowDown />
-  }
-
-  return <FaArrowUp />
-}
 
 const getStatusIcon = (status: Action['status']) => {
   switch (status) {
@@ -41,7 +23,7 @@ const getStatusIcon = (status: Action['status']) => {
 export const RecentActionsItemDetails: FC<Action> = (props) => {
   const items = [
     {
-      icon: getTypeIcon(props),
+      icon: getTypeIcon({ type: props.type, prize: props.prize }),
       label: 'Type',
       value: props.type
     },
