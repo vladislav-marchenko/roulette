@@ -23,7 +23,7 @@ export const PrizeOverlay = () => {
   return (
     <div
       onClick={close}
-      className='fixed top-0 left-0 z-20 flex h-full w-full flex-col items-center justify-center bg-neutral-800/50 p-4 backdrop-blur-md'
+      className='fixed top-0 left-0 z-20 flex h-full w-full flex-col items-center justify-center bg-neutral-800/50 p-4 backdrop-blur'
       style={{
         paddingTop: paddingTop + 'px',
         paddingBottom: paddingBottom + 'px'
