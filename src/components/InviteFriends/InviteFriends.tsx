@@ -4,8 +4,10 @@ import { InviteFriendsInfo } from './InviteFriendsInfo'
 import { Drawer } from '@/components/Drawer'
 import { getMe } from '@/services/api'
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 
 export const InviteFriends = () => {
+  const { t } = useTranslation()
   const { data, isSuccess } = useQuery({ queryKey: ['me'], queryFn: getMe })
   if (!isSuccess) return
 
@@ -16,7 +18,7 @@ export const InviteFriends = () => {
       <div className='flex h-full flex-col gap-6'>
         <InviteFriendsInfo />
         <div className='flex flex-col gap-1'>
-          <h5>Your link for friends</h5>
+          <h5>{t('profile.invite.linkLabel')}</h5>
           <input
             type='text'
             readOnly

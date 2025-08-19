@@ -3,19 +3,26 @@ import { checkTask, claimTask } from '@/services/api'
 import type { Task } from '@/types/api'
 import { cn } from '@/utils'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import type { TFunction } from 'i18next'
 import { type FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { FaCheck } from 'react-icons/fa'
 import { toast } from 'sonner'
 
-const getButtonText = (isClaimed: boolean, isCompleted: boolean) => {
-  if (isClaimed) return 'Claimed'
-  if (isCompleted) return 'Claim'
-  return 'Check'
+const getButtonText = (
+  t: TFunction,
+  isClaimed: boolean,
+  isCompleted: boolean
+) => {
+  if (isClaimed) return t('profile.tasks.buttons.claimed')
+  if (isCompleted) return t('profile.tasks.buttons.claim')
+  return t('profile.tasks.buttons.check')
 }
 
 export const TasksCategoryItemButton: FC<
   Pick<Task, 'isClaimed' | 'isCompleted' | 'code'>
 > = ({ isCompleted, isClaimed, code }) => {
+  const { t } = useTranslation()
   const queryClient = useQueryClient()
 
   const { mutate: check, isPending: isChecking } = useMutation({
@@ -24,7 +31,7 @@ export const TasksCategoryItemButton: FC<
       if (data.isCompleted) {
         queryClient.invalidateQueries({ queryKey: ['tasks'] })
       } else {
-        toast.info('Task not completed yet.')
+        toast.info(t('profile.tasks.info'))
       }
     }
   })
@@ -34,9 +41,11 @@ export const TasksCategoryItemButton: FC<
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['me'] })
       queryClient.invalidateQueries({ queryKey: ['tasks'] })
-      toast.success('Task reward claimed successfully!')
+      toast.success(t('profile.tasks.success'))
     },
-    onError: () => toast.error('Failed to claim task reward!')
+    onError: (error) => {
+      toast.error(`${t('profile.tasks.error')}: ${error.message}`)
+    }
   })
 
   const handleClick = () => {
@@ -56,7 +65,7 @@ export const TasksCategoryItemButton: FC<
         'bg-green-700/30 text-green-400': isClaimed
       })}
     >
-      {getButtonText(isClaimed, isCompleted)}
+      {getButtonText(t, isClaimed, isCompleted)}
       {isClaimed && <FaCheck />}
     </Button>
   )

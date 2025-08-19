@@ -5,12 +5,14 @@ import { GiftsSkeleton } from '@/components/Gifts/GiftsSkeleton'
 import { getRewards } from '@/services/api'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
+import { useTranslation } from 'react-i18next'
 
 export const Route = createFileRoute('/gifts')({
   component: RouteComponent
 })
 
 function RouteComponent() {
+  const { t } = useTranslation()
   const {
     data,
     fetchNextPage,
@@ -32,11 +34,11 @@ function RouteComponent() {
   const isEmpty = !data?.pages[0].rewards.length
 
   if (isError) {
-    return <Error error={error} refetch={refetch} />
+    return <Error error={error} refetch={refetch} className='flex-auto' />
   }
 
   if (!isFetching && isEmpty) {
-    return <Empty title='No rewards found' className='flex-auto' />
+    return <Empty title={t('inventory.empty')} className='flex-auto' />
   }
 
   return (

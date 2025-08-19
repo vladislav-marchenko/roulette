@@ -6,10 +6,12 @@ import { StarsInput } from '@/components/StarsInput'
 import { getMe, withdrawStars } from '@/services/api'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useState, type FormEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 import { FaArrowUpLong } from 'react-icons/fa6'
 import { toast } from 'sonner'
 
 export const WithdrawStars = () => {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [value, setValue] = useState(0)
 
@@ -22,13 +24,17 @@ export const WithdrawStars = () => {
       queryClient.invalidateQueries({ queryKey: ['actions'] })
 
       setIsOpen(false)
-      toast.info('Your withdrawal is being processed.')
+      toast.info(t('balance.withdraw.info'))
     },
     onError: (error) => {
-      toast.error(error.message || 'Something went wrong...', {
-        description:
-          error.message.includes('internal') && 'Please contact support.'
-      })
+      toast.error(
+        `${t('balance.withdraw.errors.withdrawal.title')}: ${error.message}`,
+        {
+          description:
+            error.message.toLowerCase().includes('internal') &&
+            t('balance.withdraw.errors.withdrawal.description')
+        }
+      )
     }
   })
 
@@ -41,12 +47,12 @@ export const WithdrawStars = () => {
 
   return (
     <Drawer
-      title='Withdraw'
+      title={t('balance.withdraw.title')}
       open={isOpen}
       onOpenChange={setIsOpen}
       trigger={
         <Button variant='secondary' className='flex items-center gap-1'>
-          Withdraw <FaArrowUpLong size={14} />
+          {t('balance.buttons.withdraw')} <FaArrowUpLong size={14} />
         </Button>
       }
       minHeightPercent={40}
@@ -60,12 +66,18 @@ export const WithdrawStars = () => {
           <StarsInput
             value={value}
             setValue={setValue}
-            error={!isSufficient ? 'Insufficient balance' : undefined}
+            error={
+              !isSufficient
+                ? t('balance.withdraw.errors.insufficient')
+                : undefined
+            }
           />
           {isSuccess && (
             <WithdrawStarsMaxButton onClick={() => setValue(data.balance)} />
           )}
-          <span className='text-sm text-neutral-400'>Fee 10%</span>
+          <span className='text-sm text-neutral-400'>
+            {t('balance.withdraw.fee', { fee: 10 })}
+          </span>
         </div>
         <WithdrawStarsButton
           disabled={value === 0 || !isSufficient}

@@ -1,6 +1,7 @@
 import { Button } from '@/components/Button'
 import { Star } from '@/components/Icons'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface WithdrawStarsButtonProps {
   disabled: boolean
@@ -13,6 +14,8 @@ export const WithdrawStarsButton: FC<WithdrawStarsButtonProps> = ({
   isPending,
   value
 }) => {
+  const { t } = useTranslation()
+
   return (
     <Button
       type='submit'
@@ -21,9 +24,14 @@ export const WithdrawStarsButton: FC<WithdrawStarsButtonProps> = ({
       className='w-full'
     >
       <div className='flex flex-col items-center gap-0.5'>
-        <span className='leading-none'>Withdraw</span>
+        <span className='leading-none'>
+          {t('balance.withdraw.buttons.main.title')}
+        </span>
         <div className='flex items-center gap-0.5 text-xs leading-none text-neutral-400'>
-          You recieve {Math.floor(value * 0.9)} <Star size={12} />
+          {t('balance.withdraw.buttons.main.subtitle', {
+            amount: Math.floor(value * 0.9)
+          })}
+          <Star size={11} />
         </div>
       </div>
     </Button>

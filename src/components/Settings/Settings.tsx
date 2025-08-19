@@ -1,30 +1,32 @@
-import { DemoModeSwitch } from './DemoModeSwitch'
-import { GiftsAnimation } from './GiftsAnimation'
 import { Language } from './Language'
 import { SettingsButtons } from './SettingsButtons'
+import { SettingsToggle } from './SettingsToggle'
 import { Button } from '@/components/Button'
 import { Drawer } from '@/components/Drawer'
+import { useTranslation } from 'react-i18next'
 import { FaGear } from 'react-icons/fa6'
 
 export const settings = [
   {
-    label: 'Language',
-    element: Language
+    labelKey: 'profile.settings.language',
+    element: <Language />
   },
   {
-    label: 'Gifts animation',
-    element: GiftsAnimation
+    labelKey: 'profile.settings.animation',
+    element: <SettingsToggle localStorageKey='giftsAnimation' />
   },
   {
-    label: 'Demo mode switch',
-    element: DemoModeSwitch
+    labelKey: 'profile.settings.switch',
+    element: <SettingsToggle localStorageKey='demoModeSwitch' />
   }
 ]
 
 export const Settings = () => {
+  const { t } = useTranslation()
+
   return (
     <Drawer
-      title='Settings'
+      title={t('profile.settings.title')}
       trigger={
         <Button
           variant='secondary'
@@ -35,10 +37,10 @@ export const Settings = () => {
       }
       className='flex flex-col gap-4'
     >
-      {settings.map(({ label, element: Element }) => (
-        <div key={label} className='flex flex-col gap-2'>
-          <h5>{label}</h5>
-          <Element />
+      {settings.map(({ labelKey, element }) => (
+        <div key={labelKey} className='flex flex-col gap-2'>
+          <h5>{t(labelKey)}</h5>
+          {element}
         </div>
       ))}
       <SettingsButtons />

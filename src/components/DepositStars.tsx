@@ -4,9 +4,11 @@ import { Star } from './Icons'
 import { StarsInput } from './StarsInput'
 import { useInvoice } from '@/hooks/useInvoice'
 import { useState, type FormEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 import { HiPlus } from 'react-icons/hi'
 
 export const DepositStars = () => {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [value, setValue] = useState(0)
 
@@ -22,12 +24,12 @@ export const DepositStars = () => {
 
   return (
     <Drawer
-      title='Deposit'
+      title={t('balance.deposit.title')}
       open={isOpen}
       onOpenChange={setIsOpen}
       trigger={
         <Button className='flex items-center gap-1'>
-          Deposit <HiPlus size={22} />
+          {t('balance.buttons.deposit')} <HiPlus size={22} />
         </Button>
       }
       minHeightPercent={40}
@@ -48,7 +50,7 @@ export const DepositStars = () => {
           isLoading={isPending}
           className='flex w-full items-center gap-1'
         >
-          Deposit <Star />
+          {t('balance.buttons.deposit')} <Star />
         </Button>
       </form>
     </Drawer>

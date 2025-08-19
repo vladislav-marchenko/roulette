@@ -1,6 +1,9 @@
 import { Button } from '@/components/Button'
+import { useTranslation } from 'react-i18next'
 
 export const SettingsButtons = () => {
+  const { t } = useTranslation()
+
   return (
     <div className='flex flex-wrap gap-2'>
       <Button
@@ -8,13 +11,13 @@ export const SettingsButtons = () => {
         variant='secondary'
         className='flex-auto whitespace-nowrap'
       >
-        Join our community
+        {t('profile.settings.buttons.community')}
       </Button>
       <Button
         href='https://t.me/giftica_support'
         className='flex-auto whitespace-nowrap'
       >
-        Contact support
+        {t('profile.settings.buttons.support')}
       </Button>
     </div>
   )

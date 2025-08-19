@@ -45,8 +45,10 @@ export const RecentActions = () => {
           />
         )}
         {isFetching && <RecentActionsSkeleton />}
+        {isError && (
+          <Error error={error} refetch={refetch} className='flex-auto' />
+        )}
       </div>
-      {isError && <Error error={error} refetch={refetch} />}
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { Button } from '@/components/Button'
 import { cn } from '@/utils'
 import Lottie from 'lottie-react'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface ErrorProps {
   error: Error
@@ -11,6 +12,8 @@ interface ErrorProps {
 }
 
 export const Error: FC<ErrorProps> = ({ error, refetch, className }) => {
+  const { t } = useTranslation()
+
   return (
     <div
       className={cn(
@@ -22,7 +25,7 @@ export const Error: FC<ErrorProps> = ({ error, refetch, className }) => {
       <h4 className='text-center'>
         Error: {error.message ?? 'Something went wrong'}
       </h4>
-      {refetch && <Button onClick={refetch}>Try again</Button>}
+      {refetch && <Button onClick={refetch}>{t('common.tryAgain')}</Button>}
     </div>
   )
 }

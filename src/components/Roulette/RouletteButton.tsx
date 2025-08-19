@@ -3,8 +3,10 @@ import { Star } from '@/components/Icons'
 import { RouletteContext } from '@/contexts/RouletteContext'
 import type { RouletteValues } from '@/types/contexts'
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const RouletteButton = () => {
+  const { t } = useTranslation()
   const {
     roulette: { isSpinning },
     prizes: { isLoading, isError },
@@ -26,10 +28,10 @@ export const RouletteButton = () => {
       isLoading={isPending}
       className='flex w-full max-w-xs items-center gap-1 self-center'
     >
-      {isDemo && 'Demo'}
+      {isDemo && t('play.demo')}
       {!isDemo && (
         <>
-          Spin for 25 <Star />
+          {t('play.button', { amount: 25 })} <Star />
         </>
       )}
     </Button>

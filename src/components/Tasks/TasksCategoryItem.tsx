@@ -3,6 +3,7 @@ import { Star } from '@/components/Icons'
 import { taskIcons } from '@/consts'
 import type { Task } from '@/types/api'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const hasCode = (code: string): code is keyof typeof taskIcons => {
   return code in taskIcons
@@ -20,6 +21,7 @@ export const TasksCategoryItem: FC<Task> = ({
   isClaimed,
   isCompleted
 }) => {
+  const { t } = useTranslation()
   const { icon: Icon, color } = getTaskIcon(code)
 
   return (
@@ -29,7 +31,9 @@ export const TasksCategoryItem: FC<Task> = ({
       </div>
       <div className='divider flex flex-auto items-center'>
         <div className='flex flex-auto flex-col'>
-          <span className='text-sm leading-tight font-bold'>{title}</span>
+          <span className='text-sm leading-tight font-bold'>
+            {t(`profile.tasks.items.${code}`, { defaultValue: title })}
+          </span>
           <span className='flex items-center gap-1 text-sm font-medium'>
             {reward} <Star size={12} />
           </span>

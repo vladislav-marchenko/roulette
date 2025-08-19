@@ -5,11 +5,13 @@ import { withdrawReward } from '@/services/api'
 import type { Reward } from '@/types/api'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState, type FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { FaArrowUpLong } from 'react-icons/fa6'
 import { toast } from 'sonner'
 import { Drawer as DrawerVaul } from 'vaul'
 
 export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
+  const { t } = useTranslation()
   const { name, image, lottie } = reward.prize
   const [isOpen, setIsOpen] = useState(false)
 
@@ -20,11 +22,11 @@ export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
       queryClient.invalidateQueries({ queryKey: ['rewards'] })
 
       setIsOpen(false)
-      toast.success('Gift withdrawn successfully!')
+      toast.success(t('inventory.withdraw.success'))
     },
     onError: (error) => {
-      toast.error(`Unable to send gift: ${error.message}`, {
-        description: 'Please contact support.'
+      toast.error(`${t('inventory.withdraw.error.title')}: ${error.message}`, {
+        description: t('inventory.withdraw.error.description')
       })
     }
   })
@@ -32,7 +34,7 @@ export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
   return (
     <Drawer
       title={name}
-      description='Are you sure you want to withdraw this gift?'
+      description={t('inventory.withdraw.warning')}
       open={isOpen}
       onOpenChange={setIsOpen}
       trigger={
@@ -49,10 +51,10 @@ export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
           isLoading={isPending}
           className='flex items-center gap-1'
         >
-          Withdraw
+          {t('inventory.buttons.withdraw')}
         </Button>
         <DrawerVaul.Close asChild>
-          <Button variant='secondary'>Cancel</Button>
+          <Button variant='secondary'>{t('inventory.buttons.cancel')}</Button>
         </DrawerVaul.Close>
       </div>
     </Drawer>

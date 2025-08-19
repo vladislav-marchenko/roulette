@@ -4,9 +4,11 @@ import { getMe } from '@/services/api'
 import { cn } from '@/utils'
 import { useQuery } from '@tanstack/react-query'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { HiPlus } from 'react-icons/hi'
 
 export const Balance: FC<{ className?: string }> = ({ className }) => {
+  const { t } = useTranslation()
   const { data, isLoading, isSuccess, isError } = useQuery({
     queryKey: ['me'],
     queryFn: getMe
@@ -31,7 +33,7 @@ export const Balance: FC<{ className?: string }> = ({ className }) => {
         <Star size={12} />
         {isSuccess && data.balance}
         {isLoading && '???'}
-        {isError && 'Unable to load balance'}
+        {isError && t('balance.error')}
       </div>
       <div className='rounded-full bg-white p-0.5 text-black'>
         <HiPlus />

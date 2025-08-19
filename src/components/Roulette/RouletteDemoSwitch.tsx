@@ -2,9 +2,11 @@ import { Switch } from '@/components/Switch'
 import { RouletteContext } from '@/contexts/RouletteContext'
 import type { RouletteValues } from '@/types/contexts'
 import { useContext, type ChangeEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 
 export const RouletteDemoSwitch = () => {
+  const { t } = useTranslation()
   const {
     demo: { isDemo, setIsDemo },
     spin: { isPending },
@@ -24,7 +26,7 @@ export const RouletteDemoSwitch = () => {
 
   return (
     <div className='flex items-center gap-2'>
-      <h4>Demo</h4>
+      <h4>{t('play.demo')}</h4>
       <Switch name='demo' checked={isDemo} toggle={toggle} />
     </div>
   )

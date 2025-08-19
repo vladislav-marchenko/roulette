@@ -1,3 +1,4 @@
+import './i18n.ts'
 import reportWebVitals from './reportWebVitals.ts'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'

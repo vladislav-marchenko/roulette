@@ -7,6 +7,7 @@ import type { Reward } from '@/types/api'
 import { cn } from '@/utils'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState, type FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { Drawer as DrawerVaul } from 'vaul'
 
@@ -23,6 +24,7 @@ export const SellGift: FC<SellGiftProps> = ({
   triggerSize,
   onSell
 }) => {
+  const { t } = useTranslation()
   const { name, image, lottie, price } = reward.prize
   const [isOpen, setIsOpen] = useState(false)
 
@@ -36,12 +38,16 @@ export const SellGift: FC<SellGiftProps> = ({
       onSell && onSell()
       setIsOpen(false)
 
-      toast.success('Gift sold successfully!', {
-        description: `Your balance is ${data.balance} stars`
+      toast.success(t('inventory.sell.success.title'), {
+        description: t('inventory.sell.success.description', {
+          amount: data.balance
+        })
       })
     },
     onError: (error) => {
-      toast.error(error.message || 'Something went wrong...')
+      toast.error(`${t('inventory.sell.error.title')}: ${error.message}`, {
+        description: t('inventory.sell.error.description')
+      })
     }
   })
 
@@ -50,13 +56,13 @@ export const SellGift: FC<SellGiftProps> = ({
       open={isOpen}
       onOpenChange={setIsOpen}
       title={name}
-      description='Are you sure you want to sell this gift?'
+      description={t('inventory.sell.warning')}
       trigger={
         <Button
           size={triggerSize}
           className={cn('flex w-full items-center gap-1', className)}
         >
-          Sell for {price}
+          {t('inventory.buttons.sell', { amount: price })}
           <Star />
         </Button>
       }
@@ -69,10 +75,10 @@ export const SellGift: FC<SellGiftProps> = ({
           isLoading={isPending}
           className='flex items-center gap-1'
         >
-          Sell for {price} <Star />
+          {t('inventory.buttons.sell', { amount: price })} <Star />
         </Button>
         <DrawerVaul.Close asChild>
-          <Button variant='secondary'>Cancel</Button>
+          <Button variant='secondary'>{t('inventory.buttons.cancel')}</Button>
         </DrawerVaul.Close>
       </div>
     </Drawer>

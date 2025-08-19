@@ -1,0 +1,144 @@
+{
+  "navigation": {
+    "inventory": "My gifts",
+    "play": "Play",
+    "profile": "Profile"
+  },
+  "play": {
+    "title": "Good luck!",
+    "demo": "Demo",
+    "button": "Spin for {{amount}}",
+    "prizes": "Prizes"
+  },
+  "inventory": {
+    "buttons": {
+      "sell": "Sell for {{amount}}",
+      "withdraw": "Withdraw",
+      "cancel": "Cancel"
+    },
+    "sell": {
+      "warning": "Are you sure you want to sell this gift?",
+      "success": {
+        "title": "Gift sold successfully!",
+        "description": "Your balance is {{amount}} stars"
+      },
+      "error": {
+        "title": "Unable to sell gift",
+        "description": "Please contact support."
+      }
+    },
+    "withdraw": {
+      "warning": "Are you sure you want to withdraw this gift?",
+      "success": "Gift withdrawn successfully!",
+      "error": {
+        "title": "Unable to withdraw gift",
+        "description": "Please contact support."
+      }
+    },
+    "empty": "No rewards found"
+  },
+  "profile": {
+    "settings": {
+      "title": "Settings",
+      "language": "Language",
+      "animation": "Gifts animation",
+      "switch": "Demo mode switch",
+      "options": {
+        "enable": "on",
+        "disable": "off"
+      },
+      "buttons": {
+        "community": "Join our community",
+        "support": "Contact support"
+      }
+    },
+    "invite": {
+      "banner": { "title": "Invite friends" },
+      "title": "Earn stars",
+      "description": "Earn 4% from every deposit your referrals make",
+      "linkLabel": "Your link for friends",
+      "buttons": {
+        "copy": "Copy link",
+        "share": "Share"
+      }
+    },
+    "tasks": {
+      "title": "Tasks",
+      "categories": {
+        "oneTime": "One time",
+        "daily": "Daily"
+      },
+      "buttons": {
+        "check": "Check",
+        "claim": "Claim",
+        "claimed": "Claimed"
+      },
+      "info": "Task not completed yet.",
+      "success": "Task reward claimed successfully!",
+      "error": "Failed to claim task reward!",
+      "items": {
+        "invite_friend": "Invite a friend",
+        "subscribe_channel": "Subscribe to a channel",
+        "daily_login": "Daily login",
+        "deposit_hundred_stars": "Deposit 100 stars",
+        "spin": "Do one spin"
+      }
+    }
+  },
+  "balance": {
+    "title": "Balance",
+    "buttons": {
+      "deposit": "Deposit",
+      "withdraw": "Withdraw"
+    },
+    "error": "Unable to get balance",
+    "withdraw": {
+      "title": "Withdraw",
+      "buttons": {
+        "main": { "title": "Withdraw", "subtitle": "You recieve {{amount}}" },
+        "max": "Max"
+      },
+      "fee": "Fee {{fee}}%",
+      "errors": {
+        "insufficient": "Insufficient balance",
+        "withdrawal": {
+          "title": "Unable to withdraw gift",
+          "description": "Please contact support."
+        }
+      },
+      "info": "Your withdrawal is being processed."
+    },
+    "deposit": {
+      "title": "Deposit",
+      "button": "Deposit"
+    },
+    "actions": {
+      "title": "Recent actions",
+      "details": {
+        "type": "Type",
+        "status": "Status",
+        "date": "Date & Time",
+        "amount": "Amount",
+        "button": "Cancel"
+      },
+      "actionNames": {
+        "deposit": "Deposit",
+        "withdraw": "Withdraw",
+        "sell": "Sell",
+        "spin": "Spin",
+        "referral": "Referral"
+      }
+    }
+  },
+  "prizeOverlay": {
+    "title": "You have won a gift!",
+    "buttons": {
+      "view": "Show in inventory",
+      "close": "Close"
+    }
+  },
+  "common": {
+    "stars": "stars",
+    "tryAgain": "Try again"
+  }
+}

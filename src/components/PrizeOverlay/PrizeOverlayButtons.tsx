@@ -3,8 +3,10 @@ import { Button } from '@/components/Button'
 import { RouletteContext } from '@/contexts/RouletteContext'
 import type { RouletteValues } from '@/types/contexts'
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const PrizeOverlayButtons = () => {
+  const { t } = useTranslation()
   const {
     overlay: { close },
     demo: { isDemo },
@@ -18,20 +20,20 @@ export const PrizeOverlayButtons = () => {
     >
       {!isDemo && reward && (
         <>
-          <SellGift onSell={close} reward={reward} />{' '}
+          <SellGift onSell={close} reward={reward} />
           <Button
             to='/gifts'
             variant='secondary'
             onClick={close}
             className='w-full'
           >
-            Show in inventory
+            {t('prizeOverlay.buttons.view')}
           </Button>
         </>
       )}
       {isDemo && (
         <Button variant='secondary' onClick={close} className='w-full'>
-          Close
+          {t('prizeOverlay.buttons.close')}
         </Button>
       )}
     </div>

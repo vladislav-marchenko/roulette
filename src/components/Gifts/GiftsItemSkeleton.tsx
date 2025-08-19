@@ -1,8 +1,11 @@
 import { Button } from '../Button'
 import { Star } from '../Icons'
+import { useTranslation } from 'react-i18next'
 import { FaArrowUpLong } from 'react-icons/fa6'
 
 export const GiftsItemSkeleton = () => {
+  const { t } = useTranslation()
+
   return (
     <div className='flex flex-col gap-2 rounded-xl bg-neutral-800 p-1.5'>
       <div className='skeleton aspect-square w-full rounded-xl' />
@@ -16,7 +19,7 @@ export const GiftsItemSkeleton = () => {
           disabled
           className='flex w-full items-center gap-1 whitespace-nowrap'
         >
-          Sell for ???
+          {t('inventory.buttons.sell', { amount: '???' })}
           <Star />
         </Button>
         <Button variant='secondary' size='sm' disabled className='p-2.5'>
