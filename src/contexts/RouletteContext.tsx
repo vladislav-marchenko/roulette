@@ -5,6 +5,7 @@ import { getPrizes, spin } from '@/services/api'
 import type { Reward } from '@/types/api'
 import type { RouletteValues } from '@/types/contexts'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import WebApp from '@twa-dev/sdk'
 import { createContext, useState, type FC, type ReactNode } from 'react'
 import { toast } from 'sonner'
 
@@ -43,7 +44,10 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
   const { offset, scroll, isSpinning } = useRoulette({
     itemWidth: ITEM_WIDTH,
     itemCount: prizes?.length ?? 0,
-    onSpinEnd: open
+    onSpinEnd: () => {
+      open()
+      WebApp.HapticFeedback.impactOccurred('soft')
+    }
   })
 
   function spinRoulette(reward: Reward) {
