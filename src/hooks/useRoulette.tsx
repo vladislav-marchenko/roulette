@@ -1,3 +1,4 @@
+import WebApp from '@twa-dev/sdk'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 const easeInOutQuart = (t: number) => {
@@ -46,12 +47,19 @@ export const useRoulette = ({
         window.innerWidth / 2 +
         randomOffset
 
+      let lastTick = 0
       const animate = (currentTime: number) => {
         const elapsed = currentTime - startTime
         const progress = Math.min(elapsed / duration, 1)
         const easedProgress = easeInOutQuart(progress)
         const newOffset =
           startOffset + (targetOffset - startOffset) * easedProgress
+
+        const currentTick = Math.floor(newOffset / itemWidth)
+        if (currentTick !== lastTick) {
+          lastTick = currentTick
+          WebApp.HapticFeedback.impactOccurred('light')
+        }
 
         // Normalize offset to stay within one cycle for seamless looping
         setOffset(newOffset % cycleWidth)
