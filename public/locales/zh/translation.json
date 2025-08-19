@@ -55,7 +55,7 @@
     "invite": {
       "banner": { "title": "邀请朋友" },
       "title": "赚取星星",
-      "description": "从你推荐的每一笔存款中赚取 4%",
+      "description": "从每笔存款中获得 4%",
       "linkLabel": "你的好友邀请链接",
       "buttons": {
         "copy": "复制链接",
