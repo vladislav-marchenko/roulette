@@ -18,7 +18,8 @@ body {
   scrollbar-width: none;
 }
 
-button {
+button,
+input {
   @apply outline-none;
 }
 

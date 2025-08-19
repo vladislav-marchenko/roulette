@@ -80,7 +80,7 @@
         "invite_friend": "Пригласить друга",
         "subscribe_channel": "Подписаться на канал",
         "daily_login": "Ежедневный вход",
-        "deposit_hundred_stars": "Пополнить на 100 звёзд",
+        "deposit_hundred_stars": "Пополнить баланс на 100 звёзд",
         "spin": "Сделать один спин"
       }
     }
@@ -119,9 +119,9 @@
         "status": "Статус",
         "date": "Дата и время",
         "amount": "Сумма",
-        "button": "Отмена"
+        "button": "Закрыть"
       },
-      "actionNames": {
+      "names": {
         "deposit": "Пополнение",
         "withdraw": "Вывод",
         "sell": "Продажа",

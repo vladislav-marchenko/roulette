@@ -119,9 +119,9 @@
         "status": "Status",
         "date": "Date & Time",
         "amount": "Amount",
-        "button": "Cancel"
+        "button": "Close"
       },
-      "actionNames": {
+      "names": {
         "deposit": "Deposit",
         "withdraw": "Withdraw",
         "sell": "Sell",

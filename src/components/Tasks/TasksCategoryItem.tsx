@@ -29,7 +29,7 @@ export const TasksCategoryItem: FC<Task> = ({
       <div className='icon'>
         <Icon size={22} color={color} />
       </div>
-      <div className='divider flex flex-auto items-center'>
+      <div className='divider flex flex-auto items-start gap-4'>
         <div className='flex flex-auto flex-col'>
           <span className='text-sm leading-tight font-bold'>
             {t(`profile.tasks.items.${code}`, { defaultValue: title })}

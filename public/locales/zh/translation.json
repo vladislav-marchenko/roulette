@@ -119,9 +119,9 @@
         "status": "状态",
         "date": "日期和时间",
         "amount": "金额",
-        "button": "取消"
+        "button": "关闭"
       },
-      "actionNames": {
+      "names": {
         "deposit": "存入",
         "withdraw": "提取",
         "sell": "出售",

@@ -6,8 +6,8 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs))
 }
 
-export const getDateString = (date: string) => {
-  return new Date(date).toLocaleString('en-US', {
+export const getDateString = (date: string, language: string = 'en-US') => {
+  return new Date(date).toLocaleString(language, {
     day: 'numeric',
     month: 'short',
     year: 'numeric',

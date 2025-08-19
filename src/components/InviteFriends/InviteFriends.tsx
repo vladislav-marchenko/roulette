@@ -14,7 +14,10 @@ export const InviteFriends = () => {
   const url = `https://t.me/giftica_bot/?startapp=ref_${data.referralCode}`
 
   return (
-    <Drawer title='Invite' trigger={<InviteFriendsBanner />}>
+    <Drawer
+      title={t('profile.invite.banner.title')}
+      trigger={<InviteFriendsBanner />}
+    >
       <div className='flex h-full flex-col gap-6'>
         <InviteFriendsInfo />
         <div className='flex flex-col gap-1'>
@@ -23,7 +26,7 @@ export const InviteFriends = () => {
             type='text'
             readOnly
             value={url}
-            className='w-full flex-auto truncate rounded-lg border border-neutral-600 px-2 py-1.5 text-sm text-neutral-200'
+            className='pointer-events-none w-full flex-auto truncate rounded-lg border border-neutral-600 px-2 py-1.5 text-sm text-neutral-200'
           />
         </div>
         <InviteFriendsButtons url={url} />

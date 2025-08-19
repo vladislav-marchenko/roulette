@@ -4,8 +4,10 @@ import { Empty } from '@/components/Empty'
 import { Error } from '@/components/Error'
 import { getActions } from '@/services/api'
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 
 export const RecentActions = () => {
+  const { t } = useTranslation()
   const {
     data,
     fetchNextPage,
@@ -29,7 +31,7 @@ export const RecentActions = () => {
 
   return (
     <div className='flex flex-auto flex-col gap-4'>
-      <h2>Recent Actions</h2>
+      <h2>{t('balance.actions.title')}</h2>
       <div className='flex flex-auto flex-col gap-4'>
         {isSuccess && !isEmpty && (
           <RecentActionsContent

@@ -3,13 +3,15 @@ import { SellGift } from '@/components/SellGift'
 import { WithdrawGift } from '@/components/WithdrawGift'
 import type { Reward } from '@/types/api'
 import { getDateString } from '@/utils'
-import type { FC, Ref } from 'react'
+import { type FC, type Ref } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface GiftsItemProps extends Reward {
   ref: Ref<HTMLDivElement>
 }
 
 export const GiftsItem: FC<GiftsItemProps> = ({ ref, ...reward }) => {
+  const { i18n } = useTranslation()
   const { name, image } = reward.prize
 
   return (
@@ -18,7 +20,7 @@ export const GiftsItem: FC<GiftsItemProps> = ({ ref, ...reward }) => {
       <div className='flex flex-col'>
         <h4 className='leading-none'>{name}</h4>
         <span className='text-xs font-medium text-neutral-400'>
-          {getDateString(reward.createdAt)}
+          {getDateString(reward.createdAt, i18n.language)}
         </span>
       </div>
       <div className='flex items-center gap-2'>

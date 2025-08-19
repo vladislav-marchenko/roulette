@@ -3,8 +3,10 @@ import { getTypeIcon } from './RecentActionsItemIcon'
 import { Button } from '@/components/Button'
 import { Drawer } from '@/components/Drawer'
 import { Star } from '@/components/Icons'
+import i18n from '@/i18n'
 import type { Action } from '@/types/api'
 import { getDateString } from '@/utils'
+import { t } from 'i18next'
 import type { FC } from 'react'
 import { FaCalendar, FaClock, FaCheck, FaExclamation } from 'react-icons/fa'
 import { Drawer as VaulDrawer } from 'vaul'
@@ -24,22 +26,22 @@ export const RecentActionsItemDetails: FC<Action> = (props) => {
   const items = [
     {
       icon: getTypeIcon({ type: props.type, prize: props.prize }),
-      label: 'Type',
+      label: t('balance.actions.details.type'),
       value: props.type
     },
     {
       icon: getStatusIcon(props.status),
-      label: 'Status',
+      label: t('balance.actions.details.status'),
       value: props.status
     },
     {
       icon: <FaCalendar />,
-      label: 'Date & Time',
-      value: getDateString(props.createdAt)
+      label: t('balance.actions.details.date'),
+      value: getDateString(props.createdAt, i18n.language)
     },
     {
       icon: <Star />,
-      label: 'Amount',
+      label: t('balance.actions.details.amount'),
       value: props.amount
     }
   ]
@@ -62,7 +64,9 @@ export const RecentActionsItemDetails: FC<Action> = (props) => {
         ))}
       </div>
       <VaulDrawer.Close asChild>
-        <Button variant='secondary'>Close</Button>
+        <Button variant='secondary'>
+          {t('balance.actions.details.button')}
+        </Button>
       </VaulDrawer.Close>
     </Drawer>
   )
