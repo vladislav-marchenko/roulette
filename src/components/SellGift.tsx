@@ -60,7 +60,10 @@ export const SellGift: FC<SellGiftProps> = ({
       trigger={
         <Button
           size={triggerSize}
-          className={cn('flex w-full items-center gap-1', className)}
+          className={cn(
+            'flex w-full items-center gap-1 whitespace-nowrap',
+            className
+          )}
         >
           {t('inventory.buttons.sell', { amount: price })}
           <Star />
