@@ -11,16 +11,12 @@ export default defineConfig({
     viteReact(),
     tailwindcss()
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom'
-  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src')
     }
   },
   server: {
-    allowedHosts: ['giftica.loca.lt', 'giftica.serveo.net', 'giftica.space']
+    allowedHosts: ['giftica.space']
   }
 })
