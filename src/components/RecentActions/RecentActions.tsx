@@ -40,7 +40,7 @@ export const RecentActions = () => {
             isFetchingNextPage={isFetchingNextPage}
           />
         )}
-        {!isFetching && isEmpty && (
+        {!isFetching && !isError && isEmpty && (
           <Empty
             title='No actions found'
             className='flex-auto justify-center'
