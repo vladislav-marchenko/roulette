@@ -11,7 +11,7 @@ import type {
 import { getStartParamByKey } from '@/utils'
 import WebApp from '@twa-dev/sdk'
 
-const API_URL = 'https://giftica.space/api'
+const API_URL = 'https://api.giftica.space'
 const REFERRAL_CODE = getStartParamByKey({
   startParam: WebApp.initDataUnsafe.start_param,
   key: 'ref_'
