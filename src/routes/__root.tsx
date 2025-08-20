@@ -3,6 +3,7 @@ import { getPaddingTop } from '@/utils'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createRootRoute } from '@tanstack/react-router'
+import { Analytics } from '@vercel/analytics/next'
 import { Toaster } from 'sonner'
 
 const queryClient = new QueryClient({
@@ -22,6 +23,7 @@ export const Route = createRootRoute({
         mobileOffset={{ top: getPaddingTop() + 16 }}
         offset={{ top: getPaddingTop() + 16 }}
       />
+      <Analytics />
     </QueryClientProvider>
   )
 })
