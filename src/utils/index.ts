@@ -35,3 +35,5 @@ export const getPaddingTop = () => {
 
   return WebApp.safeAreaInset.top
 }
+
+export const copy = (text: string) => navigator.clipboard.writeText(text)
