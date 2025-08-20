@@ -3,11 +3,10 @@ import { getTypeIcon } from './RecentActionsItemIcon'
 import { Button } from '@/components/Button'
 import { Drawer } from '@/components/Drawer'
 import { Star } from '@/components/Icons'
-import i18n from '@/i18n'
 import type { Action } from '@/types/api'
 import { getDateString } from '@/utils'
-import { t } from 'i18next'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { FaCalendar, FaClock, FaCheck, FaExclamation } from 'react-icons/fa'
 import { Drawer as VaulDrawer } from 'vaul'
 
@@ -23,16 +22,18 @@ const getStatusIcon = (status: Action['status']) => {
 }
 
 export const RecentActionsItemDetails: FC<Action> = (props) => {
+  const { t, i18n } = useTranslation()
+
   const items = [
     {
       icon: getTypeIcon({ type: props.type, prize: props.prize }),
       label: t('balance.actions.details.type'),
-      value: props.type
+      value: t(`balance.actions.names.${props.type}`)
     },
     {
       icon: getStatusIcon(props.status),
       label: t('balance.actions.details.status'),
-      value: props.status
+      value: t(`balance.actions.statuses.${props.status}`)
     },
     {
       icon: <FaCalendar />,
@@ -48,7 +49,7 @@ export const RecentActionsItemDetails: FC<Action> = (props) => {
 
   return (
     <Drawer
-      title='Details'
+      title={t('balance.actions.details.title')}
       trigger={<RecentActionsItemButton {...props} />}
       className='flex flex-col gap-4'
     >

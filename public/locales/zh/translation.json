@@ -1,18 +1,18 @@
 {
   "navigation": {
     "inventory": "我的礼物",
-    "play": "开始",
+    "play": "开始游戏",
     "profile": "个人资料"
   },
   "play": {
     "title": "祝你好运！",
     "demo": "演示",
-    "button": "旋转消耗 {{amount}}",
+    "button": "花 {{amount}} 次旋转",
     "prizes": "奖品"
   },
   "inventory": {
     "buttons": {
-      "sell": "出售换取 {{amount}}",
+      "sell": "出售获得 {{amount}}",
       "withdraw": "提取",
       "cancel": "取消"
     },
@@ -20,11 +20,11 @@
       "warning": "你确定要出售这个礼物吗？",
       "success": {
         "title": "礼物出售成功！",
-        "description": "你的余额是 {{amount}} 星星"
+        "description": "你的余额是 {{amount}} 星"
       },
       "error": {
         "title": "无法出售礼物",
-        "description": "请联系客服。"
+        "description": "请联系支持。"
       }
     },
     "withdraw": {
@@ -32,7 +32,7 @@
       "success": "礼物提取成功！",
       "error": {
         "title": "无法提取礼物",
-        "description": "请联系客服。"
+        "description": "请联系支持。"
       }
     },
     "empty": "未找到奖励"
@@ -55,12 +55,13 @@
     "invite": {
       "banner": { "title": "邀请朋友" },
       "title": "赚取星星",
-      "description": "从每笔存款中获得 4%",
-      "linkLabel": "你的好友邀请链接",
+      "description": "每笔存款获得 4% 奖励",
+      "linkLabel": "你的邀请链接",
       "buttons": {
         "copy": "复制链接",
         "share": "分享"
-      }
+      },
+      "success": "链接已复制到剪贴板"
     },
     "tasks": {
       "title": "任务",
@@ -80,8 +81,8 @@
         "invite_friend": "邀请朋友",
         "subscribe_channel": "订阅频道",
         "daily_login": "每日登录",
-        "deposit_hundred_stars": "存入100星星",
-        "spin": "进行一次抽奖"
+        "deposit_hundred_stars": "存入 100 星",
+        "spin": "进行一次旋转"
       }
     }
   },
@@ -103,7 +104,7 @@
         "insufficient": "余额不足",
         "withdrawal": {
           "title": "无法提取礼物",
-          "description": "请联系客服。"
+          "description": "请联系支持。"
         }
       },
       "info": "你的提取正在处理中。"
@@ -115,6 +116,7 @@
     "actions": {
       "title": "最近操作",
       "details": {
+        "title": "详情",
         "type": "类型",
         "status": "状态",
         "date": "日期和时间",
@@ -125,20 +127,26 @@
         "deposit": "存入",
         "withdraw": "提取",
         "sell": "出售",
-        "spin": "抽奖",
+        "spin": "旋转",
         "referral": "推荐"
+      },
+      "statuses": {
+        "pending": "进行中",
+        "success": "成功",
+        "failed": "失败"
       }
     }
   },
   "prizeOverlay": {
     "title": "你赢得了一个礼物！",
+    "demoTitle": "你可能会赢得这个礼物！",
     "buttons": {
       "view": "在库存中查看",
       "close": "关闭"
     }
   },
   "common": {
-    "stars": "星星",
-    "tryAgain": "重试"
+    "stars": "星",
+    "tryAgain": "再试一次"
   }
 }
