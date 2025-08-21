@@ -15,7 +15,7 @@ export const GiftsItem: FC<GiftsItemProps> = ({ ref, ...reward }) => {
   const { name, image } = reward.prize
 
   return (
-    <div className='flex flex-col gap-2 rounded-xl bg-neutral-800 p-1.5'>
+    <div className='flex max-w-3xs flex-col gap-2 justify-self-center rounded-xl bg-neutral-800 p-1.5'>
       <Image src={image} className='icon h-full w-full p-4' />
       <div className='flex flex-col'>
         <h4 className='leading-none'>{name}</h4>
