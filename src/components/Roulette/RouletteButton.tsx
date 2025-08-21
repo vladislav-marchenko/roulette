@@ -28,7 +28,7 @@ export const RouletteButton = () => {
       isLoading={isPending}
       className='flex w-full max-w-xs items-center gap-1 self-center'
     >
-      {isDemo && t('play.demo')}
+      {isDemo && t('play.demo.title')}
       {!isDemo && (
         <>
           {t('play.button', { amount: 25 })} <Star />
