@@ -38,7 +38,7 @@ export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
       open={isOpen}
       onOpenChange={setIsOpen}
       trigger={
-        <Button variant='secondary' size='sm' className='p-2.5'>
+        <Button variant='secondary' size='sm' className='p-2 sm:p-2.5'>
           <FaArrowUpLong size={13} />
         </Button>
       }
