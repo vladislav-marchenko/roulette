@@ -114,7 +114,13 @@
     },
     "deposit": {
       "title": "存入",
-      "button": "存入"
+      "button": "存入",
+      "statuses": {
+        "paid": "存款成功！",
+        "pending": "存款处理中…",
+        "cancelled": "您可以从操作记录中完成存款",
+        "failed": "存款失败！"
+      }
     },
     "actions": {
       "title": "最近操作",

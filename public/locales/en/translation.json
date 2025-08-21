@@ -114,7 +114,13 @@
     },
     "deposit": {
       "title": "Deposit",
-      "button": "Deposit"
+      "button": "Deposit",
+      "statuses": {
+        "paid": "Deposit successful!",
+        "pending": "Deposit pending...",
+        "cancelled": "You can complete your deposit from the actions history",
+        "failed": "Deposit failed!"
+      }
     },
     "actions": {
       "title": "Recent actions",
