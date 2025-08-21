@@ -8,7 +8,7 @@ import type {
   TaskAction,
   User
 } from '@/types/api'
-import { getStartParamByKey } from '@/utils'
+import { filterParams, getStartParamByKey } from '@/utils'
 import WebApp from '@twa-dev/sdk'
 
 const API_URL = 'https://api.giftica.space'
@@ -25,16 +25,16 @@ export const customFetch = async <Data extends object = {}>({
   headers = {}
 }: {
   endpoint: string
-  params?: Record<string, string>
+  params?: Record<string, string | undefined>
   method?: Methods
   body?: string | FormData
   headers?: Record<string, string>
 }): Promise<Data> => {
   try {
-    const queryParams = new URLSearchParams({
-      ...params,
-      ref: REFERRAL_CODE ?? ''
-    }).toString()
+    const queryParams = new URLSearchParams(
+      filterParams({ ...params, ref: REFERRAL_CODE })
+    ).toString()
+
     const response = await fetch(`${API_URL}${endpoint}?${queryParams}`, {
       method,
       headers: {
@@ -69,7 +69,7 @@ export const getMe = () => {
   return customFetch<User>({ endpoint: '/user/me' })
 }
 
-export const getPrizes = (sort: string = '') => {
+export const getPrizes = (sort?: string) => {
   return customFetch<Prize[]>({ endpoint: '/prizes', params: { sort } })
 }
 

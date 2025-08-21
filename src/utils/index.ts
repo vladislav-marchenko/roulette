@@ -37,3 +37,13 @@ export const getPaddingTop = () => {
 }
 
 export const copy = (text: string) => navigator.clipboard.writeText(text)
+
+export const filterParams = (params: Record<string, unknown>) => {
+  const filteredParams: Record<string, string> = {}
+
+  for (const [key, value] of Object.entries(params)) {
+    if (typeof value === 'string') filteredParams[key] = value
+  }
+
+  return filteredParams
+}
