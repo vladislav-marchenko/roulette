@@ -4,6 +4,7 @@ import { InviteFriendsInfo } from './InviteFriendsInfo'
 import { Drawer } from '@/components/Drawer'
 import { getMe } from '@/services/api'
 import { useQuery } from '@tanstack/react-query'
+import type { MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export const InviteFriends = () => {
@@ -12,6 +13,15 @@ export const InviteFriends = () => {
   if (!isSuccess) return
 
   const url = `https://t.me/giftica_bot/?startapp=ref_${data.referralCode}`
+
+  const onClick = (event: MouseEvent<HTMLInputElement>) => {
+    event.currentTarget.select()
+  }
+
+  const onSelect = (event: MouseEvent<HTMLInputElement>) => {
+    const target = event.currentTarget
+    target.setSelectionRange(0, target.value.length)
+  }
 
   return (
     <Drawer
@@ -25,7 +35,8 @@ export const InviteFriends = () => {
           <input
             value={url}
             readOnly
-            onClick={(event) => event.currentTarget.select()}
+            onClick={onClick}
+            onSelect={onSelect}
             className='w-full flex-auto truncate rounded-lg border border-neutral-600 px-2 py-1.5 text-sm text-neutral-200 transition-colors duration-200 select-text hover:text-white'
           />
         </div>
