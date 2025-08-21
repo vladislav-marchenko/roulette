@@ -7,6 +7,8 @@ export interface RouletteValues {
     isLoading: boolean
     isSuccess: boolean
     isError: boolean
+    error: Error | null
+    refetch: () => void
   }
   spin: {
     mutate: () => void

@@ -19,7 +19,9 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
     data: prizes,
     isLoading,
     isSuccess,
-    isError
+    isError,
+    error,
+    refetch
   } = useQuery({
     queryKey: ['prizes', 'unsorted'],
     queryFn: () => getPrizes()
@@ -84,7 +86,7 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
   const [isDemo, setIsDemo] = useState(false)
 
   const value = {
-    prizes: { items: prizes, isLoading, isSuccess, isError },
+    prizes: { items: prizes, isLoading, isSuccess, isError, error, refetch },
     spin: { mutate, isPending },
     overlay: { isVisible, open, close },
     roulette: { offset, scroll, isSpinning },
