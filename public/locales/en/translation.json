@@ -6,7 +6,10 @@
   },
   "play": {
     "title": "Good luck!",
-    "demo": "Demo",
+    "demo": {
+      "title": "Demo",
+      "info": "You cannot change the demo mode while spinning is in progress"
+    },
     "button": "Spin for {{amount}}",
     "prizes": "Prizes"
   },

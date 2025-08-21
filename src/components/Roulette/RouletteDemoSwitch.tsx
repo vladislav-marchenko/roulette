@@ -15,10 +15,7 @@ export const RouletteDemoSwitch = () => {
 
   const toggle = (event: ChangeEvent<HTMLInputElement>) => {
     if (isSpinning || isPending) {
-      return toast.info(
-        'You cannot change the demo mode while spinning is in progress.',
-        { duration: 3000 }
-      )
+      return toast.info(t('play.demo.info'), { duration: 3000 })
     }
 
     setIsDemo(event.target.checked)
@@ -26,7 +23,7 @@ export const RouletteDemoSwitch = () => {
 
   return (
     <div className='flex items-center gap-2'>
-      <h4>{t('play.demo')}</h4>
+      <h4>{t('play.demo.title')}</h4>
       <Switch name='demo' checked={isDemo} toggle={toggle} />
     </div>
   )

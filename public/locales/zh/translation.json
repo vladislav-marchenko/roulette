@@ -6,7 +6,10 @@
   },
   "play": {
     "title": "祝你好运！",
-    "demo": "演示",
+    "demo": {
+      "title": "演示模式",
+      "info": "旋转进行中时无法切换演示模式"
+    },
     "button": "花 {{amount}} 次旋转",
     "prizes": "奖品"
   },
