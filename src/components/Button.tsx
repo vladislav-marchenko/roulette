@@ -18,7 +18,7 @@ const variants = {
 }
 
 const sizes = {
-  sm: 'rounded-full px-2 py-1.5 text-sm',
+  sm: 'rounded-full px-2 py-1.5 text-xs sm:text-sm',
   base: 'rounded-xl px-6 py-2.5'
 }
 
