@@ -22,9 +22,11 @@ export const InviteFriends = () => {
         <InviteFriendsInfo />
         <div className='flex flex-col gap-1'>
           <h5>{t('profile.invite.linkLabel')}</h5>
-          <div className='w-full flex-auto truncate rounded-lg border border-neutral-600 px-2 py-1.5 text-sm text-neutral-200 transition-colors duration-200 select-text hover:text-white'>
-            {url}
-          </div>
+          <textarea
+            value={url}
+            readOnly
+            className='w-full flex-auto truncate rounded-lg border border-neutral-600 px-2 py-1.5 text-sm text-neutral-200 transition-colors duration-200 select-text hover:text-white'
+          />
         </div>
         <InviteFriendsButtons url={url} />
       </div>
