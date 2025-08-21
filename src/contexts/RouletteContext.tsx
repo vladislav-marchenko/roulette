@@ -21,7 +21,7 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
     isSuccess,
     isError
   } = useQuery({
-    queryKey: ['prizes'],
+    queryKey: ['prizes', 'unsorted'],
     queryFn: () => getPrizes()
   })
 
