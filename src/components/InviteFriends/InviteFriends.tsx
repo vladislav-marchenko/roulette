@@ -34,7 +34,7 @@ export const InviteFriends = () => {
             readOnly
             value={url}
             onClick={handleClick}
-            className='w-full flex-auto truncate rounded-lg border border-neutral-600 px-2 py-1.5 text-sm text-neutral-200 transition-colors duration-200 hover:text-white'
+            className='w-full flex-auto truncate rounded-lg border border-neutral-600 px-2 py-1.5 text-sm text-neutral-200 transition-colors duration-200 select-all hover:text-white'
           />
         </div>
         <InviteFriendsButtons url={url} />
