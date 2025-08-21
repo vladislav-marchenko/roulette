@@ -8,8 +8,8 @@ import { useTranslation } from 'react-i18next'
 export const Prizes = () => {
   const { t } = useTranslation()
   const { data, isLoading, isSuccess, isError, error, refetch } = useQuery({
-    queryKey: ['prizes', 'sorted'],
-    queryFn: () => getPrizes('-price')
+    queryKey: ['prizes'],
+    queryFn: () => getPrizes()
   })
 
   return (
