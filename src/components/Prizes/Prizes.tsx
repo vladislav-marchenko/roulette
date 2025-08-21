@@ -9,7 +9,7 @@ export const Prizes = () => {
   const { t } = useTranslation()
   const { data, isLoading, isSuccess, isError, error, refetch } = useQuery({
     queryKey: ['prizes'],
-    queryFn: getPrizes
+    queryFn: () => getPrizes('-price')
   })
 
   return (

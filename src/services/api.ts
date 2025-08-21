@@ -69,8 +69,8 @@ export const getMe = () => {
   return customFetch<User>({ endpoint: '/user/me' })
 }
 
-export const getPrizes = () => {
-  return customFetch<Prize[]>({ endpoint: '/prizes' })
+export const getPrizes = (sort: string = '') => {
+  return customFetch<Prize[]>({ endpoint: '/prizes', params: { sort } })
 }
 
 export const getLottie = async (url: string) => {

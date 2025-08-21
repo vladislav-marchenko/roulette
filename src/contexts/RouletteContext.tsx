@@ -22,7 +22,7 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
     isError
   } = useQuery({
     queryKey: ['prizes'],
-    queryFn: getPrizes
+    queryFn: () => getPrizes()
   })
 
   const { mutate, isPending } = useMutation({
