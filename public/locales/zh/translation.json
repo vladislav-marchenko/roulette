@@ -15,7 +15,7 @@
   },
   "inventory": {
     "buttons": {
-      "sell": "出售获得 {{amount}}",
+      "sell": "出售 {{amount}}",
       "withdraw": "提取",
       "cancel": "取消"
     },

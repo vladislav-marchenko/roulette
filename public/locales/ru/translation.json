@@ -15,7 +15,7 @@
   },
   "inventory": {
     "buttons": {
-      "sell": "Продать за {{amount}}",
+      "sell": "Продать {{amount}}",
       "withdraw": "Вывести",
       "cancel": "Отмена"
     },
