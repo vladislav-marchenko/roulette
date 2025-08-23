@@ -31,6 +31,7 @@ export const PromoForm = () => {
         <h5>{t('profile.promo.input.label')}</h5>
         <input
           value={code}
+          autoFocus
           onChange={(event) => setCode(event.target.value)}
           className='w-full rounded-lg border border-neutral-600 p-2'
           placeholder={t('profile.promo.input.placeholder')}
