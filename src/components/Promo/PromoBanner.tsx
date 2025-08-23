@@ -15,7 +15,7 @@ export const PromoBanner: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
         WebApp.HapticFeedback.impactOccurred('soft')
         onClick && onClick(event)
       }}
-      className='flex-auto basis-2/5 cursor-pointer rounded-xl bg-gradient-to-tr from-neutral-700 from-60% to-amber-500 p-px'
+      className='flex-auto basis-1/2 cursor-pointer rounded-xl bg-gradient-to-tr from-neutral-700 from-60% to-amber-500 p-px md:basis-2/5'
     >
       <div className='flex flex-auto cursor-pointer flex-col items-start rounded-xl bg-neutral-700 bg-[url("./assets/promocodes-background.png")] bg-cover p-3'>
         <h5>{t('profile.promo.banner.title')}</h5>

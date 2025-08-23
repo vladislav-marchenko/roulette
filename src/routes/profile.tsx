@@ -14,7 +14,7 @@ function RouteComponent() {
       <ProfileInfo />
       <div className='flex flex-col gap-2'>
         <div className='flex gap-2'>
-          <div className='flex basis-3/5 items-center justify-center rounded-xl bg-neutral-800 p-3 font-bold'>
+          <div className='flex basis-1/2 items-center justify-center rounded-xl bg-neutral-800 p-3 font-bold md:basis-3/5'>
             Coming soon
           </div>
           <Promo />
