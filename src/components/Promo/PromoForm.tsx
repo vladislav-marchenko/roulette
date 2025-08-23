@@ -1,6 +1,6 @@
 import { Button } from '@/components/Button'
 import { activatePromocode } from '@/services/api'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
@@ -9,10 +9,12 @@ export const PromoForm = () => {
   const { t } = useTranslation()
   const [code, setCode] = useState('')
 
+  const queryClient = useQueryClient()
   const { mutate, isPending } = useMutation({
     mutationFn: activatePromocode,
     onSuccess: () => {
       setCode('')
+      queryClient.invalidateQueries({ queryKey: ['me'] })
       toast.success('Promocode activated')
     },
     onError: (error) => {
