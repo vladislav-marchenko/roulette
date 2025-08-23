@@ -66,6 +66,22 @@
       },
       "success": "Link copied to clipboard"
     },
+    "promo": {
+      "banner": {
+        "title": "Promo Codes",
+        "description": "Join our Telegram channel to get promo codes",
+        "button": "Enter Code"
+      },
+      "title": "Enter promo codes and get rewards",
+      "description": "Enter the promo codes you receive from our Telegram channel to earn free spins, stars, and other exciting rewards. Don't miss out — check in regularly for new codes!",
+      "input": {
+        "label": "Code",
+        "placeholder": "Enter code"
+      },
+      "button": "Activate",
+      "error": "Unable to activate promo code.",
+      "success": "Promo code activated successfully!"
+    },
     "tasks": {
       "title": "Tasks",
       "categories": {

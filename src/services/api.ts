@@ -149,3 +149,10 @@ export const claimTask = (code: string) => {
 export const auth = () => {
   return customFetch<User>({ endpoint: '/user/auth' })
 }
+
+export const activatePromocode = (code: string) => {
+  return customFetch<User>({
+    endpoint: `/promocodes/${code}/activate`,
+    method: 'POST'
+  })
+}

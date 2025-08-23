@@ -66,6 +66,22 @@
       },
       "success": "链接已复制到剪贴板"
     },
+    "promo": {
+      "banner": {
+        "title": "优惠码",
+        "description": "加入我们的 Telegram 频道获取优惠码",
+        "button": "输入代码"
+      },
+      "title": "输入优惠码并领取奖励",
+      "description": "输入您从我们的 Telegram 频道获得的优惠码，即可领取免费旋转、星星和其他精彩奖励。不要错过 —— 请定期查看新代码！",
+      "input": {
+        "label": "代码",
+        "placeholder": "输入代码"
+      },
+      "button": "激活",
+      "error": "无法激活优惠码。",
+      "success": "优惠码激活成功！"
+    },
     "tasks": {
       "title": "任务",
       "categories": {

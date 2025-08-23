@@ -21,6 +21,7 @@ export default defineConfig({
     }
   },
   server: {
-    allowedHosts: ['giftica.space']
+    allowedHosts: ['giftica.space'],
+    port: 8000
   }
 })
