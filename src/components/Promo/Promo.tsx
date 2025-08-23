@@ -8,7 +8,7 @@ export const Promo = () => {
     <Drawer
       title='Promo Code'
       trigger={<PromoBanner />}
-      className='flex basis-2/5 flex-col gap-6'
+      className='flex flex-col gap-6'
     >
       <PromoInfo />
       <PromoForm />
