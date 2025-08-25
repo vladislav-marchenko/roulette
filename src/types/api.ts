@@ -10,6 +10,7 @@ export interface User {
   photoUrl: string
   languageCode: string
   referralCode: string
+  referralRate: number
 }
 
 export interface Prize {
