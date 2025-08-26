@@ -31,7 +31,7 @@ export const RouletteButton = () => {
       {isDemo && t('play.demo.title')}
       {!isDemo && (
         <>
-          {t('play.button', { amount: 30 })} <Star />
+          {t('play.button', { amount: 25 })} <Star />
         </>
       )}
     </Button>
