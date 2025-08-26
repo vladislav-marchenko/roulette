@@ -59,6 +59,10 @@
       "banner": { "title": "邀请朋友" },
       "title": "赚取星星",
       "description": "每笔存款获得 {{percent}}% 奖励",
+      "stats": {
+        "earned": "已赚取",
+        "referrals": "推荐"
+      },
       "linkLabel": "你的邀请链接",
       "buttons": {
         "copy": "复制链接",

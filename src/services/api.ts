@@ -2,6 +2,7 @@ import type {
   ActionsResponse,
   Methods,
   Prize,
+  ReferralStats,
   Reward,
   RewardsResponse,
   Task,
@@ -35,7 +36,7 @@ export const customFetch = async <Data extends object = {}>({
       filterParams({ ...params, ref: REFERRAL_CODE })
     ).toString()
 
-    const response = await fetch(`${API_URL}${endpoint}?${queryParams}`, {
+    const response = await fetch(API_URL + endpoint + '?' + queryParams, {
       method,
       headers: {
         Authorization: `tma ${WebApp.initData}`,
@@ -154,5 +155,11 @@ export const activatePromocode = (code: string) => {
   return customFetch<User>({
     endpoint: `/promocodes/${code}/activate`,
     method: 'POST'
+  })
+}
+
+export const getReferralStats = () => {
+  return customFetch<ReferralStats>({
+    endpoint: '/referrals/stats'
   })
 }

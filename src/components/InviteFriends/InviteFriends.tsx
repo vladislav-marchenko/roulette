@@ -1,6 +1,7 @@
 import { InviteFriendsBanner } from './InviteFriendsBanner'
 import { InviteFriendsButtons } from './InviteFriendsButtons'
 import { InviteFriendsInfo } from './InviteFriendsInfo'
+import { InviteFriendsStats } from './InviteFriendsStats'
 import { Drawer } from '@/components/Drawer'
 import { getMe } from '@/services/api'
 import { useQuery } from '@tanstack/react-query'
@@ -29,6 +30,7 @@ export const InviteFriends = () => {
       className='flex h-full flex-col gap-6'
     >
       <InviteFriendsInfo />
+      <InviteFriendsStats />
       <div className='flex flex-col gap-1'>
         <h5>{t('profile.invite.linkLabel')}</h5>
         <input

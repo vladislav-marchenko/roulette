@@ -67,3 +67,8 @@ export interface ActionsResponse {
   actions: Action[]
   hasNext: boolean
 }
+
+export interface ReferralStats {
+  amount: number
+  earned: number
+}

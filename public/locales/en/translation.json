@@ -59,6 +59,10 @@
       "banner": { "title": "Invite friends" },
       "title": "Earn stars",
       "description": "Earn {{percent}}% from every deposit",
+      "stats": {
+        "earned": "Earned",
+        "referrals": "Referrals"
+      },
       "linkLabel": "Your link for friends",
       "buttons": {
         "copy": "Copy link",
