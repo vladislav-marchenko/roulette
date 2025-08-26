@@ -15,7 +15,7 @@ export const InviteFriendsStatsItem: FC<InviteFriendsStatsItemProps> = ({
   color
 }) => {
   return (
-    <div className='flex flex-auto gap-1'>
+    <div className='flex basis-1/2 gap-1'>
       <Icon size={18} color={color} />
       <div>
         <h5>{title}</h5>
