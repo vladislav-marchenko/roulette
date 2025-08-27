@@ -13,6 +13,7 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as GiftsRouteImport } from './routes/gifts'
 import { Route as BalanceRouteImport } from './routes/balance'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RouletteIdRouteImport } from './routes/roulette/$id'
 
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
@@ -34,18 +35,25 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RouletteIdRoute = RouletteIdRouteImport.update({
+  id: '/roulette/$id',
+  path: '/roulette/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/balance': typeof BalanceRoute
   '/gifts': typeof GiftsRoute
   '/profile': typeof ProfileRoute
+  '/roulette/$id': typeof RouletteIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/balance': typeof BalanceRoute
   '/gifts': typeof GiftsRoute
   '/profile': typeof ProfileRoute
+  '/roulette/$id': typeof RouletteIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/balance': typeof BalanceRoute
   '/gifts': typeof GiftsRoute
   '/profile': typeof ProfileRoute
+  '/roulette/$id': typeof RouletteIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/balance' | '/gifts' | '/profile'
+  fullPaths: '/' | '/balance' | '/gifts' | '/profile' | '/roulette/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/balance' | '/gifts' | '/profile'
-  id: '__root__' | '/' | '/balance' | '/gifts' | '/profile'
+  to: '/' | '/balance' | '/gifts' | '/profile' | '/roulette/$id'
+  id: '__root__' | '/' | '/balance' | '/gifts' | '/profile' | '/roulette/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   BalanceRoute: typeof BalanceRoute
   GiftsRoute: typeof GiftsRoute
   ProfileRoute: typeof ProfileRoute
+  RouletteIdRoute: typeof RouletteIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/roulette/$id': {
+      id: '/roulette/$id'
+      path: '/roulette/$id'
+      fullPath: '/roulette/$id'
+      preLoaderRoute: typeof RouletteIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   BalanceRoute: BalanceRoute,
   GiftsRoute: GiftsRoute,
   ProfileRoute: ProfileRoute,
+  RouletteIdRoute: RouletteIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

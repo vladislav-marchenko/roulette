@@ -1,0 +1,41 @@
+import { Star } from '@/components/Icons'
+import { Link } from '@tanstack/react-router'
+import type { FC } from 'react'
+
+export const RoulettesItem: FC<{
+  name: string
+  price: number
+  image: string
+  color: string
+  code: string
+}> = ({ name, price, image, color, code }) => {
+  return (
+    <Link
+      to='/roulette/$id'
+      params={{ id: 'classic' }}
+      className='group relative block cursor-pointer rounded-xl p-px'
+      style={{
+        background: `linear-gradient(to top, ${color} 0%, #404040 55%)`
+      }}
+    >
+      <div
+        className='flex flex-col items-center rounded-xl p-1.5'
+        style={{
+          background: `linear-gradient(to top, ${color}66 0%, #262626 50%)`
+        }}
+      >
+        <img src={image} />
+        <h4>{name} Box</h4>
+        <div className='flex items-center gap-1 rounded-full bg-white/40 px-2 py-0.5'>
+          <span className='text-xs font-medium'>{price}</span>
+          <Star size={12} />
+        </div>
+      </div>
+      {code !== 'classic' && (
+        <div className='absolute top-0 left-0 flex h-full w-full items-center justify-center rounded-xl bg-neutral-800/70 font-bold backdrop-blur'>
+          Coming soon
+        </div>
+      )}
+    </Link>
+  )
+}
