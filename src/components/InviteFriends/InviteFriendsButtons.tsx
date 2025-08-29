@@ -13,7 +13,7 @@ export const InviteFriendsButtons: FC<{ url: string }> = ({ url }) => {
   }
 
   return (
-    <div className='flex items-center gap-2'>
+    <div className='flex flex-wrap items-center gap-2'>
       <Button variant='secondary' onClick={handleClick} className='flex-auto'>
         {t('profile.invite.buttons.copy')}
       </Button>

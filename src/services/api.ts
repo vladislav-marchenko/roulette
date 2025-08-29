@@ -5,6 +5,7 @@ import type {
   ReferralStats,
   Reward,
   RewardsResponse,
+  Roulette,
   Task,
   TaskAction,
   User
@@ -12,7 +13,7 @@ import type {
 import { filterParams, getStartParamByKey } from '@/utils'
 import WebApp from '@twa-dev/sdk'
 
-const API_URL = 'https://api.giftica.space'
+const API_URL = 'http://localhost:3000'
 const REFERRAL_CODE = getStartParamByKey({
   startParam: WebApp.initDataUnsafe.start_param,
   key: 'ref_'
@@ -161,5 +162,17 @@ export const activatePromocode = (code: string) => {
 export const getReferralStats = () => {
   return customFetch<ReferralStats>({
     endpoint: '/referrals/stats'
+  })
+}
+
+export const getRoulettes = () => {
+  return customFetch<Omit<Roulette, 'prizes'>[]>({
+    endpoint: '/roulettes'
+  })
+}
+
+export const getRoulette = (code: string) => {
+  return customFetch<Roulette>({
+    endpoint: `/roulettes/${code}`
   })
 }

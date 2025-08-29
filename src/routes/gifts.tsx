@@ -37,7 +37,7 @@ function RouteComponent() {
     return <Error error={error} refetch={refetch} className='flex-auto' />
   }
 
-  if (!isFetching && isEmpty) {
+  if (isSuccess && isEmpty) {
     return <Empty title={t('inventory.empty')} className='flex-auto' />
   }
 

@@ -1,61 +1,36 @@
-import { RoulettesItem } from '@/components/Roulettes/RoulettesItem'
+import { Empty } from '@/components/Empty'
+import { Error } from '@/components/Error'
+import { RoulettesContent } from '@/components/Roulettes/RoulettesContent'
+import { RoulettesSkeleton } from '@/components/Roulettes/RoulettesSkeleton'
+import { getRoulettes } from '@/services/api'
+import { useQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent
 })
 
-const data = [
-  {
-    code: 'classic',
-    name: 'Classic',
-    price: 25,
-    image: 'https://storage.yandexcloud.net/giftica/cases/classic.png',
-    color: '#973c00'
-  },
-  {
-    code: 'snoop',
-    name: 'Snoop',
-    price: 25,
-    image: 'https://storage.yandexcloud.net/giftica/cases/snoop.png',
-    color: '#8e51ff'
-  },
-  {
-    code: 'sweet',
-    name: 'Sweet',
-    price: 25,
-    image: 'https://storage.yandexcloud.net/giftica/cases/sweet.png',
-    color: '#fb64b6'
-  },
-  {
-    code: 'spooky',
-    name: 'Spooky',
-    price: 25,
-    image: 'https://storage.yandexcloud.net/giftica/cases/spooky.png',
-    color: '#a6a09b'
-  },
-  {
-    code: 'love',
-    name: 'Love',
-    price: 25,
-    image: 'https://storage.yandexcloud.net/giftica/cases/love.png',
-    color: '#ff2056'
-  },
-  {
-    code: 'rich',
-    name: 'Rich',
-    price: 25,
-    image: 'https://storage.yandexcloud.net/giftica/cases/rich.png',
-    color: '#d4d4d4'
-  }
-]
-
 function RouteComponent() {
+  const { data, isLoading, isSuccess, isError, error, refetch } = useQuery({
+    queryKey: ['roulettes'],
+    queryFn: () => getRoulettes()
+  })
+
+  const isEmpty = !data?.length
+
+  if (isError) {
+    return <Error error={error} refetch={refetch} className='flex-auto' />
+  }
+
+  if (isSuccess && isEmpty) {
+    // !!!! Empty title
+    return <Empty title={'EMPTY'} className='flex-auto' />
+  }
+
   return (
-    <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4'>
-      {data.map((item) => (
-        <RoulettesItem {...item} />
-      ))}
+    <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 sm:grid-cols-[repeat(auto-fill,minmax(190px,1fr))]'>
+      {isSuccess && <RoulettesContent roulettes={data} />}
+      {isLoading && <RoulettesSkeleton />}
     </div>
   )
 }

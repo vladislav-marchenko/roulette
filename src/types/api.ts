@@ -72,3 +72,13 @@ export interface ReferralStats {
   amount: number
   earned: number
 }
+
+export interface Roulette {
+  _id: string
+  code: string
+  name: string
+  price: number
+  image: string
+  color: string
+  prizes: Prize[]
+}
