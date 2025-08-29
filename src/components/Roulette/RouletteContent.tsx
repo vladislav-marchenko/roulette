@@ -3,14 +3,25 @@ import { RouletteItems } from './RouletteItems'
 import { RouletteItemsSkeleton } from './RouletteItemsSkeleton'
 import { ITEM_WIDTH, REPEAT_COUNT } from '@/consts'
 import { RouletteContext } from '@/contexts/RouletteContext'
+import { getRoulette } from '@/services/api'
 import type { RouletteValues } from '@/types/contexts'
+import { useQuery } from '@tanstack/react-query'
+import { useParams } from '@tanstack/react-router'
 import { useContext } from 'react'
 
 export const RouletteContent = () => {
   const {
-    prizes: { items = Array.from({ length: 10 }), isSuccess, isLoading },
     roulette: { offset, isSpinning }
   } = useContext(RouletteContext) as RouletteValues
+
+  const { id } = useParams({ from: '/roulette/$id' })
+  const { data, isLoading, isSuccess } = useQuery({
+    queryKey: ['roulette', id],
+    queryFn: () => getRoulette(id),
+    enabled: !!id
+  })
+
+  const prizesCount = data?.prizes.length ?? 20
 
   return (
     <div className='relative w-full overflow-hidden rounded-lg'>
@@ -19,12 +30,12 @@ export const RouletteContent = () => {
       <div
         className='flex gap-2'
         style={{
-          width: items.length * ITEM_WIDTH * REPEAT_COUNT + 'px',
+          width: prizesCount * ITEM_WIDTH * REPEAT_COUNT + 'px',
           transform: `translateX(-${offset}px)`,
           transition: isSpinning ? 'none' : 'transform 0.1s ease-out'
         }}
       >
-        {isSuccess && <RouletteItems prizes={items} />}
+        {isSuccess && <RouletteItems prizes={data.prizes} />}
         {isLoading && <RouletteItemsSkeleton />}
       </div>
     </div>

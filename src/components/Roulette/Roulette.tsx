@@ -1,13 +1,16 @@
 import { RouletteContent } from './RouletteContent'
 import { Error } from '@/components/Error'
-import { RouletteContext } from '@/contexts/RouletteContext'
-import type { RouletteValues } from '@/types/contexts'
-import { useContext } from 'react'
+import { getRoulette } from '@/services/api'
+import { useQuery } from '@tanstack/react-query'
+import { useParams } from '@tanstack/react-router'
 
 export const Roulette = () => {
-  const {
-    prizes: { isError, error, refetch }
-  } = useContext(RouletteContext) as RouletteValues
+  const { id } = useParams({ from: '/roulette/$id' })
+  const { isError, error, refetch } = useQuery({
+    queryKey: ['roulette', id],
+    queryFn: () => getRoulette(id),
+    enabled: !!id
+  })
 
   if (isError) {
     return <Error error={error as Error} refetch={refetch} />

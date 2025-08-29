@@ -14,7 +14,7 @@ export const RoulettesItem: FC<Omit<Roulette, 'prizes'>> = ({
   return (
     <Link
       to='/roulette/$id'
-      params={{ id: 'classic' }}
+      params={{ id: code }}
       className='group relative block cursor-pointer rounded-xl p-px'
       style={{
         background: `linear-gradient(to top, ${color} 0%, #404040 55%)`

@@ -18,20 +18,14 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
   const { id } = useParams({ from: '/roulette/$id' })
 
   const queryClient = useQueryClient()
-  const {
-    data: prizes,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-    refetch
-  } = useQuery({
-    queryKey: ['prizes', id],
-    queryFn: () => getRoulette(id)
+  const { data } = useQuery({
+    queryKey: ['roulette', id],
+    queryFn: () => getRoulette(id),
+    enabled: !!id
   })
 
   const { mutate, isPending } = useMutation({
-    mutationFn: spin,
+    mutationFn: () => spin(id),
     onSuccess: (reward) => {
       spinRoulette(reward)
       queryClient.invalidateQueries({ queryKey: ['me'] })
@@ -45,10 +39,11 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
 
   const [reward, setReward] = useState<Reward>()
   const { isVisible, open, close } = useOverlay()
+  const [isDemo, setIsDemo] = useState(false)
 
   const { offset, scroll, isSpinning } = useRoulette({
     itemWidth: ITEM_WIDTH,
-    itemCount: prizes?.length ?? 0,
+    itemCount: data?.prizes.length ?? 0,
     onSpinEnd: () => {
       open()
       WebApp.HapticFeedback.impactOccurred('soft')
@@ -56,10 +51,12 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
   })
 
   function spinRoulette(reward: Reward) {
-    if (!prizes) return
+    if (!data) return
 
     setReward(reward)
-    const index = prizes.findIndex((prize) => prize.code === reward.prizeCode)
+    const index = data.prizes.findIndex(
+      (prize) => prize.code === reward.prizeCode
+    )
     if (index === -1) {
       toast.info(
         'Unable to find the scroll index for the roulette prize, but the gift has been successfully added to your profile.'
@@ -72,9 +69,9 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
   }
 
   const demoSpin = () => {
-    if (!prizes) return
+    if (!data) return
 
-    const prize = prizes[Math.floor(Math.random() * prizes.length)]
+    const prize = data.prizes[Math.floor(Math.random() * data.prizes.length)]
     const reward = {
       _id: '',
       prizeCode: prize.code,
@@ -86,13 +83,10 @@ export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
     spinRoulette(reward)
   }
 
-  const [isDemo, setIsDemo] = useState(false)
-
   const value = {
-    prizes: { items: prizes, isLoading, isSuccess, isError, error, refetch },
+    roulette: { offset, scroll, isSpinning },
     spin: { mutate, isPending },
     overlay: { isVisible, open, close },
-    roulette: { offset, scroll, isSpinning },
     demo: { spin: demoSpin, isDemo, setIsDemo },
     reward
   }
