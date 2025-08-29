@@ -13,7 +13,7 @@ export const Route = createFileRoute('/')({
 function RouteComponent() {
   const { data, isLoading, isSuccess, isError, error, refetch } = useQuery({
     queryKey: ['roulettes'],
-    queryFn: () => getRoulettes()
+    queryFn: getRoulettes
   })
 
   const isEmpty = !data?.length

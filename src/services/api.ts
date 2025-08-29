@@ -81,7 +81,7 @@ export const getLottie = async (url: string) => {
 }
 
 export const spin = () => {
-  return customFetch<Reward>({ endpoint: '/roulette/spin', method: 'POST' })
+  return customFetch<Reward>({ endpoint: '/roulettes/spin', method: 'POST' })
 }
 
 export const getRewards = (page: number = 1) => {
