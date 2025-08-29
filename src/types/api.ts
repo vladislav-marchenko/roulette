@@ -17,7 +17,10 @@ export interface Prize {
   _id: string
   code: string
   name: string
-  price: number
+  price: {
+    ton: number
+    stars: number
+  }
   image: string
   lottie: string
 }

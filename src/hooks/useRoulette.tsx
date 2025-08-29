@@ -36,7 +36,7 @@ export const useRoulette = ({
 
       const startTime = performance.now()
       const startOffset = offset
-      const extraCycles = 3
+      const extraCycles = Math.round(33 / itemCount)
 
       const maxRandomOffset = itemWidth * 0.25
       const randomOffset = Math.random() * maxRandomOffset * 2 - maxRandomOffset

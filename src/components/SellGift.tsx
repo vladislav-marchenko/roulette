@@ -65,7 +65,7 @@ export const SellGift: FC<SellGiftProps> = ({
             className
           )}
         >
-          {t('inventory.buttons.sell', { amount: price })}
+          {t('inventory.buttons.sell', { amount: price.stars })}
           <Star />
         </Button>
       }
@@ -78,7 +78,7 @@ export const SellGift: FC<SellGiftProps> = ({
           isLoading={isPending}
           className='flex items-center gap-1'
         >
-          {t('inventory.buttons.sell', { amount: price })} <Star />
+          {t('inventory.buttons.sell', { amount: price.stars })} <Star />
         </Button>
         <DrawerVaul.Close asChild>
           <Button variant='secondary'>{t('inventory.buttons.cancel')}</Button>

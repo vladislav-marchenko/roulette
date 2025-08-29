@@ -18,7 +18,7 @@ export const RouletteButton = () => {
     demo: { isDemo, spin: demoSpin }
   } = useContext(RouletteContext) as RouletteValues
 
-  const { isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['roulette', id],
     queryFn: () => getRoulette(id),
     enabled: !!id
@@ -36,13 +36,13 @@ export const RouletteButton = () => {
       onClick={handleClick}
       disabled={isSpinning || isLoading}
       isLoading={isPending}
-      className='flex w-full max-w-xs items-center gap-1 self-center'
+      className='w-full max-w-xs self-center'
     >
       {isDemo && t('play.demo.title')}
       {!isDemo && (
-        <>
-          {t('play.button', { amount: 25 })} <Star />
-        </>
+        <div className='flex items-center gap-1'>
+          {t('play.button', { amount: data?.price ?? '???' })} <Star />
+        </div>
       )}
     </Button>
   )

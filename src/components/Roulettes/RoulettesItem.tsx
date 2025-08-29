@@ -15,7 +15,7 @@ export const RoulettesItem: FC<Omit<Roulette, 'prizes'>> = ({
     <Link
       to='/roulette/$id'
       params={{ id: code }}
-      className='group relative block cursor-pointer rounded-xl p-px'
+      className='group block cursor-pointer rounded-xl p-px'
       style={{
         background: `linear-gradient(to top, ${color} 0%, #404040 55%)`
       }}
@@ -33,11 +33,6 @@ export const RoulettesItem: FC<Omit<Roulette, 'prizes'>> = ({
           <Star size={12} />
         </div>
       </div>
-      {code !== 'classic' && (
-        <div className='absolute top-0 left-0 flex h-full w-full items-center justify-center rounded-xl bg-neutral-800/70 font-bold backdrop-blur'>
-          Coming soon
-        </div>
-      )}
     </Link>
   )
 }

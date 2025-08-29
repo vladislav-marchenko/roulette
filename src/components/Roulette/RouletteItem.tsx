@@ -1,5 +1,5 @@
-import { Price } from '../Price'
 import { Image } from '@/components/Image'
+import { Price } from '@/components/Price'
 import { ITEM_WIDTH } from '@/consts'
 import type { Prize } from '@/types/api'
 import { type FC } from 'react'
@@ -14,7 +14,7 @@ export const RouletteItem: FC<Pick<Prize, 'image' | 'price'>> = ({
       style={{ width: ITEM_WIDTH + 'px' }}
     >
       <Image src={image} className='w-3/4' />
-      <Price value={price} />
+      <Price value={price.stars} />
     </div>
   )
 }
