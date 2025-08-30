@@ -4,7 +4,7 @@ import { useMemo, type FC } from 'react'
 
 export const PrizesContent: FC<{ prizes: Prize[] }> = ({ prizes }) => {
   const sortedPrizes = useMemo(
-    () => [...prizes].sort((a, b) => b.price - a.price),
+    () => [...prizes].sort((a, b) => b.price.stars - a.price.stars),
     [prizes]
   )
 
