@@ -3,6 +3,7 @@ import { Image } from '@/components/Image'
 import type { Roulette } from '@/types/api'
 import { Link } from '@tanstack/react-router'
 import type { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const RoulettesItem: FC<Omit<Roulette, 'prizes'>> = ({
   name,
@@ -11,6 +12,8 @@ export const RoulettesItem: FC<Omit<Roulette, 'prizes'>> = ({
   color,
   code
 }) => {
+  const { t } = useTranslation()
+
   return (
     <Link
       to='/roulette/$id'
@@ -21,14 +24,16 @@ export const RoulettesItem: FC<Omit<Roulette, 'prizes'>> = ({
       }}
     >
       <div
-        className='flex flex-col items-center rounded-xl p-1.5'
+        className='flex h-full flex-col items-center rounded-xl p-1.5'
         style={{
           background: `linear-gradient(to top, ${color}66 0%, #262626 50%)`
         }}
       >
         <Image src={image} className='w-full' />
-        <h4>{name} Box</h4>
-        <div className='flex items-center gap-1 rounded-full bg-white/40 px-2 py-0.5'>
+        <h4 className='text-center leading-none'>
+          {t(`play.cases.${code}`, { defaultValue: `${name} Box` })}
+        </h4>
+        <div className='my-2 flex items-center gap-1 rounded-full bg-white/40 px-2 py-0.5'>
           <span className='text-xs font-medium'>{price}</span>
           <Star size={12} />
         </div>

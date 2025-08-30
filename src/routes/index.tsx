@@ -5,12 +5,14 @@ import { RoulettesSkeleton } from '@/components/Roulettes/RoulettesSkeleton'
 import { getRoulettes } from '@/services/api'
 import { useQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
+import { useTranslation } from 'react-i18next'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent
 })
 
 function RouteComponent() {
+  const { t } = useTranslation()
   const { data, isLoading, isSuccess, isError, error, refetch } = useQuery({
     queryKey: ['roulettes'],
     queryFn: getRoulettes
@@ -23,12 +25,11 @@ function RouteComponent() {
   }
 
   if (isSuccess && isEmpty) {
-    // !!!! Empty title
-    return <Empty title={'EMPTY'} className='flex-auto' />
+    return <Empty title={t('play.empty')} className='flex-auto' />
   }
 
   return (
-    <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 sm:grid-cols-[repeat(auto-fill,minmax(190px,1fr))]'>
+    <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 sm:grid-cols-[repeat(auto-fill,minmax(170px,1fr))]'>
       {isSuccess && <RoulettesContent roulettes={data} />}
       {isLoading && <RoulettesSkeleton />}
     </div>

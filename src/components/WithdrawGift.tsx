@@ -1,6 +1,7 @@
 import { Button } from './Button'
 import { Drawer } from './Drawer'
 import { GiftPreview } from './GiftPreview'
+import { Star } from './Icons'
 import { withdrawReward } from '@/services/api'
 import type { Reward } from '@/types/api'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -46,12 +47,17 @@ export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
     >
       <GiftPreview name={name} lottie={lottie} image={image} />
       <div className='flex flex-col gap-2'>
-        <Button
-          onClick={() => mutate(reward._id)}
-          isLoading={isPending}
-          className='flex items-center gap-1'
-        >
-          {t('inventory.buttons.withdraw')}
+        <Button onClick={() => mutate(reward._id)} isLoading={isPending}>
+          <div className='flex flex-col items-center gap-0.5'>
+            <span className='leading-none'>
+              {t('inventory.buttons.withdraw')}
+            </span>
+            {!reward.prize.telegramGiftId && (
+              <div className='flex items-center gap-0.5 text-xs leading-none text-neutral-400'>
+                Fee 25 <Star size={11} />
+              </div>
+            )}
+          </div>
         </Button>
         <DrawerVaul.Close asChild>
           <Button variant='secondary'>{t('inventory.buttons.cancel')}</Button>

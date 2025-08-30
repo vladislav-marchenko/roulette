@@ -39,7 +39,7 @@ export const customFetch = async <Data extends object = {}>({
     const response = await fetch(API_URL + endpoint + '?' + queryParams, {
       method,
       headers: {
-        Authorization: `tma query_id=AAHzg_cuAAAAAPOD9y5vZd4T&user=%7B%22id%22%3A787973107%2C%22first_name%22%3A%22Vladislav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22vnxzm%22%2C%22language_code%22%3A%22en%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FdC8A7k3lxiZDaFVGhU16_enWClpxh5nJSlGTuCy3UAE.svg%22%7D&auth_date=1756487515&signature=3le0jKiuGrrVrE76TgOUwnJTP7H9-XYpwuT2TMv95DRjAiV6HpcQ64JvAFNOz2EaJ-WbKN_3wrhawm8V5uu7BA&hash=57a0b41c753f2bfa5ad5e067a9e85cc0772c7e7ddc14091673e979983c8fecf4`,
+        Authorization: `tma query_id=AAHzg_cuAAAAAPOD9y5i6LU5&user=%7B%22id%22%3A787973107%2C%22first_name%22%3A%22Vladislav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22vnxzm%22%2C%22language_code%22%3A%22en%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FdC8A7k3lxiZDaFVGhU16_enWClpxh5nJSlGTuCy3UAE.svg%22%7D&auth_date=1756575240&signature=brQZFl_SdcUtg6JJpTeJEEUlOoKsbLzjOtjbUkRfXfa5Ow_wWs60mOMpcFbS1y1v-Vnt2G50zg7Hb_XV6S65Bg&hash=3415a0be7a19ee05149b0a55d2bf7dcff59737ca90f54956a1143055ad1afd6c`,
         ...headers
       },
       ...(body && { body })

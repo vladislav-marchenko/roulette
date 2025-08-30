@@ -23,6 +23,7 @@ export interface Prize {
   }
   image: string
   lottie: string
+  telegramGiftId?: string
 }
 
 export interface Reward {
