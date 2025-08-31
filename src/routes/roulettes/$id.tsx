@@ -4,6 +4,7 @@ import { Roulette } from '@/components/Roulette/Roulette'
 import { RouletteButton } from '@/components/Roulette/RouletteButton'
 import { RouletteDemoSwitch } from '@/components/Roulette/RouletteDemoSwitch'
 import { RouletteContextProvider } from '@/contexts/RouletteContext'
+import { useBackButton } from '@/hooks/useBackButton'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { createFileRoute } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
@@ -13,8 +14,10 @@ export const Route = createFileRoute('/roulettes/$id')({
 })
 
 function App() {
-  const [isSwitchDisplayed] = useLocalStorage('demoModeSwitch', true)
   const { t } = useTranslation()
+  const [isSwitchDisplayed] = useLocalStorage('demoModeSwitch', true)
+
+  useBackButton()
 
   return (
     <RouletteContextProvider>
