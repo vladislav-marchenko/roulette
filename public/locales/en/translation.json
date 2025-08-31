@@ -30,7 +30,10 @@
   "inventory": {
     "buttons": {
       "sell": "Sell {{amount}}",
-      "withdraw": "Withdraw",
+      "withdraw": {
+        "title": "Withdraw",
+        "subtitle": "Fee {{fee}}"
+      },
       "cancel": "Cancel"
     },
     "sell": {

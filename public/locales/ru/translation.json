@@ -29,7 +29,10 @@
   "inventory": {
     "buttons": {
       "sell": "Продать {{amount}}",
-      "withdraw": "Вывести",
+      "withdraw": {
+        "title": "Вывести",
+        "subtitle": "Комиссия {{fee}}"
+      },
       "cancel": "Отмена"
     },
     "sell": {

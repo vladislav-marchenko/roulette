@@ -50,11 +50,12 @@ export const WithdrawGift: FC<{ reward: Reward }> = ({ reward }) => {
         <Button onClick={() => mutate(reward._id)} isLoading={isPending}>
           <div className='flex flex-col items-center gap-0.5'>
             <span className='leading-none'>
-              {t('inventory.buttons.withdraw')}
+              {t('inventory.buttons.withdraw.title')}
             </span>
             {!reward.prize.telegramGiftId && (
               <div className='flex items-center gap-0.5 text-xs leading-none text-neutral-400'>
-                Fee 25 <Star size={11} />
+                {t('inventory.buttons.withdraw.subtitle', { fee: 25 })}
+                <Star size={11} />
               </div>
             )}
           </div>

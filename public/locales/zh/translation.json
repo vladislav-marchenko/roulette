@@ -30,7 +30,10 @@
   "inventory": {
     "buttons": {
       "sell": "出售 {{amount}}",
-      "withdraw": "提取",
+      "withdraw": {
+        "title": "提现",
+        "subtitle": "手续费 {{fee}}"
+      },
       "cancel": "取消"
     },
     "sell": {
