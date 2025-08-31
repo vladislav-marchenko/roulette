@@ -18,7 +18,11 @@
       "spooky": "Spooky Box",
       "love": "Love Box",
       "rich": "Rich Box",
-      "snoop": "Snoop Box"
+      "snoop": "Snoop Box",
+      "winter": "Winter Box",
+      "party": "Party Box",
+      "magic": "Magic Box",
+      "plush": "Plush Box"
     },
     "empty": "No cases found"
   },
