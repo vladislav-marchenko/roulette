@@ -1,15 +1,14 @@
-import { useState, type FC } from 'react'
+import { useState, type FC, type HTMLAttributes } from 'react'
 
-interface ImageProps {
+interface ImageProps extends HTMLAttributes<HTMLDivElement> {
   src?: string
-  className?: string
 }
 
-export const Image: FC<ImageProps> = ({ src, className }) => {
+export const Image: FC<ImageProps> = ({ src, ...props }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   return (
-    <div className={className}>
+    <div {...props}>
       <img
         src={src}
         onLoad={() => setIsImageLoaded(true)}
