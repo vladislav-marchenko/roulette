@@ -12,7 +12,7 @@ import type {
 import { filterParams, getStartParamByKey } from '@/utils'
 import WebApp from '@twa-dev/sdk'
 
-const API_URL = 'http://localhost:3000'
+const API_URL = 'https://api.giftica.space'
 const REFERRAL_CODE = getStartParamByKey({
   startParam: WebApp.initDataUnsafe.start_param,
   key: 'ref_'
@@ -39,7 +39,7 @@ export const customFetch = async <Data extends object = {}>({
     const response = await fetch(API_URL + endpoint + '?' + queryParams, {
       method,
       headers: {
-        Authorization: `tma query_id=AAHzg_cuAAAAAPOD9y6HY2oF&user=%7B%22id%22%3A787973107%2C%22first_name%22%3A%22Vladislav%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22vnxzm%22%2C%22language_code%22%3A%22en%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FdC8A7k3lxiZDaFVGhU16_enWClpxh5nJSlGTuCy3UAE.svg%22%7D&auth_date=1756665094&signature=PynH2u5h5nGfpWwO-QP8VaUGWPdJfhdFEqja5_sq0mGMo9b3fws8a2zOpLqtGQwHiucP8EndceLrcM7rXHf6AA&hash=a4ed0e4ef53817cfad9f5577282a1e363d10c75b460ce3b08884bbc4e9378adc`,
+        Authorization: `tma ${WebApp.initData}`,
         ...headers
       },
       ...(body && { body })
