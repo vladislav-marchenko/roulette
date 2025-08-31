@@ -139,6 +139,7 @@
       "fee": "Fee {{fee}}%",
       "errors": {
         "insufficient": "Insufficient balance",
+        "max": "The maximum withdrawal amount is {{amount}} stars",
         "withdrawal": {
           "title": "Unable to withdraw gift",
           "description": "Please contact support."

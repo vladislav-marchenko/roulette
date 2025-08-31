@@ -139,6 +139,7 @@
       "fee": "手续费 {{fee}}%",
       "errors": {
         "insufficient": "余额不足",
+        "max": "最大提现额度为 {{amount}} 星",
         "withdrawal": {
           "title": "无法提取礼物",
           "description": "请联系支持。"

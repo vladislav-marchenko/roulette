@@ -38,7 +38,16 @@ export const WithdrawStars = () => {
     }
   })
 
-  const isSufficient = isSuccess && value <= data.balance
+  const getErrorMessage = () => {
+    if (isSuccess && value > data.balance) {
+      return t('balance.withdraw.errors.insufficient')
+    }
+
+    const max = 5000
+    if (value > max) {
+      return t('balance.withdraw.errors.max', { amount: max })
+    }
+  }
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault()
@@ -66,11 +75,7 @@ export const WithdrawStars = () => {
           <StarsInput
             value={value}
             setValue={setValue}
-            error={
-              !isSufficient
-                ? t('balance.withdraw.errors.insufficient')
-                : undefined
-            }
+            error={getErrorMessage()}
           />
           {isSuccess && (
             <WithdrawStarsMaxButton onClick={() => setValue(data.balance)} />
@@ -80,7 +85,7 @@ export const WithdrawStars = () => {
           </span>
         </div>
         <WithdrawStarsButton
-          disabled={value === 0 || !isSufficient}
+          disabled={value === 0 || !!getErrorMessage()}
           isPending={isPending}
           value={value}
         />
