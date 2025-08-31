@@ -21,7 +21,7 @@ function App() {
   return (
     <RouletteContextProvider>
       <div className='flex flex-col gap-4'>
-        <div className='flex items-center justify-between'>
+        <div className='flex items-start justify-between gap-2'>
           <RouletteTitle />
           {isSwitchDisplayed && <RouletteDemoSwitch />}
         </div>

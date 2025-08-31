@@ -14,7 +14,7 @@ export const RouletteTitle = () => {
   })
 
   if (isLoading) {
-    return <div className='skeleton h-5 w-28' />
+    return <div className='skeleton h-6 w-28' />
   }
 
   if (!isSuccess) return
