@@ -15,7 +15,7 @@ export const RouletteContext = createContext<RouletteValues | null>(null)
 export const RouletteContextProvider: FC<{ children: ReactNode }> = ({
   children
 }) => {
-  const { id } = useParams({ from: '/roulette/$id' })
+  const { id } = useParams({ from: '/roulettes/$id' })
 
   const queryClient = useQueryClient()
   const { data } = useQuery({

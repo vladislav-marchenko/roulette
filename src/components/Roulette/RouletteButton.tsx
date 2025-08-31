@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 export const RouletteButton = () => {
   const { t } = useTranslation()
-  const { id } = useParams({ from: '/roulette/$id' })
+  const { id } = useParams({ from: '/roulettes/$id' })
 
   const {
     roulette: { isSpinning },

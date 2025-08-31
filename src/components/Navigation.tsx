@@ -11,7 +11,7 @@ const items = [
   },
   {
     nameKey: 'navigation.play',
-    href: '/',
+    href: '/roulettes',
     icon: FaDiceFive
   },
   {
@@ -37,6 +37,7 @@ export const Navigation = () => {
           to={href}
           onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
           className='flex flex-auto flex-col items-center gap-1 p-3 text-neutral-400 md:p-2.5 [.active]:text-white'
+          activeOptions={{ exact: false }}
         >
           <Icon size={24} />
           <span className='text-xs font-semibold'>{t(nameKey)}</span>

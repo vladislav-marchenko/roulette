@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useParams } from '@tanstack/react-router'
 
 export const Roulette = () => {
-  const { id } = useParams({ from: '/roulette/$id' })
+  const { id } = useParams({ from: '/roulettes/$id' })
   const { isError, error, refetch } = useQuery({
     queryKey: ['roulette', id],
     queryFn: () => getRoulette(id),

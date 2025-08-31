@@ -8,7 +8,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { createFileRoute } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 
-export const Route = createFileRoute('/roulette/$id')({
+export const Route = createFileRoute('/roulettes/$id')({
   component: App
 })
 

@@ -14,7 +14,7 @@ export const RouletteContent = () => {
     roulette: { offset, isSpinning }
   } = useContext(RouletteContext) as RouletteValues
 
-  const { id } = useParams({ from: '/roulette/$id' })
+  const { id } = useParams({ from: '/roulettes/$id' })
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ['roulette', id],
     queryFn: () => getRoulette(id),

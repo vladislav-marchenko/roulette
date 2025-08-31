@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 export const Prizes = () => {
   const { t } = useTranslation()
-  const { id } = useParams({ from: '/roulette/$id' })
+  const { id } = useParams({ from: '/roulettes/$id' })
 
   const { data, isLoading, isSuccess, isError, error, refetch } = useQuery({
     queryKey: ['roulette', id],
