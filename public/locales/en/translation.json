@@ -100,7 +100,7 @@
         "placeholder": "Enter code"
       },
       "button": "Activate",
-      "error": "Unable to activate promo code.",
+      "error": "Unable to activate promo code",
       "success": "Promo code activated successfully!"
     },
     "tasks": {

@@ -100,7 +100,7 @@
         "placeholder": "输入代码"
       },
       "button": "激活",
-      "error": "无法激活优惠码。",
+      "error": "无法激活优惠码",
       "success": "优惠码激活成功！"
     },
     "tasks": {

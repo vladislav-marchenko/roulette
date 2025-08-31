@@ -15,10 +15,10 @@ export const PromoForm = () => {
     onSuccess: () => {
       setCode('')
       queryClient.invalidateQueries({ queryKey: ['me'] })
-      toast.success('Promocode activated')
+      toast.success(t('profile.promo.success'))
     },
     onError: (error) => {
-      toast.error(error.message)
+      toast.error(`${t('profile.promo.error')}: ${error.message}`)
     }
   })
 
