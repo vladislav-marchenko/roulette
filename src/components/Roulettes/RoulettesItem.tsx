@@ -2,6 +2,7 @@ import { Star } from '@/components/Icons'
 import { Image } from '@/components/Image'
 import type { Roulette } from '@/types/api'
 import { Link } from '@tanstack/react-router'
+import WebApp from '@twa-dev/sdk'
 import type { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -17,6 +18,7 @@ export const RoulettesItem: FC<Omit<Roulette, 'prizes'>> = ({
   return (
     <Link
       to='/roulettes/$id'
+      onClick={() => WebApp.HapticFeedback.impactOccurred('soft')}
       params={{ id: code }}
       className='group block cursor-pointer rounded-xl p-px'
       style={{
