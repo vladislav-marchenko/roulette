@@ -28,9 +28,9 @@ export const InviteFriendsBanner: FC<
       <div className='bg-fit flex items-center justify-between gap-4 rounded-[11px] bg-neutral-900 bg-[url("./assets/invite-background.svg")] bg-cover p-3'>
         <div className='flex flex-col text-start'>
           <h3 className='leading-none'>{t('profile.invite.banner.title')}</h3>
-          <span className='text-sm font-medium text-neutral-300'>
+          <p className='text-sm leading-tight font-medium text-neutral-300'>
             {t('profile.invite.description', { percent: referralRate * 100 })}
-          </span>
+          </p>
         </div>
         <IoIosArrowForward size={22} className='text-neutral-300' />
       </div>

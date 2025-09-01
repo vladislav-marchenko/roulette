@@ -5,7 +5,6 @@
     "profile": "个人资料"
   },
   "play": {
-    "title": "祝你好运！",
     "demo": {
       "title": "演示模式",
       "info": "旋转进行中时无法切换演示模式"
@@ -25,7 +24,12 @@
       "plush": "毛绒箱子",
       "rings": "戒指盒"
     },
-    "empty": "未找到箱子"
+    "empty": "未找到箱子",
+    "videoBanner": {
+      "title": "发布视频并赚取星星",
+      "description": "在抖音、YouTube 或 Instagram 上传你的开箱视频并赚取星星",
+      "button": "了解更多"
+    }
   },
   "inventory": {
     "buttons": {

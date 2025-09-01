@@ -2,6 +2,7 @@ import { Empty } from '@/components/Empty'
 import { Error } from '@/components/Error'
 import { RoulettesContent } from '@/components/Roulettes/RoulettesContent'
 import { RoulettesSkeleton } from '@/components/Roulettes/RoulettesSkeleton'
+import { VideoBanner } from '@/components/VideoBanner/VideoBanner'
 import { getRoulettes } from '@/services/api'
 import { useQuery } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
@@ -29,9 +30,12 @@ function RouteComponent() {
   }
 
   return (
-    <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 sm:grid-cols-[repeat(auto-fill,minmax(170px,1fr))]'>
-      {isSuccess && <RoulettesContent roulettes={data} />}
-      {isLoading && <RoulettesSkeleton />}
+    <div className='flex flex-col gap-4'>
+      <VideoBanner />
+      <div className='grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-4 sm:grid-cols-[repeat(auto-fill,minmax(170px,1fr))]'>
+        {isSuccess && <RoulettesContent roulettes={data} />}
+        {isLoading && <RoulettesSkeleton />}
+      </div>
     </div>
   )
 }

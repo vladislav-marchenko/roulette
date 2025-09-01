@@ -5,7 +5,6 @@
     "profile": "Profile"
   },
   "play": {
-    "title": "Good luck!",
     "demo": {
       "title": "Demo",
       "info": "You cannot change the demo mode while spinning is in progress"
@@ -25,7 +24,12 @@
       "plush": "Plush Box",
       "rings": "Rings Box"
     },
-    "empty": "No cases found"
+    "empty": "No cases found",
+    "videoBanner": {
+      "title": "Post videos and earn stars",
+      "description": "Upload your videos of spinning cases on TikTok, YouTube, or Instagram and earn stars",
+      "button": "Learn more"
+    }
   },
   "inventory": {
     "buttons": {

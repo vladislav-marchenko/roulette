@@ -1,3 +1,4 @@
+import { BannerButton } from '../BannerButton'
 import WebApp from '@twa-dev/sdk'
 import type { ButtonHTMLAttributes, FC } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -22,9 +23,7 @@ export const PromoBanner: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
         <p className='w-full pt-1 pb-4 text-start text-xs font-semibold'>
           {t('profile.promo.banner.description')}
         </p>
-        <div className='rounded-md bg-white px-2 py-1.5 text-xs font-bold text-black shadow-2xl'>
-          {t('profile.promo.banner.button')}
-        </div>
+        <BannerButton>{t('profile.promo.banner.button')}</BannerButton>
       </div>
     </button>
   )
